@@ -1,0 +1,196 @@
+body, button, td {
+  font-family: 'Noto Sans', 'Segoe UI', 'Lucida Grande', 'Open Sans', arial,
+      sans-serif;
+  font-size: 12px;
+  color: rgb(48, 57, 66);
+}
+
+body {
+  background-color: white;
+  font-size: 12px;
+  margin-left: 155px;
+  margin-right: 0px;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 18px;
+  display: inline;
+  line-height: 18px;
+  vertical-align: middle;
+}
+
+.top-title {
+  padding-left: 4px;
+}
+
+#cast-icon {
+  width: 36px;
+  height: 36px;
+  line-height: 18px;
+  vertical-align: middle;
+}
+
+header {
+  display: block;
+  padding-top: 10px;
+  padding-bottom: 8px;
+  min-width: 600px;
+}
+
+section {
+  -webkit-padding-start: 18px;
+  margin-bottom: 24px;
+  margin-top: 8px;
+  max-width: 600px;
+}
+
+section h3 {
+  -webkit-margin-start: -18px;
+  color: black;
+  line-height: 14px;
+  font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 11px;
+}
+
+.device-icon {
+  padding-top: 11px;
+  padding-right: 3px;
+}
+
+#cast-devices-section .selected {
+  background-color: rgb(208, 208, 208);
+}
+
+#cast-devices-section .selected:hover {
+  background-color: rgb(187, 206, 233);
+}
+
+#cast-devices-section .not-selected:hover {
+  background-color: rgb(228, 236, 247);
+}
+
+.checkbox {
+  height: 30px;
+}
+
+.controlled-setting-with-label {
+  -webkit-box-align: center;
+  display: -webkit-box;
+  padding-bottom: 7px;
+  padding-top: 7px;
+}
+
+p {
+  line-height: 1.4em;
+  font-weight: 400;
+}
+
+label {
+  display: block;
+}
+
+label:hover {
+  color: black;
+}
+
+label[for] {
+  display: inline;
+}
+
+button {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.options-sections {
+  margin-top: 66px;
+}
+
+.options-sections section {
+  margin-top: 8px;
+  margin-bottom: 24px;
+  max-width: 600px;
+}
+
+.setup-section div {
+  margin-top: 8px;
+}
+
+.hidden {
+  visibility: collapse
+}
+
+.ng-invalid {
+  background-color: #f77;
+}
+
+.savedMessage {
+  display: inline;
+}
+
+#unsupported-chromekey {
+  z-index: 2;
+  background-color: white;
+  position: absolute;
+  top: 125px;
+  left: 250px;
+  height: 300px;
+  width: 400px;
+  padding: 18px;
+  -webkit-box-shadow: 0px 0px 12px 3px #ccc;
+}
+
+a {
+  text-decoration: none;
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid rgb(181, 199, 222);
+  background-color: white;
+  width: 100%;
+  padding-bottom: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+}
+
+.scrolling-disabled {
+  overflow: hidden;
+}
+
+.custom-domain {
+  padding-left: 15px;
+  padding-top: 3px;
+  padding-bottom: 2px;
+}
+
+input[type="radio"]:disabled+label{
+  color:#ccc;
+}
+
+.config-container {
+	width: 700px;
+}
+
+input {
+	width: 90%;
+}
+
+.controls {
+	margin: 20px 0;
+}
+
+

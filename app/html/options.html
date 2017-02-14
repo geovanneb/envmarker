@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Environment Marker</title>
+	<link type="text/css" rel="stylesheet" href="/styles/options.css" media="all">
+</head>
+
+<body id="options">
+	<div class="fixed-top">
+		<header>
+			<img id="cast-icon" src="/images/icon-48.png" alt="Environment Marker">
+			<h1 class="top-title">
+				<amr>Environment Marker Options</amr>
+			</h1>
+		</header>
+	</div>
+	<div class="options-sections">
+		<section class="setup-section">
+			<h3>
+				<amr>Environment Markers Configurations</amr>
+			</h3>
+			<div class="config-container">
+
+				<table id="table" style="width:100%">
+					<thead>
+						<tr>
+							<td>Name</td>
+							<td>URL</td> 
+							<td>Color (hexdecimal)</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody id="tbody">
+					</tbody>
+				</table>
+
+				<div class="controls">
+					<button id="more">+</button>
+				</div>
+
+				<div id="status"></div>
+				<button id="save">Save</button>
+			</div>
+		</section>
+	</div>
+	<div class="options-sections">
+		<section class="setup-section">
+			<h3>
+				<amr>Import/Export configurations</amr>
+			</h3>
+			<p>You can import or export your configurations to share with your team.</p>
+			<div class="config-container">
+				<div id="status"></div>
+				<button id="import">Import...</button>
+				<button id="export">Export...</button>
+			</div>
+		</section>
+	</div>
+
+	<script src="/scripts/options.js"></script>
+</body>
+</html>
