@@ -2,6 +2,7 @@
 Environment Marker Chrome Extension
 
 Maintainer: [Bertonha](https://github.com/geovanneb)
+Official link: [https://chrome.google.com/webstore/detail/environment-marker/ahjhdebcnlgmojdmjnhikhakkghcchkk](https://chrome.google.com/webstore/detail/environment-marker/ahjhdebcnlgmojdmjnhikhakkghcchkk)
 
 > We all know that is very common at least a 3 environments in our programming / IT projects (dev, staging, production). Generally they are all identical.
 During these long years people has commited a lot of mistakes, in which we simply confuses environments and end up doing the procedures in wrong environments.
