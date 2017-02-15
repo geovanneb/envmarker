@@ -26,7 +26,7 @@
 						<tr>
 							<td>Name</td>
 							<td>URL</td> 
-							<td>Color (hexdecimal)</td>
+							<td>Color</td>
 							<td></td>
 						</tr>
 					</thead>
@@ -39,7 +39,7 @@
 				</div>
 
 				<div id="status"></div>
-				<button id="save">Save</button>
+				<button id="save" class="btn">Save</button>
 			</div>
 		</section>
 	</div>
@@ -50,13 +50,13 @@
 			</h3>
 			<p>You can import or export your configurations to share with your team.</p>
 			<div class="config-container">
-				<div id="status"></div>
-				<button id="import">Import...</button>
-				<button id="export">Export...</button>
+				<label class="import-label" for="file">Import: </label><input class="import-label" name="file" type="file" id="import"/>
+				<button class="btn-export" name="export" id="export">Export</button>
+				<div id="import-status"></div>
 			</div>
 		</section>
 	</div>
-
+	<script src="/scripts/lib/jscolor/jscolor.js"></script>
 	<script src="/scripts/options.js"></script>
 </body>
 </html>

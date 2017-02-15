@@ -1,6 +1,6 @@
 body, button, td {
   font-family: 'Noto Sans', 'Segoe UI', 'Lucida Grande', 'Open Sans', arial,
-      sans-serif;
+  sans-serif;
   font-size: 12px;
   color: rgb(48, 57, 66);
 }
@@ -119,6 +119,10 @@ button {
   margin-top: 8px;
 }
 
+.setup-section p {
+  color: #909090;
+}
+
 .hidden {
   visibility: collapse
 }
@@ -191,6 +195,40 @@ input {
 
 .controls {
 	margin: 20px 0;
+}
+
+.btn {
+  width: 100px;
+  height: 22px;
+  line-height: 22px;
+}
+
+.btn-export {
+  width: 100px;
+  height: 18px;
+  line-height: 15px;
+  font-size: 10px;
+}
+
+button.delete {
+  display: block;
+  width: 15px;
+  height: 15px;
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  cursor: pointer;
+  background: url("/images/delete.png") no-repeat;
+  background-size: 15px 15px;
+}
+
+.import-label {     
+  width: 200px;
+}
+
+label.import-label {
+  margin-right: 5px;
 }
 
 
