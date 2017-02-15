@@ -5,6 +5,7 @@ import del from 'del';
 import runSequence from 'run-sequence';
 import {stream as wiredep} from 'wiredep';
 var mainBowerFiles = require('gulp-main-bower-files');
+var cleanCSS = require('gulp-clean-css');
 
 const $ = gulpLoadPlugins();
 
@@ -37,6 +38,8 @@ gulp.task('lint', lint('app/scripts/**/*.js', {
 gulp.task("bower-files", function(){
   return gulp.src('./bower.json')
   .pipe(mainBowerFiles())
+  .pipe($.if('*.js', $.uglify()))
+  .pipe($.if('*.js', $.sourcemaps.write('.')))
   .pipe(gulp.dest('dist/scripts/libs'));
 });
 
@@ -84,6 +87,7 @@ gulp.task('html',  () => {
 
 gulp.task('css',  () => {
   return gulp.src('app/styles/*.css')
+  .pipe(cleanCSS())
   .pipe(gulp.dest('dist/styles'));
 });
 
