@@ -43,7 +43,7 @@ gulp.task("bower-files", function(){
 gulp.task('js', () => {
   return gulp.src('app/scripts/*.js')
   .pipe($.if('*.js', $.sourcemaps.init()))
-    //.pipe($.if('*.js', $.uglify()))
+    .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.js', $.sourcemaps.write('.')))
     .pipe(gulp.dest('dist/scripts'));
   });
