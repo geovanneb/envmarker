@@ -36,6 +36,7 @@ You can also distribute your project with compressed file using the Chrome Devel
 
 ```bash
 gulp package
+```
 
 ## How to use the extension:
 
