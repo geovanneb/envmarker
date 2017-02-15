@@ -29,12 +29,12 @@ function _addEnvironmentLabel() {
 		for(var i = 0; i<items.env_settings.length; i++) {
 			if(tablink.indexOf(items.env_settings[i].address) > -1) {
 				var envmarker = document.getElementById('chrome-envmarker');
-				if(envmarker.length != 0) {
+				if(envmarker && envmarker.length != 0) {
 					envmarker.parentNode.removeChild(envmarker);
 				} 
 				wrapperDiv = document.createElement('div');
 				wrapperDiv.id = 'chrome-envmarker';
-				wrapperDiv.setAttribute('style','position: fixed; right: -127px; top: 43px; background-color: #'+items.env_settings[i].color+'; opacity: 0.9; z-index: 2000; height: 55px; width: 396px; line-height: 55px; transform: rotate(44deg); box-shadow: 7px 0px 9px #000; text-align: center; font-size: 37px; color: #fff;');
+				wrapperDiv.setAttribute('style','text-shadow: -1px -1px 0 #555, 1px -1px 0 #555, -1px 1px 0 #555, 1px 1px 0 #555; position: fixed; right: -127px; top: 43px; background-color: #'+items.env_settings[i].color.replace('#','')+'; opacity: 0.9; z-index: 2000; height: 55px; width: 396px; line-height: 55px; transform: rotate(44deg); box-shadow: 7px 0px 9px #000; text-align: center; font-size: 37px; color: #fff;');
 				wrapperDiv.innerText = items.env_settings[i].name;
 				// try not duplicating elements
 				document.body.appendChild(wrapperDiv);

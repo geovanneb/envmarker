@@ -119,7 +119,11 @@ function importSettings(e) {
 		var r = new FileReader();
 		r.onload = function(e) { 
 			var newconfig = e.target.result;
-			_mergeSettings(JSON.parse(newconfig));
+			try {
+				_mergeSettings(JSON.parse(newconfig));
+			} catch(e) {
+				alert('An unexpected error occoured while loading the file.');
+			}
 		}
 		r.readAsText(f);
 	} else { 
