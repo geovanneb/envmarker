@@ -25,9 +25,9 @@ function _addEnvironmentLabel() {
 	chrome.storage.sync.get({
 		env_settings: [{name: 'EXAMPLE', address: 'geovanneborges.com.br', color: '0000ff'},]
 	}, function(items) {
-		var tablink = window.location.href;
+		var host = window.location.host;
 		for(var i = 0; i<items.env_settings.length; i++) {
-			if(tablink.indexOf(items.env_settings[i].address) > -1) {
+			if(items.env_settings[i].address.trim() === host) {
 				var envmarker = document.getElementById('chrome-envmarker');
 				if(envmarker && envmarker.length != 0) {
 					envmarker.parentNode.removeChild(envmarker);
