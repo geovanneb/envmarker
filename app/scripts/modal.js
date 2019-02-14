@@ -34,17 +34,16 @@ function _addEnvironmentLabel() {
 			_updateMatchers(data.current_state.env_settings);
 		}
 
+		for(var i = 0; i<strictList.length; i++) {
+			if(tablink.indexOf(strictList[i].address) > -1) {
+				_addMarket(strictList[i]);
+				return;
+			}
+		}
 		var hostName = window.location.host;
 		for(var i = 0; i<regexList.length; i++) {
 			if(regexList[i].regex.test(hostName)) {
 				_addMarket(regexList[i]);
-				return;
-			}
-		}
-
-		for(var i = 0; i<strictList.length; i++) {
-			if(tablink.indexOf(strictList[i].address) > -1) {
-				_addMarket(strictList[i]);
 				return;
 			}
 		}
