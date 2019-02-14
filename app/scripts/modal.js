@@ -1,5 +1,4 @@
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-	blat.get();
 	if (request.action == 'isDisabled') {
 		if(!document.getElementById('chrome-envmarker')) {
 			sendResponse({isDisabled: 'notSet'});
