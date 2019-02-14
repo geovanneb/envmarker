@@ -1,5 +1,5 @@
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-
+	blat.get();
 	if (request.action == 'isDisabled') {
 		if(!document.getElementById('chrome-envmarker')) {
 			sendResponse({isDisabled: 'notSet'});
@@ -20,30 +20,32 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 	}
 });
 
-var regexList = [];
-var strictList = [];
-var lastUpdate = new Date().getTime();
+var PLUGIN_STATE = {};
+PLUGIN_STATE.regexList = [];
+PLUGIN_STATE.strictList = [];
+PLUGIN_STATE.lastUpdate = null;
 
 // verify settings and add label if necessary
 function _addEnvironmentLabel() {
 	chrome.storage.sync.get({current_state: {
-		env_settings: [{name: 'EXAMPLE', address: 'geovanneborges.com.br', color: '0000ff'},]
+		last_update: new Date().getTime(),
+		env_settings: [{name: 'EXAMPLE', address: 'geovanneborges.com.br', color: '0000ff'}]
 	}}, function(data) {
 		var tablink = window.location.href;
-		if (!data.current_state.env_settings.lastUpdate || data.current_state.lastUpdate > lastUpdate) {
-			_updateMatchers(data.current_state.env_settings);
+		if (!PLUGIN_STATE.lastUpdate || data.current_state.last_update > PLUGIN_STATE.lastUpdate) {
+			_updateMatchers(data.current_state.env_settings, data.current_state.last_update);
 		}
 
-		for(var i = 0; i<strictList.length; i++) {
-			if(tablink.indexOf(strictList[i].address) > -1) {
-				_addMarket(strictList[i]);
+		for(var i = 0; i<PLUGIN_STATE.strictList.length; i++) {
+			if(tablink.indexOf(PLUGIN_STATE.strictList[i].address) > -1) {
+				_addMarket(PLUGIN_STATE.strictList[i]);
 				return;
 			}
 		}
 		var hostName = window.location.host;
-		for(var i = 0; i<regexList.length; i++) {
-			if(regexList[i].regex.test(hostName)) {
-				_addMarket(regexList[i]);
+		for(var i = 0; i<PLUGIN_STATE.regexList.length; i++) {
+			if(PLUGIN_STATE.regexList[i].regex.test(hostName)) {
+				_addMarket(PLUGIN_STATE.regexList[i]);
 				return;
 			}
 		}
@@ -63,16 +65,18 @@ function _addMarket(item) {
 	document.body.appendChild(wrapperDiv);
 }
 
-function _updateMatchers(env_settings) {
+function _updateMatchers(env_settings, last_update) {
+	PLUGIN_STATE.regexList = [];
+	PLUGIN_STATE.strictList = [];
 	env_settings.forEach(function (item) {
 		if (!!item && !!item.address && item.address.startsWith('regex:')) {
 			item.regex = new RegExp(item.address.substring('regex:'.length, item.address.length));
-			regexList.push(item);
+			PLUGIN_STATE.regexList.push(item);
 		} else {
-			strictList.push(item);
+			PLUGIN_STATE.strictList.push(item);
 		}
 	});
-	lastUpdate = new Date().getTime();
+	PLUGIN_STATE.lastUpdate = last_update;
 }
 
 _addEnvironmentLabel();
