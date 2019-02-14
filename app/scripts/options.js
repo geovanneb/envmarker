@@ -17,9 +17,10 @@ function save_options() {
 		} 
 	}
 	
-	chrome.storage.sync.set({
+	chrome.storage.sync.set({current_state: {
+		last_update: new Date().getTime(),
 		env_settings: configs_array
-	}, function() {
+	}}, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
     status.textContent = 'Successfully updated!';
@@ -99,15 +100,16 @@ function _mergeSettings(newconfig) {
 			}
 		}
 		
-		chrome.storage.sync.set({
+		chrome.storage.sync.set({current_state: {
+			last_update: new Date().getTime(),
 			env_settings: config
-		}, function() {
-	    // Update status to let user know options were saved.
-	    var status = document.getElementById('import-status');
-	    status.textContent = 'Successfully imported! Refreshing...';
-	    setTimeout(function() {
-	    	location.reload();
-	    }, 750);
+		}}, function() {
+		// Update status to let user know options were saved.
+		var status = document.getElementById('import-status');
+		status.textContent = 'Successfully imported! Refreshing...';
+		setTimeout(function() {
+			location.reload();
+		}, 750);
 	});
 	});
 }
