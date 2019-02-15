@@ -17,9 +17,10 @@ function save_options() {
 		} 
 	}
 	
-	chrome.storage.sync.set({
+	chrome.storage.sync.set({current_state: {
+		last_update: new Date().getTime(),
 		env_settings: configs_array
-	}, function() {
+	}}, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
     status.textContent = 'Successfully updated!';
@@ -44,9 +45,10 @@ function _addDeleteAction() {
 
 // restore settings stored in chrome.storage.
 function restore_options() {
-	chrome.storage.sync.get({
+	chrome.storage.sync.get({current_state: {
 		env_settings: [{name: 'EXAMPLE', address: 'geovanneborges.com.br', color: '0000ff'},]
-	}, function(items) {
+	}}, function(data) {
+		var items = data.current_state;
 		for(var i = 0; i<items.env_settings.length; i++) {
 			var template = document.createElement('tr');
 			template.innerHTML = '<tr><td><input class="name" value="'+items.env_settings[i].name+'" /></td><td><input class="address" value="'+items.env_settings[i].address+'" /></td><td><input class="color jscolor" value="'+items.env_settings[i].color+'" /></td><td><button class="delete" title="Remove"></button></td></tr>';
@@ -68,9 +70,10 @@ function add_more() {
 
 // download the current settings as json
 function exportSettings() {
-	chrome.storage.sync.get({
+	chrome.storage.sync.get({current_state: {
 		env_settings: []
-	}, function(items) {
+	}}, function(data) {
+		var items = data.current_state;
 		var a = document.createElement('a');
 		a.setAttribute('href', 'data:text/plain;charset=utf-u,'+encodeURIComponent(JSON.stringify(items.env_settings)));
 		a.setAttribute('download', 'envmarker.json');
@@ -81,10 +84,11 @@ function exportSettings() {
 // merges imported settings with current one
 function _mergeSettings(newconfig) {
 	var currentconfig = [];
-	chrome.storage.sync.get({
+	chrome.storage.sync.get({current_state: {
 		env_settings: []
-	}, function(items) {
-		currentconfig = items;
+	}}, function(data) {
+
+		currentconfig = data.current_state;
 		var config = newconfig.slice();
 
 		for(var i = 0; i<currentconfig.env_settings.length; i++) {
@@ -99,15 +103,16 @@ function _mergeSettings(newconfig) {
 			}
 		}
 		
-		chrome.storage.sync.set({
+		chrome.storage.sync.set({current_state: {
+			last_update: new Date().getTime(),
 			env_settings: config
-		}, function() {
-	    // Update status to let user know options were saved.
-	    var status = document.getElementById('import-status');
-	    status.textContent = 'Successfully imported! Refreshing...';
-	    setTimeout(function() {
-	    	location.reload();
-	    }, 750);
+		}}, function() {
+		// Update status to let user know options were saved.
+		var status = document.getElementById('import-status');
+		status.textContent = 'Successfully imported! Refreshing...';
+		setTimeout(function() {
+			location.reload();
+		}, 750);
 	});
 	});
 }
