@@ -58,7 +58,7 @@ function _addMarket(item) {
 	} 
 	wrapperDiv = document.createElement('div');
 	wrapperDiv.id = 'chrome-envmarker';
-	wrapperDiv.setAttribute('style','text-shadow: -1px -1px 0 #555, 1px -1px 0 #555, -1px 1px 0 #555, 1px 1px 0 #555; position: fixed; right: -127px; top: 43px; background-color: #'+item.color.replace('#','')+'; opacity: 0.9; z-index: 10000; height: 55px; width: 396px; line-height: 55px; transform: rotate(44deg); box-shadow: 7px 0px 9px #000; text-align: center; font-size: 37px; color: #fff;');
+	wrapperDiv.setAttribute('style','text-shadow: -1px -1px 0 #555, 1px -1px 0 #555, -1px 1px 0 #555, 1px 1px 0 #555; position: fixed; right: -127px; top: 43px; background-color: #'+item.color.replace('#','')+'; opacity: 0.9; z-index: 10000; height: 55px; width: 396px; line-height: 55px; transform: rotate(44deg); box-shadow: 7px 0px 9px #000; text-align: center; font-size: 37px; color: #fff; pointer-events:none;');
 	wrapperDiv.innerText = item.name;
 	// try not duplicating elements
 	document.body.appendChild(wrapperDiv);
