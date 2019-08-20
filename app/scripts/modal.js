@@ -28,7 +28,7 @@ PLUGIN_STATE.lastUpdate = null;
 function _addEnvironmentLabel() {
 	chrome.storage.sync.get({current_state: {
 		last_update: new Date().getTime(),
-		env_settings: [{name: 'EXAMPLE', address: 'geovanneborges.com.br', color: '0000ff'}]
+		env_settings: [{name: 'EXAMPLE', address: 'geovanneborges.com.br', color: '0000ff', position: 1}]
 	}}, function(data) {
 		var tablink = window.location.href;
 		if (!PLUGIN_STATE.lastUpdate || data.current_state.last_update > PLUGIN_STATE.lastUpdate) {
@@ -56,9 +56,27 @@ function _addMarket(item) {
 	if(envmarker && envmarker.length != 0) {
 		envmarker.parentNode.removeChild(envmarker);
 	} 
+	var positionStyle = 'right: -127px; top: 43px; transform: rotate(44deg);';
+	var position = item.position || '1';
+	switch (position) {
+		case '1': 
+		  positionStyle = 'right: -127px; top: 43px; transform: rotate(44deg);';
+		  break;
+		case '2':
+		  positionStyle = 'left: -127px; top: 43px; transform: rotate(-44deg);';
+		  break;
+		case '3':
+		  positionStyle = 'right: -127px; bottom: 43px; transform: rotate(-44deg);';
+		  break;
+		case '4':
+		  positionStyle = 'left: -127px; bottom: 43px; transform: rotate(44deg);';
+		  break;
+		default:
+		  positionStyle = 'right: -127px; top: 43px; transform: rotate(44deg);';
+	}
 	wrapperDiv = document.createElement('div');
 	wrapperDiv.id = 'chrome-envmarker';
-	wrapperDiv.setAttribute('style','text-shadow: -1px -1px 0 #555, 1px -1px 0 #555, -1px 1px 0 #555, 1px 1px 0 #555; position: fixed; right: -127px; top: 43px; background-color: #'+item.color.replace('#','')+'; opacity: 0.9; z-index: 10000; height: 55px; width: 396px; line-height: 55px; transform: rotate(44deg); box-shadow: 7px 0px 9px #000; text-align: center; font-size: 37px; color: #fff; pointer-events:none;');
+	wrapperDiv.setAttribute('style','text-shadow: -1px -1px 0 #555, 1px -1px 0 #555, -1px 1px 0 #555, 1px 1px 0 #555; position: fixed; '+positionStyle+' background-color: #'+item.color.replace('#','')+'; opacity: 0.9; z-index: 10000; height: 55px; width: 396px; line-height: 55px; box-shadow: 7px 0px 9px #000; text-align: center; font-size: 37px; color: #fff; pointer-events:none;');
 	wrapperDiv.innerText = item.name;
 	// try not duplicating elements
 	document.body.appendChild(wrapperDiv);

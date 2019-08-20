@@ -5,13 +5,15 @@ function save_options() {
 	for(var i = 0; i<configs.length;i++) {
 		var name = configs[i].querySelector('.name') && configs[i].querySelector('.name').value; 
 		var address = configs[i].querySelector('.address') && configs[i].querySelector('.address').value; 
-		var color = configs[i].querySelector('.color') && configs[i].querySelector('.color').value; 
+		var color = configs[i].querySelector('.color') && configs[i].querySelector('.color').value;
+		var position = configs[i].querySelector('.position') && configs[i].querySelector('.position').value;  
 		
-		if(name && address && color) {
+		if(name && address && color && position) {
 			var obj = {
 				name: name,
 				address: address,
-				color: color
+				color: color,
+				position: position
 			}
 			configs_array.push(obj);
 		} 
@@ -46,12 +48,14 @@ function _addDeleteAction() {
 // restore settings stored in chrome.storage.
 function restore_options() {
 	chrome.storage.sync.get({current_state: {
-		env_settings: [{name: 'EXAMPLE', address: 'geovanneborges.com.br', color: '0000ff'},]
+		env_settings: [{name: 'EXAMPLE', address: 'geovanneborges.com.br', color: '0000ff', position: 1},]
 	}}, function(data) {
 		var items = data.current_state;
 		for(var i = 0; i<items.env_settings.length; i++) {
 			var template = document.createElement('tr');
-			template.innerHTML = '<tr><td><input class="name" value="'+items.env_settings[i].name+'" /></td><td><input class="address" value="'+items.env_settings[i].address+'" /></td><td><input class="color jscolor" value="'+items.env_settings[i].color+'" /></td><td><button class="delete" title="Remove"></button></td></tr>';
+			var selectedPosition = items.env_settings[i].position || 1;
+			var positionSelect = '<td><select class="position"><option '+(selectedPosition==1 ? 'selected="selected"' : '')+' value="1">Top-right</option><option '+(selectedPosition==2 ? 'selected="selected"' : '')+' value="2">Top-left</option><option '+(selectedPosition==3 ? 'selected="selected"' : '')+' value="3">Bottom-right</option><option '+(selectedPosition==4 ? 'selected="selected"' : '')+' value="4">Bottom-left</option></select></td>';
+			template.innerHTML = '<tr><td><input class="name" value="'+items.env_settings[i].name+'" /></td><td><input class="address" value="'+items.env_settings[i].address+'" /></td><td><input class="color jscolor" value="'+items.env_settings[i].color+'" /></td>'+positionSelect+'<td><button class="delete" title="Remove"></button></td></tr>';
 			document.getElementById('tbody').appendChild(template);
 			jscolor.init();
 			_addDeleteAction();
@@ -62,7 +66,8 @@ function restore_options() {
 // add more button action
 function add_more() {
 	var template = document.createElement('tr');
-	template.innerHTML = '<tr><td><input class="name" /></td><td><input class="address" /></td><td><input class="color jscolor" value="'+(Math.random()*0xFFFFFF<<0).toString(16)+'" /></td><td><button class="delete" title="Remove"></button></td></tr>';
+	var positionSelect = '<td><select class="position"><option selected="selected" value="1">Top-right</option><option value="2">Top-left</option><option value="3">Bottom-right</option><option value="4">Bottom-left</option></select></td>';
+	template.innerHTML = '<tr><td><input class="name" /></td><td><input class="address" /></td><td><input class="color jscolor" value="'+(Math.random()*0xFFFFFF<<0).toString(16)+'" /></td>'+positionSelect+'<td><button class="delete" title="Remove"></button></td></tr>';
 	document.getElementById('tbody').appendChild(template);
 	jscolor.init();
 	_addDeleteAction();
