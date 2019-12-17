@@ -1,66 +1,45 @@
-body {
-  margin: 5px 10px 10px;
+* { box-sizing:border-box; }
+
+/* basic stylings ------------------------------------------ */
+.container    { 
+  width:500px; 
+  margin: 0px; 
+  display:block; 
+  background:#FFF;
+  padding:15px;
 }
 
-h1 {
-  color: #53637D;
-  font: 26px/1.2 Helvetica, sans-serif;
-  font-size: 200%;
-  margin: 0;
-  padding-bottom: 4px;
-  text-shadow: white 0 1px 2px;
-}
-
-label {
-  color: #222;
-  font: 18px/1.4 Helvetica, sans-serif;
-  margin: 0.5em 0;
-  display: inline-block;
-}
-
-form {
-  width: 563px;
-  -webkit-transition: -webkit-transform 0.25s ease;
-}
-
-button {
+fieldset {
   display: block;
-  border-radius: 2px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-  -webkit-user-select: none;
-  background: -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
-  border: 1px solid #AAA;
-  color: #444;
-  margin-bottom: 0;
-  min-width: 4em;
-  padding: 3px 12px;
-  margin-top: 20px;
-  font-size: 1.1em;
-}
-
-.overlay {
-  display: block;
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 500px;
   padding: 20px;
-  margin: -40px 0 0 -270px;
-  opacity: 0;
-  background: rgba(0, 0, 0, 0.75);
-  border-radius: 5px;
-  color: #FFF;
-  font: 1.5em/1.2 Helvetica Neue, sans-serif;
-  -webkit-transition: all 1.0s ease;
-  -webkit-transform: scale(0);
+  border: 1px solid #ccc;
 }
 
-.overlay a {
-  color:  #FFF;
+h2     { 
+  font-size: 14px; 
 }
 
-.overlay.visible {
-  opacity: 1;
-  -webkit-transform: scale(1);
+input         {
+  font-size:12px;
+  width:100%;
+  margin-bottom: 10px;
+}
+
+/* LABEL ======================================= */
+label          {
+  color:#000; 
+  font-size:12px;
+  font-weight:normal;
+  margin-bottom: 10px;
+}
+
+select {
+  margin-bottom: 10px;
+}
+
+.btn {
+  width: 100px;
+  height: 22px;
+  line-height: 16px;
+  margin-top: 15px;
 }

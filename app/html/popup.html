@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Environment Marker</title>
-  <link href="/styles/popup.css" rel="stylesheet">
+	<title>Environment Marker</title>
+	<link href="/styles/popup.css" rel="stylesheet">
 </head>
 <body>
-  <form>
-   <span id="popup-text">Click on the following button to Hide/Show label:</span>
-   <button id="popup-button">Hide Label</button>
- </form>
- <script src="/scripts/popup.js"></script>
+	<div class="container">
+		<form class="hide-show">
+			<h2>Toggle visibility</h2>
+			<fieldset>
+				<span id="popup-text">Click on the following button to temporarily Hide/Show the label:</span>
+				<button class="btn" id="popup-button">Hide Label</button>
+			</fieldset>
+		</form>
+		<br />
+		<form id="quick-configuration" class="quick-configuration">
+			<h2>Quick configuration</h2>
+			<fieldset>
+				<input id="uuid" type="hidden" value="" />
+				<label>Name</label><br />
+				<input id="name" class="name" value="" required /><br />
+				<label>URL(use 'regex:' prefix to match a host by RegEx)</label><br />
+				<input id="address" class="address" required value="" /><br />
+				<label>Color</label><br />
+				<input id="color" class="color jscolor" value="" required /><br />
+				<label>Position</label><br />
+				<select id="position" class="position">
+					<option selected="selected" value="1">Top-right</option>
+					<option value="2">Top-left</option>
+					<option value="3">Bottom-right</option>
+					<option value="4">Bottom-left</option>
+				</select><br />
+				<input type="submit" value="Add" class="btn" id="add" /> or <a id="go-to-options" href="#">go to configuration page.</a>
+			</fieldset>
+		</form>
+	</div>
+	<script src="/scripts/libs/jscolor/jscolor.js"></script>
+	<script src="/scripts/popup.js"></script>
 </body>
 </html>
