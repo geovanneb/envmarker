@@ -1,5 +1,6 @@
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-	if (request.action == 'isDisabled') {
+	switch(request.action) {
+		case 'isDisabled':
 		if(!document.getElementById('chrome-envmarker')) {
 			sendResponse({isDisabled: 'notSet'});
 		} else {
@@ -9,13 +10,24 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
 				sendResponse({isDisabled: 'notSet'});		   
 			}
 		}
-	} else if(request.action == 'toggle') {
+		break;
+		case 'toggle':
 		var marker = document.getElementById('chrome-envmarker');
 		if(marker.style.display == 'none') {
 			marker.style.display = 'block';
 		} else {
 			marker.style.display = 'none';
 		}
+		break;
+		case 'getConfig':
+		sendResponse({currentConfig: CURRENT_CONFIG});
+		break;
+		case 'getDomain':
+		sendResponse({domain: CURRENT_DOMAIN});
+		break;
+		case 'setConfig':
+		_setConfig(request.parameter);
+		break;
 	}
 });
 
@@ -24,34 +36,40 @@ PLUGIN_STATE.regexList = [];
 PLUGIN_STATE.strictList = [];
 PLUGIN_STATE.lastUpdate = null;
 
+var CURRENT_CONFIG = undefined;
+var CURRENT_LOCATION = window.location.href;
+var CURRENT_DOMAIN = window.location.hostname;
+var ENV_SETTINGS = [];
+
 // verify settings and add label if necessary
 function _addEnvironmentLabel() {
 	chrome.storage.sync.get({current_state: {
 		last_update: new Date().getTime(),
-		env_settings: [{name: 'EXAMPLE', address: 'geovanneborges.com.br', color: '0000ff', position: 1}]
+		env_settings: [{uuid: '0ac126c8-9aff-452b-b76c-941104854128', name: 'EXAMPLE', address: 'geovanneborges.com.br', color: '0000ff', position: 1}]
 	}}, function(data) {
-		var tablink = window.location.href;
+		ENV_SETTINGS = data.current_state.env_settings;
 		if (!PLUGIN_STATE.lastUpdate || data.current_state.last_update > PLUGIN_STATE.lastUpdate) {
 			_updateMatchers(data.current_state.env_settings, data.current_state.last_update);
 		}
 
 		for(var i = 0; i<PLUGIN_STATE.strictList.length; i++) {
-			if(tablink.indexOf(PLUGIN_STATE.strictList[i].address) > -1) {
-				_addMarket(PLUGIN_STATE.strictList[i]);
+			if(CURRENT_LOCATION.indexOf(PLUGIN_STATE.strictList[i].address) > -1) {
+				CURRENT_CONFIG = PLUGIN_STATE.strictList[i];
+				_addMarker(CURRENT_CONFIG);
 				return;
 			}
 		}
-		var hostName = window.location.host;
 		for(var i = 0; i<PLUGIN_STATE.regexList.length; i++) {
-			if(PLUGIN_STATE.regexList[i].regex.test(hostName)) {
-				_addMarket(PLUGIN_STATE.regexList[i]);
+			if(PLUGIN_STATE.regexList[i].regex.test(CURRENT_DOMAIN)) {
+				CURRENT_CONFIG = PLUGIN_STATE.regexList[i];
+				_addMarker(CURRENT_CONFIG);
 				return;
 			}
 		}
 	});
 }
 
-function _addMarket(item) {
+function _addMarker(item) {
 	var envmarker = document.getElementById('chrome-envmarker');
 	if(envmarker && envmarker.length != 0) {
 		envmarker.parentNode.removeChild(envmarker);
@@ -60,19 +78,19 @@ function _addMarket(item) {
 	var position = item.position || '1';
 	switch (position) {
 		case '1': 
-		  positionStyle = 'right: -127px; top: 43px; transform: rotate(44deg);';
-		  break;
+		positionStyle = 'right: -127px; top: 43px; transform: rotate(44deg);';
+		break;
 		case '2':
-		  positionStyle = 'left: -127px; top: 43px; transform: rotate(-44deg);';
-		  break;
+		positionStyle = 'left: -127px; top: 43px; transform: rotate(-44deg);';
+		break;
 		case '3':
-		  positionStyle = 'right: -127px; bottom: 43px; transform: rotate(-44deg);';
-		  break;
+		positionStyle = 'right: -127px; bottom: 43px; transform: rotate(-44deg);';
+		break;
 		case '4':
-		  positionStyle = 'left: -127px; bottom: 43px; transform: rotate(44deg);';
-		  break;
+		positionStyle = 'left: -127px; bottom: 43px; transform: rotate(44deg);';
+		break;
 		default:
-		  positionStyle = 'right: -127px; top: 43px; transform: rotate(44deg);';
+		positionStyle = 'right: -127px; top: 43px; transform: rotate(44deg);';
 	}
 	wrapperDiv = document.createElement('div');
 	wrapperDiv.id = 'chrome-envmarker';
@@ -94,6 +112,31 @@ function _updateMatchers(env_settings, last_update) {
 		}
 	});
 	PLUGIN_STATE.lastUpdate = last_update;
+}
+
+function _setConfig(config) {
+	// Find the index of the object based on uuid
+	obj_index = ENV_SETTINGS.findIndex(function(obj){ return obj.uuid == config.uuid });
+	if(obj_index === -1) {
+    	// Last try, might be a legacy config file.
+    	obj_index = ENV_SETTINGS.findIndex(function(obj){ return obj.address === config.address });
+    }
+
+    if(obj_index !== -1) {
+    	// Update item
+    	ENV_SETTINGS[obj_index] = config;
+    } else {
+		// Might be a legacy configuration file
+		ENV_SETTINGS.push(config);
+	}
+    // Persist data
+    chrome.storage.sync.set({current_state: {
+    	last_update: new Date().getTime(),
+    	env_settings: ENV_SETTINGS
+    }}, function() {
+		//Refresh marker
+		_addEnvironmentLabel();
+	});
 }
 
 _addEnvironmentLabel();
