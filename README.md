@@ -5,7 +5,7 @@ Maintainer: [Bertonha](https://github.com/geovanneb)
 
 Official link: [https://chrome.google.com/webstore/detail/environment-marker/ahjhdebcnlgmojdmjnhikhakkghcchkk](https://chrome.google.com/webstore/detail/environment-marker/ahjhdebcnlgmojdmjnhikhakkghcchkk)
 
-[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](SRFRGVMAUJB3N)
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SRFRGVMAUJB3N)
 
 > We all know that is very common at least a 3 environments in our programming / IT projects (dev, staging, production). Generally they are all identical.
 During these long years people has commited a lot of mistakes, in which we simply confuses environments and end up doing the procedures in wrong environments.
