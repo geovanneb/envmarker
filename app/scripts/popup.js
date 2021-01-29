@@ -1,8 +1,8 @@
 //Set initial button label
 function set_button_label() {
-	chrome.tabs.getSelected(null, function(tab) {
-	  // Send a request to the content script.
-	  chrome.tabs.sendRequest(tab.id, {action: 'isDisabled'}, function(response) {
+	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+	  // Send a message to the content script.
+	  chrome.tabs.sendMessage(tabs[0].id, {action: 'isDisabled'}, function(response) {
 	  	if(response.isDisabled === 'notSet') {
 	  		document.getElementById('popup-text').innerText = 'It is not possible to toggle visibility for this URL because you have not configured it yet.';
 	  		document.getElementById('popup-button').style.display = 'none';
@@ -17,10 +17,8 @@ function set_button_label() {
 
 //Set initial quick config values
 function set_default_values() {
-
-	chrome.tabs.getSelected(null, function(tab) {
-	  // Send a request to the content script.
-	  chrome.tabs.sendRequest(tab.id, {action: 'getConfig'}, function(response) {
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+	  chrome.tabs.sendMessage(tabs[0].id, {action: 'getConfig'}, function(response) {
 	  	if(response && response.currentConfig) {
 	  		document.getElementById('uuid').value = response.currentConfig.uuid || uuidv4();
 	  		document.getElementById('name').value = response.currentConfig.name;
@@ -29,10 +27,9 @@ function set_default_values() {
 	  		document.getElementById('color').dispatchEvent(new Event('blur'));
 	  		document.getElementById('position').value = response.currentConfig.position;
 	  		document.getElementById('add').value = 'Save';
-	  		jscolor.init();
 	  	} else {
 	  		document.getElementById('uuid').value = uuidv4();
-	  		chrome.tabs.sendRequest(tab.id, {action: 'getDomain'}, function(response) {
+	  		chrome.tabs.sendMessage({action: 'getDomain'}, function(response) {
 	  			document.getElementById('address').value = response.domain;
 	  			document.getElementById('name').value = response.domain.replace(/\./g, '').toUpperCase();
 	  		});
@@ -40,7 +37,7 @@ function set_default_values() {
 	  		document.getElementById('color').dispatchEvent(new Event('blur'));
 	  	}
 	  });
-	});
+  });
 }
 
 function saveData() {
@@ -50,13 +47,13 @@ function saveData() {
 	config.address = document.getElementById('address').value;
 	config.color = document.getElementById('color').value;
 	config.position = document.getElementById('position').value;
-	chrome.tabs.getSelected(null, function(tab) {
-	  // Send a request to the content script.
-	  chrome.tabs.sendRequest(tab.id, {action: 'setConfig', parameter: config}, function(response) {
-	  	// Result
-	  });
-	});
 
+    // Send a message to the content script.
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+	    chrome.tabs.sendMessage(tabs[0].id, {action: 'setConfig', parameter: config}, function(response) {
+	  	  // Result
+	    });
+    });
 }
 // generate a new uuid
 function uuidv4() {
@@ -71,9 +68,9 @@ function uuidv4() {
 
 //Toggle button label
 function toggle_label() {
-	chrome.tabs.getSelected(null, function(tab) {
-	  // Send a request to the content script.
-	  chrome.tabs.sendRequest(tab.id, {action: 'toggle'}, function(response) {
+	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+	  // Send a message to the content script.
+	  chrome.tabs.sendMessage(tabs[0].id, {action: 'toggle'}, function(response) {
 	  	set_button_label();
 	  });
 	});
@@ -88,10 +85,17 @@ function open_configuration() {
 	}
 }
 
+function initialize_colorpicker() {
+	var options = {
+		zIndex: 99999
+	}
+	new jscolor('color', options);
+}
+
 function set_initial_config() {
 	set_button_label();
 	set_default_values();
-	jscolor.init();
+	initialize_colorpicker();
 }
 
 document.addEventListener('DOMContentLoaded', set_initial_config);

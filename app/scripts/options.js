@@ -76,7 +76,7 @@ function restore_options() {
 			var positionSelect = '<td><select class="position"><option '+(selectedPosition==1 ? 'selected="selected"' : '')+' value="1">Top-right</option><option '+(selectedPosition==2 ? 'selected="selected"' : '')+' value="2">Top-left</option><option '+(selectedPosition==3 ? 'selected="selected"' : '')+' value="3">Bottom-right</option><option '+(selectedPosition==4 ? 'selected="selected"' : '')+' value="4">Bottom-left</option></select></td>';
 			template.innerHTML = '<tr><td><input class="uuid" type="hidden" value="'+uuid+'"><input class="name" value="'+items.env_settings[i].name+'" /></td><td><input class="address" value="'+items.env_settings[i].address+'" /></td><td><input class="color jscolor" value="'+items.env_settings[i].color+'" /></td>'+positionSelect+'<td><button class="delete" title="Remove"></button></td></tr>';
 			document.getElementById('tbody').appendChild(template);
-			jscolor.init();
+			jscolor.installByClassName("jscolor");
 			_addDeleteAction();
 		}
 	});
@@ -93,7 +93,7 @@ function add_more() {
 	var positionSelect = '<td><select class="position"><option selected="selected" value="1">Top-right</option><option value="2">Top-left</option><option value="3">Bottom-right</option><option value="4">Bottom-left</option></select></td>';
 	template.innerHTML = '<tr><td><input class="uuid" type="hidden" value="'+uuidv4()+'"><input class="name" /></td><td><input class="address" /></td><td><input class="color jscolor" value="'+(Math.random()*0xFFFFFF<<0).toString(16)+'" /></td>'+positionSelect+'<td><button class="delete" title="Remove"></button></td></tr>';
 	document.getElementById('tbody').appendChild(template);
-	jscolor.init();
+	jscolor.installByClassName("jscolor");
 	_addDeleteAction();
 }
 

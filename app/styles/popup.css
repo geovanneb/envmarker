@@ -2,11 +2,12 @@
 
 /* basic stylings ------------------------------------------ */
 .container    { 
-  width:500px; 
+  width:500px;
   margin: 0px; 
   display:block; 
   background:#FFF;
   padding:15px;
+  z-index: 9000;
 }
 
 fieldset {
@@ -15,7 +16,11 @@ fieldset {
   border: 1px solid #ccc;
 }
 
-h2     { 
+h2 { 
+  font-size: 16px; 
+}
+
+h3     { 
   font-size: 14px; 
 }
 

@@ -1,31 +1,35 @@
 {
-  "name": "__MSG_appName__",
-  "version": "1.0.3",
-  "manifest_version": 2,
-  "description": "__MSG_appDescription__",
+  "manifest_version": 3,
+  "name": "Environment Marker",
+  "version": "1.0.4",
+  "description": "This extension allows you to flag specified websites by adding a colored label depending on the URL configuration.",
   "icons": {
     "16": "images/icon-16.png",
     "48": "images/icon-48.png",
     "128": "images/icon-128.png"
+  },
+  "default_locale": "en",
+  "action": {
+    "default_icon": {
+      "16": "images/icon-16.png",
+      "24": "images/icon-24.png",
+      "32": "images/icon-32.png"
     },
-    "default_locale": "en",
-    "browser_action": {
-     "default_icon": "images/icon.png",
-     "default_popup": "html/popup.html"
-     },
-     "content_scripts": [
-     {
+    "default_title": "Environment Marker",
+    "default_popup": "html/popup.html"
+  },
+  "content_scripts": [
+    {
       "matches": ["<all_urls>"],
-      "js": ["scripts/modal.js"]
+      "js": [
+        "scripts/modal.js"
+      ]
     }
-    ],
-    "background": {
-      "scripts": []
-      },
-      "permissions": [
-      "activeTab",
-      "tabs",
-      "storage"
-      ],
-      "options_page": "html/options.html"
-    }
+  ],
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage"
+  ],
+  "options_page": "html/options.html"
+}

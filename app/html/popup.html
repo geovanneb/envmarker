@@ -6,24 +6,24 @@
 </head>
 <body>
 	<div class="container">
+		<h2>Enrivonment Marker Extension</h2>
 		<form class="hide-show">
-			<h2>Toggle visibility</h2>
+			<h3>Toggle visibility</h3>
 			<fieldset>
 				<span id="popup-text">Click on the following button to temporarily Hide/Show the label:</span>
 				<button class="btn" id="popup-button">Hide Label</button>
 			</fieldset>
 		</form>
-		<br />
 		<form id="quick-configuration" class="quick-configuration">
-			<h2>Quick configuration</h2>
+			<h3>Quick configuration</h3>
 			<fieldset>
 				<input id="uuid" type="hidden" value="" />
 				<label>Name</label><br />
-				<input id="name" class="name" value="" required /><br />
+				<input type="text" id="name" class="name" value="" required /><br />
 				<label>URL(use 'regex:' prefix to match a host by RegEx)</label><br />
-				<input id="address" class="address" required value="" /><br />
+				<input type="text" id="address" class="address" required value="" /><br />
 				<label>Color</label><br />
-				<input id="color" class="color jscolor" value="" required /><br />
+				<input type="text" id="color" class="color" value="" required /><br />
 				<label>Position</label><br />
 				<select id="position" class="position">
 					<option selected="selected" value="1">Top-right</option>
@@ -35,7 +35,7 @@
 			</fieldset>
 		</form>
 	</div>
-	<script src="/scripts/libs/jscolor/jscolor.js"></script>
+	<script src="/scripts/libs/jscolor-picker/jscolor.min.js"></script>
 	<script src="/scripts/popup.js"></script>
 </body>
 </html>

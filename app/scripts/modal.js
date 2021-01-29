@@ -1,33 +1,35 @@
-chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	switch(request.action) {
 		case 'isDisabled':
-		if(!document.getElementById('chrome-envmarker')) {
-			sendResponse({isDisabled: 'notSet'});
-		} else {
-			if(document.getElementById('chrome-envmarker')) {
-				sendResponse({isDisabled: document.getElementById('chrome-envmarker').style.display == 'none'});
+			if(!document.getElementById('chrome-envmarker')) {
+				sendResponse({isDisabled: 'notSet'});
 			} else {
-				sendResponse({isDisabled: 'notSet'});		   
+				if(document.getElementById('chrome-envmarker')) {
+					sendResponse({isDisabled: document.getElementById('chrome-envmarker').style.display == 'none'});
+				} else {
+					sendResponse({isDisabled: 'notSet'});		   
+				}
 			}
-		}
-		break;
+			break;
 		case 'toggle':
-		var marker = document.getElementById('chrome-envmarker');
-		if(marker.style.display == 'none') {
-			marker.style.display = 'block';
-		} else {
-			marker.style.display = 'none';
-		}
-		break;
+			var marker = document.getElementById('chrome-envmarker');
+			if(marker.style.display == 'none') {
+				marker.style.display = 'block';
+			} else {
+				marker.style.display = 'none';
+			}
+			break;
 		case 'getConfig':
-		sendResponse({currentConfig: CURRENT_CONFIG});
-		break;
+			sendResponse({currentConfig: CURRENT_CONFIG});
+			break;
 		case 'getDomain':
-		sendResponse({domain: CURRENT_DOMAIN});
-		break;
+			sendResponse({domain: CURRENT_DOMAIN});
+			break;
 		case 'setConfig':
-		_setConfig(request.parameter);
-		break;
+			_setConfig(request.parameter);
+			sendResponse({success: true});
+			break;
+		return true;
 	}
 });
 
@@ -137,6 +139,14 @@ function _setConfig(config) {
 		//Refresh marker
 		_addEnvironmentLabel();
 	});
+}
+
+function _triggerNavigatedEvent() {
+  var eventObj = {
+  	action: 'navigated', 
+  	currentConfig: CURRENT_CONFIG 
+  };
+  chrome.runtime.sendMessage(eventObj, function(response) {});
 }
 
 _addEnvironmentLabel();

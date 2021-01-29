@@ -16,14 +16,11 @@ with the color and name, according to what you have previously set.
 ## Getting Started
 
 ```sh
-# Please make sure that `yo`, `gulp` and `bower` was installed on your system using this command:
-npm install --global yo gulp-cli bower
+# Please make sure that `gulp` was installed on your system using this command:
+npm install --global gulp-cli
 
-# Run gulp install:
-gulp install
-
-# Run bower update:
-bower update
+# Run npm install:
+npm install
 ```
 
 ## gulp tasks
@@ -44,6 +41,6 @@ gulp package
 
 ## How to use the extension:
 
-- After installing, access Bowser Configurations > Extensions.
+- After installing, access Bowser Configurations > More Tools > Extensions.
 - Click on Options menu, over Environment Marker session.
 - Configure your Environments and click on Save button.
