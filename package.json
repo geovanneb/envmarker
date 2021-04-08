@@ -1,8 +1,7 @@
 {
-  "name": "chrome-extension-scaffold",
-  "version": "1.0.0",
-  "description": "A chrome web extension scaffolding",
-  "main": "index.js",
+  "name": "environment-marker",
+  "version": "1.1",
+  "description": "This extension allows you to flag specified websites by adding a colored label depending on the URL configuration.",
   "scripts": {},
   "devDependencies": {
     "del": "^6.0.0",
@@ -16,6 +15,7 @@
     "gulp-zip": "^5.0.2"
   },
   "dependencies": {
-    "jscolor-picker": "^2.0.4"
+    "jscolor-picker": "^2.0.4",
+    "textfit": "^2.4.0"
   }
 }

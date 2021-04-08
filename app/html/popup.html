@@ -1,31 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<meta charset="UTF-8">
 	<title>Environment Marker</title>
 	<link href="/styles/popup.css" rel="stylesheet">
 </head>
 <body>
 	<div class="container">
 		<h2>Enrivonment Marker Extension</h2>
-		<form class="hide-show">
+		<form class="hide-show" autocomplete="off" novalidate="">
 			<h3>Toggle visibility</h3>
 			<fieldset>
 				<span id="popup-text">Click on the following button to temporarily Hide/Show the label:</span>
 				<button class="btn" id="popup-button">Hide Label</button>
 			</fieldset>
 		</form>
-		<form id="quick-configuration" class="quick-configuration">
+		<form id="quick-configuration" class="quick-configuration" autocomplete="off">
 			<h3>Quick configuration</h3>
 			<fieldset>
-				<input id="uuid" type="hidden" value="" />
-				<label>Name</label><br />
-				<input type="text" id="name" class="name" value="" required /><br />
-				<label>URL(use 'regex:' prefix to match a host by RegEx)</label><br />
-				<input type="text" id="address" class="address" required value="" /><br />
-				<label>Color</label><br />
-				<input type="text" id="color" class="color" value="" required /><br />
-				<label>Position</label><br />
-				<select id="position" class="position">
+				<input id="uuid" name="uuid" type="hidden" value="" />
+				<label for="name">Name</label><br />
+				<input type="text" name="name" id="name" class="name" value="" required /><br />
+				<label for="address">URL(use 'regex:' prefix to match a host by RegEx)</label><br />
+				<input type="text" name="address" id="address" class="address" required value="" /><br />
+				<label for="color">Color</label><br />
+				<input type="text" name="color" id="color" class="color" value="" required /><br />
+				<label for="position">Position</label><br />
+				<select id="position" name="position" class="position">
 					<option selected="selected" value="1">Top-right</option>
 					<option value="2">Top-left</option>
 					<option value="3">Bottom-right</option>
@@ -33,9 +34,10 @@
 				</select><br />
 				<input type="submit" value="Add" class="btn" id="add" /> or <a id="go-to-options" href="#">go to configuration page.</a>
 			</fieldset>
-		</form>
+		</form-->
 	</div>
 	<script src="/scripts/libs/jscolor-picker/jscolor.min.js"></script>
+	<script src="/scripts/util.js"></script>
 	<script src="/scripts/popup.js"></script>
 </body>
 </html>

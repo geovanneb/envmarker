@@ -46,11 +46,21 @@ section {
   max-width: 600px;
 }
 
-section h3 {
+section h2 {
   -webkit-margin-start: -18px;
   color: black;
   line-height: 14px;
   font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 11px;
+  font-weight: bold;
+}
+
+section h3 {
+  -webkit-margin-start: -18px;
+  color: black;
+  line-height: 13px;
+  font-size: 13px;
   font-weight: normal;
   margin-bottom: 11px;
 }
@@ -193,6 +203,14 @@ input {
 	width: 90%;
 }
 
+input[type="text"].import-label {
+  width: 250px;
+}
+
+input[type="checkbox"] {
+  width: 15px;
+}
+
 .controls {
 	margin: 20px 0;
 }
@@ -200,10 +218,10 @@ input {
 .btn {
   width: 100px;
   height: 22px;
-  line-height: 22px;
+  line-height: 17px;
 }
 
-.btn-export {
+.btn-export, .btn-import {
   width: 100px;
   height: 18px;
   line-height: 15px;
@@ -230,5 +248,3 @@ button.delete {
 label.import-label {
   margin-right: 5px;
 }
-
-

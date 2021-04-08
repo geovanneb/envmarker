@@ -25,6 +25,18 @@ gulp.task("js", gulp.series(() => {
     .pipe(gulp.dest("dist/scripts"));
 }));
 
+// Service workers
+gulp.task("copy-service-worker", gulp.series(() => {
+  log("Gulp copy-service-worker task executing");
+  return gulp
+    .src("app/background.js")
+    .pipe(sourcemaps.init())
+    .pipe(plumber({ errorHandler: onError }))
+    .pipe(uglify())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest("dist"));
+}));
+
 // Copy html files into build for every update
 gulp.task("copy-html", gulp.series(() => {
   log("Gulp copy-res task executing");
@@ -111,6 +123,7 @@ gulp.task(
   gulp.series([
     "clean-dist",
     "js",
+    "copy-service-worker",
     "copy-html",
     "copy-css",
     "copy-images",

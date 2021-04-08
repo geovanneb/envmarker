@@ -3,7 +3,7 @@ function set_button_label() {
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 	  // Send a message to the content script.
 	  chrome.tabs.sendMessage(tabs[0].id, {action: 'isDisabled'}, function(response) {
-	  	if(response.isDisabled === 'notSet') {
+	  	if(!response || response.isDisabled === 'notSet') {
 	  		document.getElementById('popup-text').innerText = 'It is not possible to toggle visibility for this URL because you have not configured it yet.';
 	  		document.getElementById('popup-button').style.display = 'none';
 	  	} else {
@@ -29,9 +29,11 @@ function set_default_values() {
 	  		document.getElementById('add').value = 'Save';
 	  	} else {
 	  		document.getElementById('uuid').value = uuidv4();
-	  		chrome.tabs.sendMessage({action: 'getDomain'}, function(response) {
-	  			document.getElementById('address').value = response.domain;
-	  			document.getElementById('name').value = response.domain.replace(/\./g, '').toUpperCase();
+	  		chrome.tabs.sendMessage(tabs[0].id, {action: 'getDomain'}, function(response) {
+	  			if(response && response.domain) {
+	  				document.getElementById('address').value = response.domain;
+	  				document.getElementById('name').value = response.domain.replace(/\./g, '').toUpperCase();
+	  			}
 	  		});
 	  		document.getElementById('color').value = (Math.random()*0xFFFFFF<<0).toString(16);
 	  		document.getElementById('color').dispatchEvent(new Event('blur'));
@@ -54,16 +56,6 @@ function saveData() {
 	  	  // Result
 	    });
     });
-}
-// generate a new uuid
-function uuidv4() {
-	var dt = new Date().getTime();
-	var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-		var r = (dt + Math.random()*16)%16 | 0;
-		dt = Math.floor(dt/16);
-		return (c=='x' ? r :(r&0x3|0x8)).toString(16);
-	});
-	return uuid;
 }
 
 //Toggle button label

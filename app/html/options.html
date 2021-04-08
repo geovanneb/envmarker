@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<meta charset="UTF-8">
 	<title>Environment Marker</title>
 	<link type="text/css" rel="stylesheet" href="/styles/options.css" media="all">
 </head>
@@ -16,9 +17,9 @@
 	</div>
 	<div class="options-sections">
 		<section class="setup-section">
-			<h3>
-				<amr>Environment Marker Configurations</amr>
-			</h3>
+			<h2>
+				<amr>Environment Marker settings</amr>
+			</h2>
 			<div class="config-container">
 
 				<table id="table" style="width:100%">
@@ -46,18 +47,31 @@
 	</div>
 	<div class="options-sections">
 		<section class="setup-section">
-			<h3>
-				<amr>Import/Export configurations</amr>
-			</h3>
+			<h2>
+				<amr>Import/Export settings</amr>
+			</h2>
 			<p>You can import or export your configurations to share with your team.</p>
 			<div class="config-container">
-				<label class="import-label" for="file">Import: </label><input class="import-label" name="file" type="file" accept=".json" id="import"/>
+				<h3>Import</h3>
+				<label class="import-label" for="file">Import using a local file: </label>
+				<input class="import-label" name="file" type="file" accept=".json" id="import"/>
+				<br />
+				OR
+				<br />
+				<label class="import-label" for="hosted-file">Import a hosted file (http://example.com/my-file.json): </label>
+				<input class="import-label hosted-file" name="hosted-file" type="text" id="hosted-file"/>
+				<button class="btn-import" name="btn-import" id="btn-import">Import</button>
+				<br />
+				<input type="checkbox" id="auto-import" value="1" /><label class="auto-import-label" for="auto-import">Automatically import any configuration changes on hosted file.</label>
+				<br />
+				<h3>Export</h3>
 				<button class="btn-export" name="export" id="export">Export</button>
 				<div id="import-status"></div>
 			</div>
 		</section>
 	</div>
 	<script src="/scripts/libs/jscolor-picker/jscolor.min.js"></script>
+	<script src="/scripts/util.js"></script>
 	<script src="/scripts/options.js"></script>
 </body>
 </html>

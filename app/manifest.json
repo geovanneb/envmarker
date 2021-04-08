@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Environment Marker",
-  "version": "1.0.4",
+  "version": "1.1",
   "description": "This extension allows you to flag specified websites by adding a colored label depending on the URL configuration.",
   "icons": {
     "16": "images/icon-16.png",
@@ -22,14 +22,22 @@
     {
       "matches": ["<all_urls>"],
       "js": [
+        "scripts/libs/textfit/textFit.min.js",
         "scripts/modal.js"
       ]
     }
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "permissions": [
     "activeTab",
     "tabs",
-    "storage"
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "<all_urls>"
   ],
   "options_page": "html/options.html"
 }

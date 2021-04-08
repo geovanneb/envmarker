@@ -20,10 +20,15 @@ function save_options() {
 			configs_array.push(obj);
 		} 
 	}
-	
+
+	var hosted_file = document.getElementById("hosted-file") && document.getElementById("hosted-file").value;
+	var auto_import = document.getElementById("auto-import") && document.getElementById("auto-import").checked ? 1 : 0;
+
 	chrome.storage.sync.set({current_state: {
 		last_update: new Date().getTime(),
-		env_settings: configs_array
+		env_settings: configs_array,
+		hosted_file: hosted_file,
+		auto_import: auto_import
 	}}, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');
@@ -47,21 +52,12 @@ function _addDeleteAction() {
 	}
 }
 
-// generate a new uuid
-function uuidv4() {
-	var dt = new Date().getTime();
-	var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-		var r = (dt + Math.random()*16)%16 | 0;
-		dt = Math.floor(dt/16);
-		return (c=='x' ? r :(r&0x3|0x8)).toString(16);
-	});
-	return uuid;
-}
-
 // restore settings stored in chrome.storage.
 function restore_options() {
 	chrome.storage.sync.get({current_state: {
-		env_settings: [{uuid: '0ac126c8-9aff-452b-b76c-941104854128', name: 'EXAMPLE', address: 'geovanneborges.com.br', color: '0000ff', position: 1},]
+		env_settings: [{uuid: '0ac126c8-9aff-452b-b76c-941104854128', name: 'EXAMPLE', address: 'geovanneborges.com.br', color: '0000ff', position: 1},],
+		hosted_file: "",
+		auto_import: 0
 	}}, function(data) {
 		var items = data.current_state;
 		for(var i = 0; i<items.env_settings.length; i++) {
@@ -79,12 +75,15 @@ function restore_options() {
 			jscolor.installByClassName("jscolor");
 			_addDeleteAction();
 		}
+		document.getElementById('hosted-file').value = data.current_state && data.current_state.hosted_file? data.current_state.hosted_file : "";
+		document.getElementById('auto-import').checked = data.current_state && data.current_state.auto_import? data.current_state.auto_import : 0;
 	});
 }
 
 chrome.storage.onChanged.addListener(function(changes, namespace) {
 	document.getElementById('tbody').innerHTML = '';	
-	restore_options();  
+	restore_options(); 
+	return true; 
 });
 
 // add more button action
@@ -110,42 +109,6 @@ function exportSettings() {
 	});
 }
 
-// merges imported settings with current one
-function _mergeSettings(newconfig) {
-	var currentconfig = [];
-	chrome.storage.sync.get({current_state: {
-		env_settings: []
-	}}, function(data) {
-
-		currentconfig = data.current_state;
-		var config = newconfig.slice();
-
-		for(var i = 0; i<currentconfig.env_settings.length; i++) {
-			var exists = false;
-			for(var j = 0; j<newconfig.length; j++) {
-				if(currentconfig && currentconfig.env_settings[i] && currentconfig.env_settings[i].name && currentconfig.env_settings[i].name == newconfig[j].name) {
-					exists = true;
-				}
-			}
-			if(!exists) {
-				config.push(currentconfig.env_settings[i]);
-			}
-		}
-		
-		chrome.storage.sync.set({current_state: {
-			last_update: new Date().getTime(),
-			env_settings: config
-		}}, function() {
-		// Update status to let user know options were saved.
-		var status = document.getElementById('import-status');
-		status.textContent = 'Successfully imported! Refreshing...';
-		setTimeout(function() {
-			location.reload();
-		}, 750);
-	});
-	});
-}
-
 // import settings from a file
 function importSettings(e) {
 	var f = e.target.files[0];
@@ -153,8 +116,26 @@ function importSettings(e) {
 		var r = new FileReader();
 		r.onload = function(e) { 
 			var newconfig = e.target.result;
+			
 			try {
-				_mergeSettings(JSON.parse(newconfig));
+				chrome.storage.sync.get({current_state: {
+					last_update: new Date().getTime(),
+					env_settings: [{uuid: '0ac126c8-9aff-452b-b76c-941104854128', name: 'EXAMPLE', address: 'geovanneborges.com.br', color: '0000ff', position: 1}],
+					hosted_file: "",
+					auto_import: 0
+				}}, function(data) {
+					ENV_SETTINGS = data.current_state.env_settings;
+					HOSTED_FILE = document.getElementById('hosted-file').value;
+					AUTO_IMPORT = document.getElementById('auto-import').checked;
+
+					_mergeSettings(JSON.parse(newconfig), ENV_SETTINGS, HOSTED_FILE, AUTO_IMPORT, function(){
+						var status = document.getElementById('import-status');
+						status.textContent = 'Successfully imported! Refreshing...';
+						setTimeout(function() {
+							location.reload();
+						}, 750);
+					});
+				});
 			} catch(e) {
 				alert('An unexpected error occoured while loading the file.');
 			}
@@ -166,8 +147,51 @@ function importSettings(e) {
 
 }
 
+// import file hosted on the Internet
+function importHostedFile() {
+	var url = document.getElementById('hosted-file').value;
+	document.getElementById('hosted-file').disabled = true;
+	document.getElementById('btn-import').disabled = true;
+	document.getElementById('auto-import').disabled = true;
+	if (_validateURL(url)) {
+		fetch(url)
+		.then(res => res.json())
+		.then((out) => {
+		  	chrome.storage.sync.get({current_state: {
+				last_update: new Date().getTime(),
+				env_settings: [{uuid: '0ac126c8-9aff-452b-b76c-941104854128', name: 'EXAMPLE', address: 'geovanneborges.com.br', color: '0000ff', position: 1}],
+				hosted_file: "",
+				auto_import: 0
+			}}, function(data) {
+				ENV_SETTINGS = data.current_state.env_settings;
+				HOSTED_FILE = document.getElementById('hosted-file').value;
+				AUTO_IMPORT = document.getElementById("auto-import") && document.getElementById("auto-import").checked ? 1 : 0;
+
+				_mergeSettings(out, ENV_SETTINGS, HOSTED_FILE, AUTO_IMPORT, function(){
+					var status = document.getElementById('import-status');
+					status.textContent = 'Successfully imported! Refreshing...';
+					setTimeout(function() {
+						location.reload();
+					}, 750);
+				});
+			});
+		})
+		.catch(err => { 		
+			alert('Something went wrong when trying to retrieve the file from the URL.');
+			document.getElementById('hosted-file').disabled = false;
+			document.getElementById('btn-import').disabled = false;
+			document.getElementById('auto-import').disabled = false;		
+		});
+	} else {
+		document.getElementById('hosted-file').disabled = false;
+		document.getElementById('btn-import').disabled = false;
+		document.getElementById('auto-import').disabled = false;
+	}
+}
+
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click', save_options);
 document.getElementById('more').addEventListener('click', add_more);
 document.getElementById('export').addEventListener('click', exportSettings);
 document.getElementById('import').addEventListener('change', importSettings);
+document.getElementById('btn-import').addEventListener('click', importHostedFile);
