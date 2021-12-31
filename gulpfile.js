@@ -112,7 +112,7 @@ gulp.task("watch", gulp.series(() => {
 gulp.task("zip", gulp.series(() => {
   log("Gulp zip task executing");
   var manifest = require('./dist/manifest.json');
-  return gulp.src('dist/*')
+  return gulp.src('dist/**/*')
     .pipe(zip('Environment Marker-' + manifest.version + '.zip'))
     .pipe(gulp.dest('package'));
 }));
