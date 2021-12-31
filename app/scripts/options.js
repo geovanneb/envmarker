@@ -191,6 +191,7 @@ function importHostedFile() {
 
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click', save_options);
+document.getElementById('auto-import').addEventListener('click', save_options);
 document.getElementById('more').addEventListener('click', add_more);
 document.getElementById('export').addEventListener('click', exportSettings);
 document.getElementById('import').addEventListener('change', importSettings);

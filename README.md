@@ -7,11 +7,14 @@ Official link: [https://chrome.google.com/webstore/detail/environment-marker/ahj
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=SRFRGVMAUJB3N&currency_code=BRL&source=url)
 
-> We all know that is very common at least a 3 environments in our programming / IT projects (dev, staging, production). Generally they are all identical.
-During these long years people has commited a lot of mistakes, in which we simply confuses environments and end up doing the procedures in wrong environments.
-Who ever made that "little test" thinking it was doing in "dev" and suddenly realized he was in production. Also, it's no wonder. The environments are identical, except for discreet URL in the browser address bar. This situation is even more common when the application has an administrative interface.
-With this in mind this extension for Google Chrome was developed, and makes it possible for you to configure the URLs of yours projects environments and puts a "huge label" on the top corner of the browser, identifying the environment for you 
-with the color and name, according to what you have previously set.
+
+From 2022 January 1st onwards, all donations will be sent to GRAACC (https://graacc.org.br), a Brazilian Support Group for Teenagers and Children with Cancer.
+
+> When it comes to IT projects, it is very common having multiple environments: dev, QA, stage, and production. 
+All those environments' interfaces are mostly identical, and as a consequence, mistakes may happen very often.
+Who had never faced the situation when we intended to do a "little test" thinking it was doing in "dev" and suddenly realized that was in the production environment, and ended up applying a configuration in the wrong environment? After all, screw-ups are easy to happen because the look and feel of those sites are the same except by the discreet URL in the browser address bar. 
+That is when the Environment Marker Extension comes into play. The Environment Marker is a free and open-source Chrome extension that allows you to configure the URLs of your project's environments and assign a colored "label" on the corner of the browser window, identifying the environment for you.
+No more screw-ups in the production environment!
 
 ## Getting Started
 
@@ -33,7 +36,7 @@ It will build your app as a result you can have a distribution version of the ap
 gulp build
 ```
 
-You can also distribute your project with compressed file using the Chrome Developer Dashboard at Chrome Web Store. This command will compress your app built by `gulp build` command.
+You can also distribute your project with a compressed file using the Chrome Developer Dashboard at Chrome Web Store. This command will compress your app built by `gulp build` command.
 
 ```bash
 gulp package
@@ -42,5 +45,5 @@ gulp package
 ## How to use the extension:
 
 - After installing, access Bowser Configurations > More Tools > Extensions.
-- Click on Options menu, over Environment Marker session.
+- Click on Options menu, over Environment Marker section.
 - Configure your Environments and click on Save button.

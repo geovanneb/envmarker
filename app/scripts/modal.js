@@ -18,6 +18,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 			} else {
 				marker.style.display = 'none';
 			}
+			sendResponse(true);
 			break;
 		case 'getConfig':
 			sendResponse({currentConfig: CURRENT_CONFIG});
@@ -102,12 +103,12 @@ function _addMarker(item) {
 	}
 	wrapperDiv = document.createElement('div');
 	wrapperDiv.id = 'chrome-envmarker';
-	wrapperDiv.setAttribute('style','text-shadow: -1px -1px 0 #555, 1px -1px 0 #555, -1px 1px 0 #555, 1px 1px 0 #555; position: fixed; '+positionStyle+' background-color: #'+item.color.replace('#','')+'; opacity: 0.9; z-index: 10000; height: 55px; width: 290px; overflow-x: hidden; box-shadow: 7px 0px 9px #000; color: #fff; pointer-events:none;');
+	wrapperDiv.setAttribute('style','text-shadow: -1px -1px 0 #555, 1px -1px 0 #555, -1px 1px 0 #555, 1px 1px 0 #555; position: fixed; '+positionStyle+' background-color: #'+item.color.replace('#','')+'; opacity: 0.9; z-index: 2147483647; height: 55px; width: 290px; overflow-x: hidden; box-shadow: 7px 0px 9px #000; color: #fff; pointer-events:none;');
 
 	textDiv = document.createElement('div');
 	textDiv.id = 'chrome-envmarker-text';
 
-	textDiv.setAttribute('style','margin: 0 45px; line-height: 55px; height: 100%; width: calc(100% - 90px); overflow-x: hidden;');
+	textDiv.setAttribute('style','margin: 0 45px; line-height: 55px; height: 100%; width: calc(100% - 90px); overflow: hidden;');
 	textDiv.innerText = item.name;
 
 	wrapperDiv.appendChild(textDiv);

@@ -32,7 +32,6 @@
   },
   "permissions": [
     "activeTab",
-    "tabs",
     "storage",
     "alarms"
   ],
