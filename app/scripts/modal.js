@@ -65,14 +65,12 @@ function _addEnvironmentLabel() {
 			if(CURRENT_LOCATION.indexOf(PLUGIN_STATE.strictList[i].address) > -1) {
 				CURRENT_CONFIG = PLUGIN_STATE.strictList[i];
 				_addMarker(CURRENT_CONFIG);
-				return;
 			}
 		}
 		for(var i = 0; i<PLUGIN_STATE.regexList.length; i++) {
 			if(PLUGIN_STATE.regexList[i].regex.test(CURRENT_DOMAIN)) {
 				CURRENT_CONFIG = PLUGIN_STATE.regexList[i];
 				_addMarker(CURRENT_CONFIG);
-				return;
 			}
 		}
 	});
@@ -103,7 +101,7 @@ function _addMarker(item) {
 	}
 	wrapperDiv = document.createElement('div');
 	wrapperDiv.id = 'chrome-envmarker';
-	wrapperDiv.setAttribute('style','text-shadow: -1px -1px 0 #555, 1px -1px 0 #555, -1px 1px 0 #555, 1px 1px 0 #555; position: fixed; '+positionStyle+' background-color: #'+item.color.replace('#','')+'; opacity: 0.9; z-index: 2147483647; height: 55px; width: 290px; overflow-x: hidden; box-shadow: 7px 0px 9px #000; color: #fff; pointer-events:none;');
+	wrapperDiv.setAttribute('style','text-shadow: -1px -1px 0 #555, 1px -1px 0 #555, -1px 1px 0 #555, 1px 1px 0 #555; position: fixed; '+positionStyle+' background-color: #'+item.color.replace('#','')+'; opacity: 0.9; z-index: 2147483647; height: 55px; width: 290px; overflow-x: hidden; box-shadow: 7px 0px 9px #000; color: #fff; pointer-events: none; user-select: none;');
 
 	textDiv = document.createElement('div');
 	textDiv.id = 'chrome-envmarker-text';
