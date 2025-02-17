@@ -85,3 +85,17 @@ function _updateAlertMessages(messages) {
 	}
 	return message_container;
 }
+
+function _i18n() {
+	document.querySelectorAll('[data-i18n]').forEach(el => {
+		var translated_string = chrome.i18n.getMessage(el.dataset.i18n);
+		if(translated_string) {
+			if(el.type == 'submit' && el.tagName == 'INPUT') {
+				
+				el.value = chrome.i18n.getMessage(el.dataset.i18n);
+			} else {
+				el.innerHTML = chrome.i18n.getMessage(el.dataset.i18n);
+			}
+		}
+	});
+}

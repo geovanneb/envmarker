@@ -23,17 +23,16 @@
 		<div class="row">
 			<div class="col-12">
 				<div id="notifications-container" class="col-9 p-0">
-					<!--div class="alert alert-success" role="alert">&#127881; Environment Marker for Enterprise is coming soon! <a href="https://environmentmarker.io/environment-marker-enterprise" target="_blank">Learn more.</a></div-->
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-12">
 				<form id="hide-show" class="hide-show" autocomplete="off" novalidate="">
-					<h3 class="mt-0">Toggle visibility</h3>
+					<h3 class="mt-0" data-i18n="__ToggleVisibility__">Toggle visibility</h3>
 					<div class="border p-15">
-						<span id="popup-text">Click on the following button to temporarily Hide/Show the label:</span>
-						<button class="btn-design mt-10" id="popup-button">Hide Label</button>
+						<span id="popup-text" data-i18n="__ToggleInstructions__">Click on the following button to temporarily Hide/Show the label:</span>
+						<button class="btn-design mt-10" id="popup-button" data-i18n="__HideLabel__">Hide Label</button>
 					</div>
 				</form>
 			</div>
@@ -41,7 +40,7 @@
 		<div class="row">
 			<div class="col-12">
 				<form id="quick-configuration" class="quick-configuration" autocomplete="off">
-					<h3>Quick configuration</h3>
+					<h3 data-i18n="__QuickConfiguration__">Quick configuration</h3>
 					<div class="border p-15">
 						<div class="row">
 							<div class="col-12">
@@ -50,23 +49,23 @@
 						</div>
 						<div class="row">
 							<div class="col-12">
-								<label for="name">Name</label>
+								<label for="name" data-i18n="__Name__">Name</label>
 								<input type="text" name="name" id="name" class="name form-input" value="" required />
 							</div>
 						</div>
 						<div class="row mt-5">
 							<div class="col-12">
-								<label for="address">URL(use 'regex:' prefix to match a host by RegEx)</label>
+								<label for="address" data-i18n="__URL__">URL(use 'regex:' prefix to match a host by RegEx)</label>
 								<input type="text" name="address" id="address" class="address form-input" required value="" />
 							</div>
 						</div>
 						<div class="row mt-5">
 							<div class="col-3">
-								<label for="color">Color</label>
+								<label for="color" data-i18n="__Color__">Color</label>
 								<input type="text" name="color" id="color" class="color form-input" value="" required />
 							</div>
 							<div class="col-3">
-								<label for="fontSize">Font Size</label>
+								<label for="fontSize" data-i18n="__FontSize__">Font Size</label>
 								<select name="fontSize" id="fontSize" class="font-size form-select">
 									<option value="auto">Auto</option>
 									<option value="5px">5px</option>
@@ -84,14 +83,14 @@
 								</select>
 							</div>
 							<div class="col-6">
-								<label for="position">Position</label>
+								<label for="position" data-i18n="__Position__">Position</label>
 								<div class="position-container">
 									<select id="position" name="position" class="position">
-										<option selected="selected" value="1">Top-right</option>
-										<option value="2">Top-left</option>
-										<option value="3">Bottom-right</option>
-										<option value="4">Bottom-left</option>
-										<option value="5">Moldure</option>
+										<option selected="selected"  data-i18n="__TopRight__" value="1">Top-right</option>
+										<option value="2" data-i18n="__TopLeft__">Top-left</option>
+										<option value="3" data-i18n="__BottomRight__">Bottom-right</option>
+										<option value="4" data-i18n="__BottomLeft__">Bottom-left</option>
+										<option value="5" data-i18n="__Moldure__">Moldure</option>
 									</select>
 									
 									<div class="position-preview">
@@ -105,9 +104,9 @@
 						</div>	
 						<div class="row mt-5">
 							<div class="col-3">
-								<input class="btn-save btn-design mt-10" type="submit" value="Add" id="add"/>
+								<input class="btn-save btn-design mt-10" type="submit" value="Add" data-i18n="__Add__" id="add"/>
 							</div>
-							<div class="col-6 mt-20">
+							<div class="col-8 mt-15" data-i18n="__GoToConfiguration__">
 								or <a id="go-to-options" href="#">go to configuration page.</a>
 							</div>
 						</div>

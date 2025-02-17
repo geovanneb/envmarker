@@ -57,6 +57,9 @@ function _addDeleteAction() {
 // restore settings stored in chrome.storage.
 function restore_options() {
 	updateAlertMessages();
+
+	_i18n();
+
 	chrome.storage.sync.get(
 	  {
 		current_state: {
@@ -86,19 +89,19 @@ function restore_options() {
 			<td>
 			  <select class="position">
 				<option ${selectedPosition == 1 ? 'selected="selected"' : ''} value="1">
-				  Top-right
+				  ${chrome.i18n.getMessage('__TopRight__')}
 				</option>
 				<option ${selectedPosition == 2 ? 'selected="selected"' : ''} value="2">
-				  Top-left
+				  ${chrome.i18n.getMessage('__TopLeft__')}
 				</option>
 				<option ${selectedPosition == 3 ? 'selected="selected"' : ''} value="3">
-				  Bottom-right
+				  ${chrome.i18n.getMessage('__BottomRight__')}
 				</option>
 				<option ${selectedPosition == 4 ? 'selected="selected"' : ''} value="4">
-				  Bottom-left
+				  ${chrome.i18n.getMessage('__BottomLeft__')}
 				</option>
 				<option ${selectedPosition == 5 ? 'selected="selected"' : ''} value="5">
-				  Moldure
+				  ${chrome.i18n.getMessage('__Moldure__')}
 				</option>
 			  </select>
 			</td>`;
@@ -186,11 +189,11 @@ function add_more() {
 	var positionSelect = `
 	  <td>
 		<select class="position">
-		  <option selected="selected" value="1">Top-right</option>
-		  <option value="2">Top-left</option>
-		  <option value="3">Bottom-right</option>
-		  <option value="4">Bottom-left</option>
-		  <option value="5">Moldure</option>
+		  <option selected="selected" value="1">${chrome.i18n.getMessage('__TopRight__')}</option>
+		  <option value="2">${chrome.i18n.getMessage('__TopLeft__')}</option>
+		  <option value="3">${chrome.i18n.getMessage('__BottomRight__')}</option>
+		  <option value="4">${chrome.i18n.getMessage('__BottomLeft__')}</option>
+		  <option value="5">${chrome.i18n.getMessage('__Moldure__')}</option>
 		</select>
 	  </td>`;
   

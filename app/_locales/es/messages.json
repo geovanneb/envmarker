@@ -1,0 +1,171 @@
+{
+    "appName": {
+      "message": "Environment Marker",
+      "description": "Environment Marker Chrome Extension"
+    },
+    "appDescription": {
+      "message": "Utiliza la extensión Environment Marker y evita errores con los entornos (de programación).",
+      "description": "Environment Marker Chrome Extension description"
+    },
+    "__Options__": {
+      "message": "Opciones",
+      "description": "Options h1 title."
+    },
+    "__MarkerSettings__": {
+      "message": "Configuración del marcador",
+      "description": "Marker settings h2."
+    },
+    "__Name__": {
+      "message": "Nombre",
+      "description": "Name column name."
+    },
+    "__URL__": {
+      "message": "URL (usa el prefijo 'regex:' para hacer coincidir un host mediante una expresión regular)",
+      "description": "URL column name."
+    },
+    "__Color__": {
+      "message": "Color",
+      "description": "Color column name."
+    },
+    "__FontSize__": {
+      "message": "Fuente",
+      "description": "Font Size column name."
+    },
+    "__Position__": {
+      "message": "Posición",
+      "description": "Position column name."
+    },
+    "__Preview__": {
+      "message": "Vista previa",
+      "description": "Preview column name."
+    },
+    "__SuccessfullyUpdated__": {
+      "message": "¡Actualizado correctamente!",
+      "description": "Successfully updated message."
+    },
+    "__ErrorUpdating__": {
+      "message": "¡Error al actualizar!",
+      "description": "Error updating message."
+    },
+    "__Save__": {
+      "message": "Guardar",
+      "description": "Save button label."
+    },
+    "__ImportExportSettings__": {
+      "message": "Configuración de importación/exportación",
+      "description": "Import/Export settings h2 title."
+    },
+    "__ImportExportInstructions__": {
+      "message": "Puedes importar o exportar tus configuraciones para compartirlas con tu equipo.",
+      "description": "Import/Export section instructions text."
+    },
+    "__Import__": {
+      "message": "Importar",
+      "description": "Import h3 title."
+    },
+    "__ImportInstructions__": {
+      "message": "Puedes importar usando un archivo local o uno alojado.",
+      "description": "Import section instructions text."
+    },
+    "__ImportUsingLocalFile__": {
+      "message": "Importar usando un archivo local: ",
+      "description": "Import using a local file instructions text."
+    },
+    "__ImportSuccessMessage__": {
+      "message": "¡Importado correctamente! Actualizando...",
+      "description": "Import success message."
+    },
+    "__ImportErrorMessage__": {
+      "message": "Ocurrió un error inesperado al importar el archivo.",
+      "description": "Import error message."
+    },
+    "__ImportInvalidJsonMessage__": {
+      "message": "El archivo de configuración no es válido.",
+      "description": "Import error Json message."
+    },
+    "__ImportHostedFile__": {
+      "message": "Importar un archivo alojado (http://example.com/my-file.json): ",
+      "description": "Import a hosted file label message."
+    },
+    "__Loading__": {
+      "message": "Cargando...",
+      "description": "Loading message."
+    },
+    "__URLNotValid__": {
+      "message": "La URL no es válida.",
+      "description": "The URL is not valid message."
+    },
+    "__AutomaticallyImport__": {
+      "message": "Importar automáticamente en caso de cambios en el archivo alojado.",
+      "description": "Automatically import checkbox label message."
+    },
+    "__Export__": {
+      "message": "Exportar",
+      "description": "Export h3 title."
+    },
+    "__ExportInstructions__": {
+      "message": "Haz clic en el botón de abajo para exportar tus configuraciones actuales.",
+      "description": "Export instructions text."
+    },
+    "__ToggleVisibility__": {
+      "message": "Alternar visibilidad",
+      "description": "Toggle visibility message."
+    },
+    "__ToggleInstructions__": {
+      "message": "Haz clic en el siguiente botón para ocultar/mostrar temporalmente la etiqueta:",
+      "description": "Toggle visibility instructions text."
+    },
+    "__ShowLabel__": {
+      "message": "Mostrar etiqueta",
+      "description": "Show Label button text."
+    },
+    "__HideLabel__": {
+      "message": "Ocultar etiqueta",
+      "description": "Hide Label button text."
+    },
+    "__QuickConfiguration__": {
+      "message": "Configuración rápida",
+      "description": "Quick configuration h3 text."
+    },
+    "__Add__": {
+      "message": "Agregar",
+      "description": "Add button label."
+    },
+    "__GoToConfiguration__": {
+      "message": "o <a id=\"go-to-options\" href=\"#\">ir a la página de configuración.</a>",
+      "description": "Go to the configuration page text."
+    },
+    "__ToggleNotPossible__": {
+      "message": "No es posible alternar la visibilidad para esta URL porque aún no la has configurado.",
+      "description": "Toggle not possible message."
+    },
+    "__TemporarilyToggle__": {
+      "message": "Haz clic en el siguiente botón para ocultar/mostrar temporalmente la etiqueta:",
+      "description": "Temporarily toggle instructions message."
+    },
+    "__EnvMarkerNotAvailableError__": {
+      "message": "Environment Marker no está disponible en esta página. La extensión solo funciona en páginas web. Actualiza la página.",
+      "description": "Environment Marker is not available error message."
+    },
+    "__TopRight__": {
+      "message": "Superior derecha",
+      "description": "Top-Right select option text."
+    },
+    "__TopLeft__": {
+      "message": "Superior izquierda",
+      "description": "Top-Left select option text."
+    },
+    "__BottomRight__": {
+      "message": "Inferior derecha",
+      "description": "Bottom-Right select option text."
+    },
+    "__BottomLeft__": {
+      "message": "Inferior izquierda",
+      "description": "Bottom-Left select option text."
+    },
+    "__Moldure__": {
+      "message": "Moldura",
+      "description": "Moldure select option text."
+    }
+  }
+  

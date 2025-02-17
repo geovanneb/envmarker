@@ -19,7 +19,7 @@
 		<div class="options-sections row justify-content-center">
 			<div class="col-9">
 				<h1 class="top-title">
-					<amr>Options</amr>
+					<amr data-i18n="__Options__">Options</amr>
 				</h1>
 			</div>		
 		</div>
@@ -36,19 +36,19 @@
 			<div class="col-9">
 				<section class="setup-section">
 					<h2>
-						<amr>Marker settings</amr>
+						<amr data-i18n="__MarkerSettings__">Marker settings</amr>
 					</h2>
 					<div class="config-container">
 						<div class="table-responsive">
 							<table id="table">
 								<thead>
 									<tr>
-										<td>Name</td>
-										<td>URL (use 'regex:' prefix to match a host by RegEx)</td> 
-										<td>Color</td>
-										<td>Font Size</td>
-										<td>Position</td>
-										<td>Preview</td>
+										<td data-i18n="__Name__">Name</td>
+										<td data-i18n="__URL__">URL (use 'regex:' prefix to match a host by RegEx)</td> 
+										<td data-i18n="__Color__">Color</td>
+										<td data-i18n="__FontSize__">Font Size</td>
+										<td data-i18n="__Position__">Position</td>
+										<td data-i18n="__Preview__">Preview</td>
 										<td></td>
 									</tr>
 								</thead>
@@ -62,10 +62,10 @@
 						</div>
 
 						<div id="status" class="status">
-							<div class="alert alert-success-light success" role="alert" style="display: none;">Successfully updated!</div>
-							<div class="alert alert-danger-light" role="alert" style="display: none;">Error updating!</div>
+							<div class="alert alert-success-light success" role="alert" style="display: none;" data-i18n="__SuccessfullyUpdated__">Successfully updated!</div>
+							<div class="alert alert-danger-light" role="alert" style="display: none;" data-i18n="__ErrorUpdating__">Error updating!</div>
 						</div>
-						<button id="save" class="btn btn-design btn-save mt-10">Save</button>
+						<button id="save" class="btn btn-design btn-save mt-10" data-i18n="__Save__">Save</button>
 					</div>
 				</section>
 			</div>
@@ -79,47 +79,47 @@
 			<div class="col-9">
 				<div class="row">
 					<h2>
-						<amr>Import/Export settings</amr>
+						<amr data-i18n="__ImportExportSettings__">Import/Export settings</amr>
 					</h2>
-					<p>You can import or export your configurations to share with your team.</p>
+					<p data-i18n="__ImportExportInstructions__">You can import or export your configurations to share with your team.</p>
 				</div>
 				<div class="row import-export-row">
-					<h3>Import</h3>
-					<p>You can either import using a local file or a hosted file.</p>
+					<h3 data-i18n="__Import__">Import</h3>
+					<p data-i18n="__ImportInstructions__">You can either import using a local file or a hosted file.</p>
 					<div class="col-6 mt-10">
 						<div class="p-15 border">
-							<label class="import-label" for="file">Import using a local file: </label>
+							<label class="import-label" for="file" data-i18n="__ImportUsingLocalFile__">Import using a local file: </label>
 							<input class="import-label mt-10" name="file" type="file" accept=".json" id="import"/>
 							<div id="local-import-status" class="status">
-								<div class="alert alert-success-light success" role="alert" style="display: none;">Successfully imported! Refreshing...</div>
-								<div class="alert alert-danger-light" role="alert" style="display: none;">An unexpected error occoured while importing the file.</div>
-								<div class="alert alert-danger-light error-parsing-json" role="alert" style="display: none;">The configuration file is not valid.</div>
+								<div class="alert alert-success-light success" role="alert" style="display: none;" data-i18n="__ImportSuccessMessage__">Successfully imported! Refreshing...</div>
+								<div class="alert alert-danger-light" role="alert" style="display: none;" data-i18n="__ImportErrorMessage__">An unexpected error occoured while importing the file.</div>
+								<div class="alert alert-danger-light error-parsing-json" role="alert" style="display: none;" data-i18n="__ImportInvalidJsonMessage__">The configuration file is not valid.</div>
 							</div>
 					   </div>
 					</div>
 					<div class="col-6">
 						<div class="p-15 border">
-							<label class="import-label" for="hosted-file">Import a hosted file (http://example.com/my-file.json): </label>
+							<label class="import-label" for="hosted-file" data-i18n="__ImportHostedFile__">Import a hosted file (http://example.com/my-file.json): </label>
 							<input class="mt-10 import-label hosted-file form-input" name="hosted-file" type="text" id="hosted-file"/>
-							<button class="btn-import btn-design" name="btn-import" id="btn-import">Import</button>
+							<button class="btn-import btn-design" name="btn-import" id="btn-import" data-i18n="__Import__">Import</button>
 							<br />
 							<div id="import-status" class="status">
-								<div class="alert alert-success-light loading" role="alert" style="display: none;">Loading...</div>
-								<div class="alert alert-success-light success" role="alert" style="display: none;">Successfully imported! Refreshing...</div>
-								<div class="alert alert-danger-light" role="alert" style="display: none;">An unexpected error occoured while importing the file.</div>
-								<div class="alert alert-danger-light error-url" role="alert" style="display: none;">The URL is not valid.</div>
+								<div class="alert alert-success-light loading" role="alert" style="display: none;" data-i18n="__Loading__">Loading...</div>
+								<div class="alert alert-success-light success" role="alert" style="display: none;" data-i18n="__ImportSuccessMessage__">Successfully imported! Refreshing...</div>
+								<div class="alert alert-danger-light" role="alert" style="display: none;" data-i18n="__ImportErrorMessage__">An unexpected error occoured while importing the file.</div>
+								<div class="alert alert-danger-light error-url" role="alert" style="display: none;" data-i18n="__URLNotValid__">The URL is not valid.</div>
 							</div>
 							<div class="mt-10">
-								<input type="checkbox" id="auto-import" value="1" /><label class="auto-import-label" for="auto-import">Automatically import in case of changes in the hosted file.</label>
+								<input type="checkbox" id="auto-import" value="1" /><label class="auto-import-label" for="auto-import" data-i18n="__AutomaticallyImport__">Automatically import in case of changes in the hosted file.</label>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-12">
-						<h3>Export</h3>
-						<p>Click the button below to export your current settings.</p>
-						<button class="btn-export btn-design" name="export" id="export">Export</button>
+						<h3 data-i18n="__Export__">Export</h3>
+						<p data-i18n="__ExportInstructions__">Click the button below to export your current settings.</p>
+						<button class="btn-export btn-design" name="export" id="export" data-i18n="__Export__">Export</button>
 					</div>
 				</div>	
 			</div>

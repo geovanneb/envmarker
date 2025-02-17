@@ -5,6 +5,166 @@
   },
   "appDescription": {
     "message": "Use the Environment Marker extension and prevent screw-ups with the (programming) environments.",
-    "description": "Environment Marker Chrome Extension"
+    "description": "Environment Marker Chrome Extension description"
+  },
+  "__Options__": {
+    "message": "Options",
+    "description": "Options h1 title."
+  },
+  "__MarkerSettings__": {
+    "message": "Marker Settings",
+    "description": "Marker settings h2."
+  },
+  "__Name__": {
+    "message": "Name",
+    "description": "Name column name."
+  },
+  "__URL__": {
+    "message": "URL (use 'regex:' prefix to match a host by RegEx)",
+    "description": "URL column name."
+  },
+  "__Color__": {
+    "message": "Color",
+    "description": "Color column name."
+  },
+  "__FontSize__": {
+    "message": "Font Size",
+    "description": "Font Size column name."
+  },
+  "__Position__": {
+    "message": "Position",
+    "description": "Position column name."
+  },
+  "__Preview__": {
+    "message": "Preview",
+    "description": "Preview column name."
+  },
+  "__SuccessfullyUpdated__": {
+    "message": "Successfully updated!",
+    "description": "Successfully updated message."
+  },
+  "__ErrorUpdating__": {
+    "message": "Error updating!",
+    "description": "Error updating message."
+  },
+  "__Save__": {
+    "message": "Save",
+    "description": "Save button label."
+  },
+  "__ImportExportSettings__": {
+    "message": "Import/Export settings",
+    "description": "Import/Export settings h2 title."
+  },
+  "__ImportExportInstructions__": {
+    "message": "You can import or export your configurations to share with your team.",
+    "description": "Import/Export section instructions text."
+  },
+  "__Import__": {
+    "message": "Import",
+    "description": "Import h3 title."
+  },
+  "__ImportInstructions__": {
+    "message": "You can either import using a local file or a hosted file.",
+    "description": "Import section instructions text."
+  },
+  "__ImportUsingLocalFile__": {
+    "message": "Import using a local file: ",
+    "description": "Import using a local file instructions text."
+  },
+  "__ImportSuccessMessage__": {
+    "message": "Successfully imported! Refreshing...",
+    "description": "Import success message."
+  },
+  "__ImportErrorMessage__": {
+    "message": "An unexpected error occoured while importing the file.",
+    "description": "Import error message."
+  },
+  "__ImportInvalidJsonMessage__": {
+    "message": "The configuration file is not valid.",
+    "description": "Import error Json message."
+  },
+  "__ImportHostedFile__": {
+    "message": "Import a hosted file (http://example.com/my-file.json): ",
+    "description": "Import a hosted file label message."
+  },
+  "__Loading__": {
+    "message": "Loading...",
+    "description": "Loading message."
+  },
+  "__URLNotValid__": {
+    "message": "The URL is not valid.",
+    "description": "The URL is not valid message."
+  },
+  "__AutomaticallyImport__": {
+    "message": "Automatically import in case of changes in the hosted file.",
+    "description": "Automatically import checkbox label message."
+  },
+  "__Export__": {
+    "message": "Export",
+    "description": "Export h3 title."
+  },
+  "__ExportInstructions__": {
+    "message": "Click the button below to export your current settings.",
+    "description": "Export instructions text."
+  },
+  "__ToggleVisibility__": {
+    "message": "Toggle visibility",
+    "description": "Toggle visibility message."
+  },
+  "__ToggleInstructions__": {
+    "message": "Click on the following button to temporarily Hide/Show the label:",
+    "description": "Toggle visibility instructions text."
+  },
+  "__ShowLabel__": {
+    "message": "Show Label",
+    "description": "Show Label button text."
+  },
+  "__HideLabel__": {
+    "message": "Hide Label",
+    "description": "Hide Label button text."
+  },
+  "__QuickConfiguration__": {
+    "message": "Quick configuration",
+    "description": "Quick configuration h3 text."
+  },
+  "__Add__": {
+    "message": "Add",
+    "description": "Add button label."
+  },
+  "__GoToConfiguration__": {
+    "message": "or <a id=\"go-to-options\" href=\"#\">go to configuration page.</a>",
+    "description": "Go to the configuration page text."
+  },
+  "__ToggleNotPossible__": {
+    "message": "It is not possible to toggle visibility for this URL because you have not configured it yet.",
+    "description": "Toggle not possible message."
+  },
+  "__TemporarilyToggle__": {
+    "message": "Click on the following button to temporarily Hide/Show the label:",
+    "description": "Temporarily toggle instructions message."
+  },
+  "__EnvMarkerNotAvailableError__": {
+    "message": "Environment Marker is not available on this page. The extension only works on web pages. Refresh the page.",
+    "description": "Environment Marker is not available error message."
+  },
+  "__TopRight__": {
+    "message": "Top-Right",
+    "description": "Top-Right select option text."
+  },
+  "__TopLeft__": {
+    "message": "Top-Left",
+    "description": "Top-Left select option text."
+  },
+  "__BottomRight__": {
+    "message": "Bottom-Right",
+    "description": "Bottom-Right select option text."
+  },
+  "__BottomLeft__": {
+    "message": "Bottom-Left",
+    "description": "Bottom-Left select option text."
+  },
+  "__Moldure__": {
+    "message": "Moldure",
+    "description": "Moldure select option text."
   }
 }

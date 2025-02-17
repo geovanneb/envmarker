@@ -1,0 +1,171 @@
+{
+    "appName": {
+      "message": "Environment Marker",
+      "description": "Environment Marker Chrome Extension"
+    },
+    "appDescription": {
+      "message": "Environment Marker 拡張機能を使用して、（プログラミング）環境でのミスを防ぎます。",
+      "description": "Environment Marker Chrome Extension description"
+    },
+    "__Options__": {
+      "message": "オプション",
+      "description": "Options h1 title."
+    },
+    "__MarkerSettings__": {
+      "message": "マーカー設定",
+      "description": "Marker settings h2."
+    },
+    "__Name__": {
+      "message": "名前",
+      "description": "Name column name."
+    },
+    "__URL__": {
+      "message": "URL（ホストを正規表現で一致させるには 'regex:' プレフィックスを使用）",
+      "description": "URL column name."
+    },
+    "__Color__": {
+      "message": "色",
+      "description": "Color column name."
+    },
+    "__FontSize__": {
+      "message": "フォント",
+      "description": "Font Size column name."
+    },
+    "__Position__": {
+      "message": "位置",
+      "description": "Position column name."
+    },
+    "__Preview__": {
+      "message": "プレビュー",
+      "description": "Preview column name."
+    },
+    "__SuccessfullyUpdated__": {
+      "message": "正常に更新されました！",
+      "description": "Successfully updated message."
+    },
+    "__ErrorUpdating__": {
+      "message": "更新に失敗しました！",
+      "description": "Error updating message."
+    },
+    "__Save__": {
+      "message": "保存",
+      "description": "Save button label."
+    },
+    "__ImportExportSettings__": {
+      "message": "インポート/エクスポート設定",
+      "description": "Import/Export settings h2 title."
+    },
+    "__ImportExportInstructions__": {
+      "message": "設定をインポートまたはエクスポートして、チームと共有できます。",
+      "description": "Import/Export section instructions text."
+    },
+    "__Import__": {
+      "message": "インポート",
+      "description": "Import h3 title."
+    },
+    "__ImportInstructions__": {
+      "message": "ローカルファイルまたはホストされたファイルを使用してインポートできます。",
+      "description": "Import section instructions text."
+    },
+    "__ImportUsingLocalFile__": {
+      "message": "ローカルファイルを使用してインポート: ",
+      "description": "Import using a local file instructions text."
+    },
+    "__ImportSuccessMessage__": {
+      "message": "インポートに成功しました！更新中…",
+      "description": "Import success message."
+    },
+    "__ImportErrorMessage__": {
+      "message": "ファイルのインポート中に予期しないエラーが発生しました。",
+      "description": "Import error message."
+    },
+    "__ImportInvalidJsonMessage__": {
+      "message": "設定ファイルが無効です。",
+      "description": "Import error Json message."
+    },
+    "__ImportHostedFile__": {
+      "message": "ホストされたファイルをインポート (http://example.com/my-file.json): ",
+      "description": "Import a hosted file label message."
+    },
+    "__Loading__": {
+      "message": "読み込み中…",
+      "description": "Loading message."
+    },
+    "__URLNotValid__": {
+      "message": "URLが無効です。",
+      "description": "The URL is not valid message."
+    },
+    "__AutomaticallyImport__": {
+      "message": "ホストされたファイルに変更があった場合、自動でインポートします。",
+      "description": "Automatically import checkbox label message."
+    },
+    "__Export__": {
+      "message": "エクスポート",
+      "description": "Export h3 title."
+    },
+    "__ExportInstructions__": {
+      "message": "下のボタンをクリックして、現在の設定をエクスポートします。",
+      "description": "Export instructions text."
+    },
+    "__ToggleVisibility__": {
+      "message": "表示切替",
+      "description": "Toggle visibility message."
+    },
+    "__ToggleInstructions__": {
+      "message": "以下のボタンをクリックして、一時的にラベルの表示/非表示を切り替えます:",
+      "description": "Toggle visibility instructions text."
+    },
+    "__ShowLabel__": {
+      "message": "ラベルを表示",
+      "description": "Show Label button text."
+    },
+    "__HideLabel__": {
+      "message": "ラベルを非表示",
+      "description": "Hide Label button text."
+    },
+    "__QuickConfiguration__": {
+      "message": "クイック設定",
+      "description": "Quick configuration h3 text."
+    },
+    "__Add__": {
+      "message": "追加",
+      "description": "Add button label."
+    },
+    "__GoToConfiguration__": {
+      "message": "または <a id=\"go-to-options\" href=\"#\">設定ページへ移動</a>",
+      "description": "Go to the configuration page text."
+    },
+    "__ToggleNotPossible__": {
+      "message": "このURLはまだ設定されていないため、表示の切り替えはできません。",
+      "description": "Toggle not possible message."
+    },
+    "__TemporarilyToggle__": {
+      "message": "以下のボタンをクリックして、一時的にラベルの表示/非表示を切り替えます:",
+      "description": "Temporarily toggle instructions message."
+    },
+    "__EnvMarkerNotAvailableError__": {
+      "message": "このページでは Environment Marker は利用できません。この拡張機能はウェブページでのみ動作します。ページを更新してください。",
+      "description": "Environment Marker is not available error message."
+    },
+    "__TopRight__": {
+        "message": "右上",
+        "description": "Top-Right select option text."
+    },
+    "__TopLeft__": {
+        "message": "左上",
+        "description": "Top-Left select option text."
+    },
+    "__BottomRight__": {
+        "message": "右下",
+        "description": "Bottom-Right select option text."
+    },
+    "__BottomLeft__": {
+        "message": "左下",
+        "description": "Bottom-Left select option text."
+    },
+    "__Moldure__": {
+        "message": "枠",
+        "description": "Moldure select option text."
+    }
+  }
+  

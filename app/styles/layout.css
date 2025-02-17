@@ -123,6 +123,12 @@ body {
     width: calc(50% - 10px);
     padding-right: 10px;
   }
+
+  .col-8 {
+    flex: 0 0 auto;
+    width: calc(65% - 10px);
+    padding-right: 10px;
+  }
   
   .col-9 {
     flex: 0 0 auto;
@@ -145,6 +151,10 @@ body {
   
   .mt-10 {
     margin-top: 10px;
+  }
+
+  .mt-15 {
+    margin-top: 15px;
   }
   
   .mt-20 {

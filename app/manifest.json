@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Environment Marker",
+  "name": "__MSG_appName__",
   "version": "1.2",
-  "description": "This extension allows you to flag specified websites by adding a colored label depending on the URL configuration.",
+  "description": "__MSG_appDescription__",
   "icons": {
     "16": "/images/icon-16.png",
     "32": "/images/icon-32.png",

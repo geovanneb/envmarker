@@ -13,12 +13,12 @@ function set_button_label() {
 				return;
 			}
 			if(!response || response.isDisabled === 'notSet') {
-				document.getElementById('popup-text').innerText = 'It is not possible to toggle visibility for this URL because you have not configured it yet.';
+				document.getElementById('popup-text').innerText = chrome.i18n.getMessage('__ToggleNotPossible__');
 				document.getElementById('popup-button').style.display = 'none';
 			} else {
-				document.getElementById('popup-text').innerText = 'Click on the following button to temporarily Hide/Show the label:';
+				document.getElementById('popup-text').innerText = chrome.i18n.getMessage('__TemporarilyToggle__');
 				document.getElementById('popup-button').style.display = 'block';
-				document.getElementById('popup-button').innerText = response.isDisabled ? 'Show Label' : 'Hide Label';
+				document.getElementById('popup-button').innerText = chrome.i18n.getMessage(response.isDisabled ? '__ShowLabel__' : '__HideLabel__');
 			}
 		});
 	});
@@ -46,7 +46,7 @@ function set_default_values() {
 				document.getElementById('fontSize').value = response.currentConfig.fontSize || 'auto';
 				document.getElementById('position').value = response.currentConfig.position;
 				document.getElementById('position').dispatchEvent(new Event('change'));
-				document.getElementById('add').value = 'Save';
+				document.getElementById('add').value = chrome.i18n.getMessage('__Save__');
 			} else {
 				document.getElementById('uuid').value = uuidv4();
 				chrome.tabs.sendMessage(tabs[0].id, {action: 'getDomain'}, function(response) {
@@ -153,10 +153,12 @@ function set_initial_config() {
 	initialize_colorpicker();
 	updatePreview();
 	updateAlertMessages();
+	_i18n();
+	document.getElementById('go-to-options').addEventListener('click', open_configuration);
 }
 
 function handleInvalidTab() {
-	document.getElementById('error-message').innerText = 'Environment Marker is not available on this page. The extension only works on web pages.';
+	document.getElementById('error-message').innerText = chrome.i18n.getMessage('__EnvMarkerNotAvailableError__');
 	document.getElementById('popup-button').style.display = 'none';
 	document.getElementById('hide-show').style.display = 'none';
 	document.getElementById('quick-configuration').style.display = 'none';
@@ -165,5 +167,4 @@ function handleInvalidTab() {
 document.addEventListener('DOMContentLoaded', set_initial_config);
 document.getElementById('popup-button').addEventListener('click', toggle_label);
 document.getElementById('quick-configuration').addEventListener('submit', saveData);
-document.getElementById('go-to-options').addEventListener('click', open_configuration);
 document.getElementById('position').addEventListener('change', updatePreview);

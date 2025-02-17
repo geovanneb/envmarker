@@ -1,0 +1,170 @@
+{
+    "appName": {
+      "message": "Environment Marker",
+      "description": "Environment Marker Chrome Extension"
+    },
+    "appDescription": {
+      "message": "使用 Environment Marker 扩展程序，防止（编程）环境出错。",
+      "description": "Environment Marker Chrome Extension description"
+    },
+    "__Options__": {
+      "message": "选项",
+      "description": "Options h1 title."
+    },
+    "__MarkerSettings__": {
+      "message": "标记设置",
+      "description": "Marker settings h2."
+    },
+    "__Name__": {
+      "message": "名称",
+      "description": "Name column name."
+    },
+    "__URL__": {
+      "message": "URL（使用 'regex:' 前缀以通过正则表达式匹配主机）",
+      "description": "URL column name."
+    },
+    "__Color__": {
+      "message": "颜色",
+      "description": "Color column name."
+    },
+    "__FontSize__": {
+      "message": "字体大小",
+      "description": "Font Size column name."
+    },
+    "__Position__": {
+      "message": "位置",
+      "description": "Position column name."
+    },
+    "__Preview__": {
+      "message": "预览",
+      "description": "Preview column name."
+    },
+    "__SuccessfullyUpdated__": {
+      "message": "更新成功！",
+      "description": "Successfully updated message."
+    },
+    "__ErrorUpdating__": {
+      "message": "更新失败！",
+      "description": "Error updating message."
+    },
+    "__Save__": {
+      "message": "保存",
+      "description": "Save button label."
+    },
+    "__ImportExportSettings__": {
+      "message": "导入/导出设置",
+      "description": "Import/Export settings h2 title."
+    },
+    "__ImportExportInstructions__": {
+      "message": "您可以导入或导出配置，以便与团队共享。",
+      "description": "Import/Export section instructions text."
+    },
+    "__Import__": {
+      "message": "导入",
+      "description": "Import h3 title."
+    },
+    "__ImportInstructions__": {
+      "message": "您可以使用本地文件或远程文件导入。",
+      "description": "Import section instructions text."
+    },
+    "__ImportUsingLocalFile__": {
+      "message": "使用本地文件导入：",
+      "description": "Import using a local file instructions text."
+    },
+    "__ImportSuccessMessage__": {
+      "message": "导入成功！正在刷新……",
+      "description": "Import success message."
+    },
+    "__ImportErrorMessage__": {
+      "message": "导入文件时发生意外错误。",
+      "description": "Import error message."
+    },
+    "__ImportInvalidJsonMessage__": {
+      "message": "配置文件无效。",
+      "description": "Import error Json message."
+    },
+    "__ImportHostedFile__": {
+      "message": "导入远程文件 (http://example.com/my-file.json)：",
+      "description": "Import a hosted file label message."
+    },
+    "__Loading__": {
+      "message": "加载中……",
+      "description": "Loading message."
+    },
+    "__URLNotValid__": {
+      "message": "URL 无效。",
+      "description": "The URL is not valid message."
+    },
+    "__AutomaticallyImport__": {
+      "message": "当远程文件发生变化时自动导入。",
+      "description": "Automatically import checkbox label message."
+    },
+    "__Export__": {
+      "message": "导出",
+      "description": "Export h3 title."
+    },
+    "__ExportInstructions__": {
+      "message": "点击下方按钮以导出当前设置。",
+      "description": "Export instructions text."
+    },
+    "__ToggleVisibility__": {
+      "message": "切换显示",
+      "description": "Toggle visibility message."
+    },
+    "__ToggleInstructions__": {
+      "message": "点击下面的按钮临时隐藏/显示标签：",
+      "description": "Toggle visibility instructions text."
+    },
+    "__ShowLabel__": {
+      "message": "显示标签",
+      "description": "Show Label button text."
+    },
+    "__HideLabel__": {
+      "message": "隐藏标签",
+      "description": "Hide Label button text."
+    },
+    "__QuickConfiguration__": {
+      "message": "快速配置",
+      "description": "Quick configuration h3 text."
+    },
+    "__Add__": {
+      "message": "添加",
+      "description": "Add button label."
+    },
+    "__GoToConfiguration__": {
+      "message": "或 <a id=\"go-to-options\" href=\"#\">前往配置页面。</a>",
+      "description": "Go to the configuration page text."
+    },
+    "__ToggleNotPossible__": {
+      "message": "由于您尚未配置此 URL，因此无法切换其显示状态。",
+      "description": "Toggle not possible message."
+    },
+    "__TemporarilyToggle__": {
+      "message": "点击下面的按钮临时隐藏/显示标签：",
+      "description": "Temporarily toggle instructions message."
+    },
+    "__EnvMarkerNotAvailableError__": {
+      "message": "此页面上无法使用 Environment Marker。该扩展仅在网页上有效。请刷新页面。",
+      "description": "Environment Marker is not available error message."
+    },
+    "__TopRight__": {
+      "message": "右上",
+      "description": "Top-Right select option text."
+    },
+    "__TopLeft__": {
+      "message": "左上",
+      "description": "Top-Left select option text."
+    },
+    "__BottomRight__": {
+      "message": "右下",
+      "description": "Bottom-Right select option text."
+    },
+    "__BottomLeft__": {
+      "message": "左下",
+      "description": "Bottom-Left select option text."
+    },
+    "__Moldure__": {
+      "message": "边框",
+      "description": "Moldure select option text."
+    }
+}

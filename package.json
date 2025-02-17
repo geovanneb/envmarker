@@ -4,16 +4,17 @@
   "description": "This extension allows you to flag specified websites by adding a colored label depending on the URL configuration.",
   "scripts": {},
   "devDependencies": {
+    "archiver": "^7.0.1",
     "del": "^8.0.0",
     "fancy-log": "^2.0.0",
     "gulp": "^5.0.0",
+    "gulp-copy": "^5.0.0",
     "gulp-npm-dist": "^1.0.4",
     "gulp-plumber": "^1.2.1",
     "gulp-replace": "^1.1.4",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-terser": "^2.1.0",
-    "gulp-uglifycss": "^1.1.0",
-    "gulp-zip": "^6.1.0"
+    "gulp-uglifycss": "^1.1.0"
   },
   "dependencies": {
     "firebase": "^11.3.1",

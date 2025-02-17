@@ -3,13 +3,15 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import log from 'fancy-log';
-import terser from 'gulp-terser'; // Updated import
+import terser from 'gulp-terser';
 import sourcemaps from 'gulp-sourcemaps';
 import uglifycss from 'gulp-uglifycss';
-import zip from 'gulp-zip';
+// Removed: import zip from 'gulp-zip';
 import npmDist from 'gulp-npm-dist';
-import { deleteAsync } from 'del'; // Correct named import
-import fs from 'fs/promises'; // ESM-compatible fs module
+import { deleteAsync } from 'del';
+import fs from 'fs/promises';  // Promise-based fs module
+import fsSync from 'fs';         // For stream methods
+import archiver from 'archiver'; // New zip library
 import replace from 'gulp-replace';
 
 // Error handling function
@@ -79,7 +81,7 @@ gulp.task('copy-css', gulp.series(() => {
 gulp.task('copy-images', gulp.series(() => {
   log('Gulp copy-images task executing');
   return gulp
-    .src('app/images/**/*.+(png|jpg|gif|svg)', {encoding: false})
+    .src('app/images/**/*.+(png|jpg|gif|svg)', { encoding: false })
     .pipe(plumber({ errorHandler: onError }))
     .pipe(gulp.dest('dist/images'));
 }));
@@ -117,20 +119,40 @@ gulp.task('watch', gulp.series(() => {
   gulp.watch('app/images/*', gulp.series('copy-images'));
   gulp.watch('app/manifest.json', gulp.series('copy-manifest'));
   gulp.watch('app/_locales/**', gulp.series('copy-locales'));
-  gulp.watch('app/js/*.js', gulp.series('js'));
+  gulp.watch('app/scripts/**/*.js', gulp.series('js'));
 }));
 
-// Prepare zip
+// Prepare zip using archiver
 gulp.task('zip', gulp.series(async () => {
   log('Gulp zip task executing');
-  
-  // Read and parse manifest.json using fs/promises
+
+  // Read and parse manifest.json to get version info
   const manifestContent = await fs.readFile('./dist/manifest.json', 'utf8');
   const manifest = JSON.parse(manifestContent);
-  
-  return gulp.src('dist/**/*')
-    .pipe(zip(`Environment Marker-${manifest.version}.zip`))
-    .pipe(gulp.dest('package'));
+  const zipFileName = `Environment Marker-${manifest.version}.zip`;
+
+  // Ensure the package directory exists
+  await fs.mkdir('package', { recursive: true });
+
+  // Return a promise that resolves when zipping is complete
+  return new Promise((resolve, reject) => {
+    const output = fsSync.createWriteStream(`package/${zipFileName}`);
+    const archive = archiver('zip', { zlib: { level: 9 } }); // Maximum compression
+
+    output.on('close', () => {
+      log(`Created zip file: ${zipFileName} (${archive.pointer()} total bytes)`);
+      resolve();
+    });
+
+    archive.on('error', (err) => {
+      reject(err);
+    });
+
+    archive.pipe(output);
+    // Append the entire 'dist' folder into the archive
+    archive.directory('dist/', false);
+    archive.finalize();
+  });
 }));
 
 // Build task
@@ -144,7 +166,7 @@ gulp.task('build', gulp.series(
   'copy-manifest',
   'copy-locales',
   'copy-libs',
-  (done) => { // Accept the 'done' callback
+  (done) => { 
     done(); // Signal completion
   }
 ));
@@ -153,7 +175,7 @@ gulp.task('build', gulp.series(
 gulp.task('package', gulp.series(
   'build',
   'zip',
-  (done) => { // Accept the 'done' callback
+  (done) => { 
     done(); // Signal completion
   }
 ));
@@ -162,7 +184,7 @@ gulp.task('package', gulp.series(
 gulp.task('default', gulp.series(
   'build',
   'watch',
-  (done) => { // Accept the 'done' callback
+  (done) => { 
     done(); // Signal completion
   }
 ));
