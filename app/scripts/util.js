@@ -12,21 +12,21 @@ function uuidv4() {
 // Checks if URL is valid
 function _validateURL(url) {
 	if(!url) {
-	    alert('Please insert the URL address of the file.');
-	    return false;
+		console.log('Environment Marker: Missing URL address.');
+		return false;
 	}
-    var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-        '((\\d{1,3}\\.){3}\\d{1,3}))|' + // OR ip (v4) address
-        'localhost' + // OR localhost
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-        '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
-    var result = pattern.test(url);
-    if(!result) { 
-    	alert('This is not a valid url. Insert an url with the correct format.');
-    }
-    return result;
+	var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+		'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+		'((\\d{1,3}\\.){3}\\d{1,3}))|' + // OR ip (v4) address
+		'localhost' + // OR localhost
+		'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+		'(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+		'(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+	var result = pattern.test(url);
+	if(!result) {
+		console.log('Environment Marker: Invalid URL format.');
+	}
+	return result;
 }
 
 // Gets the index of an array of configuration based on uuid
@@ -69,4 +69,19 @@ function _mergeSettings(newconfig, env_settings, hosted_file, auto_import, callb
 		callback();
 	});
 
+}
+
+function _updateAlertMessages(messages) {
+	var message_container = document.createElement('div');
+	message_container.innerHTML = '';
+	for(var i = 0; i<messages.length; i++) {
+		var message = messages[i];
+		var div = document.createElement('div');
+		div.className = 'alert alert-' + message.type;
+		div.role = 'alert';
+		// Add message content, but prevent remote scripts from being executed
+		div.innerHTML = message.content.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+		message_container.appendChild(div);
+	}
+	return message_container;
 }

@@ -21,7 +21,7 @@ function _requestFile() {
 function _importHostedFile() {
 	chrome.storage.sync.get({current_state: {
 		last_update: new Date().getTime(),
-		env_settings: [{uuid: '0ac126c8-9aff-452b-b76c-941104854128', name: 'EXAMPLE', address: 'geovanneborges.com.br', color: '0000ff', position: 1}],
+		env_settings: [{uuid: '0ac126c8-9aff-452b-b76c-941104854128', name: 'EXAMPLE', address: 'environmentmarker.io', color: '0000ff', position: 1}],
 		hosted_file: "",
 		auto_import: 0
 	}}, function(data) {
@@ -43,3 +43,44 @@ chrome.alarms.onAlarm.addListener((alarm) => {
   	_importHostedFile();
   }
 });
+
+// serviceWorker/background.js
+try {
+	self.window = self;
+    // Import required Firebase modules
+    self.importScripts(
+        'scripts/libs/firebase/firebase-app-compat.js',
+        'scripts/libs/firebase/firebase-remote-config-compat.js'
+    );
+
+    // Load config from external file
+    const config = %%FIREBASE_CONFIG%%;
+  
+    firebase.initializeApp(config);
+
+    const remoteConfig = firebase.remoteConfig();
+
+	remoteConfig.settings = {
+		minimumFetchIntervalMillis: 3600000,
+	};
+	remoteConfig.defaultConfig = {
+		alert_messages: JSON.stringify({
+			messages: []
+		})
+	};
+
+	remoteConfig.fetchAndActivate()
+	.then(() => {
+		const configString = remoteConfig.getString('alert_messages');
+		var configFile = JSON.parse(configString);
+		// Save the alert messages to the storage
+		chrome.storage.sync.set({alert_messages: configFile.messages}, function() {
+		});
+	})
+	.catch((err) => {
+		console.error('Error fetching remote config:', err);
+	});
+
+} catch (e) {
+    console.error('Firebase initialization error:', e);
+}

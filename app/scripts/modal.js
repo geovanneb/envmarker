@@ -32,6 +32,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 			break;
 		return true;
 	}
+	return true;
 });
 
 var PLUGIN_STATE = {};
@@ -50,7 +51,7 @@ var AUTO_IMPORT = 0;
 function _addEnvironmentLabel() {
 	chrome.storage.sync.get({current_state: {
 		last_update: new Date().getTime(),
-		env_settings: [{uuid: '0ac126c8-9aff-452b-b76c-941104854128', name: 'EXAMPLE', address: 'geovanneborges.com.br', color: '0000ff', position: 1}],
+		env_settings: [{uuid: '0ac126c8-9aff-452b-b76c-941104854128', name: 'EXAMPLE', address: 'environmentmarker.io', color: '0000ff', position: 1}],
 		hosted_file: "",
 		auto_import: 0
 	}}, function(data) {
@@ -80,40 +81,90 @@ function _addMarker(item) {
 	var envmarker = document.getElementById('chrome-envmarker');
 	if(envmarker && envmarker.length != 0) {
 		envmarker.parentNode.removeChild(envmarker);
-	} 
-	var positionStyle = 'right: -72px; top: 45px; transform: rotate(45deg);';
-	var position = item.position || '1';
-	switch (position) {
-		case '1': 
-		positionStyle = 'right: -72px; top: 45px; transform: rotate(45deg);';
-		break;
-		case '2':
-		positionStyle = 'left: -72px; top: 45px; transform: rotate(-45deg);';
-		break;
-		case '3':
-		positionStyle = 'right: -72px; bottom: 45px; transform: rotate(-45deg);';
-		break;
-		case '4':
-		positionStyle = 'left: -72px; bottom: 45px; transform: rotate(45deg);';
-		break;
-		default:
-		positionStyle = 'right: -72px; top: 45px; transform: rotate(45deg);';
 	}
-	wrapperDiv = document.createElement('div');
+
+	var position = item.position || '1';
+	var wrapperDiv = document.createElement('div');
 	wrapperDiv.id = 'chrome-envmarker';
-	wrapperDiv.setAttribute('style','text-shadow: -1px -1px 0 #555, 1px -1px 0 #555, -1px 1px 0 #555, 1px 1px 0 #555; position: fixed; '+positionStyle+' background-color: #'+item.color.replace('#','')+'; opacity: 0.9; z-index: 2147483647; height: 55px; width: 290px; overflow-x: hidden; box-shadow: 7px 0px 9px #000; color: #fff; pointer-events: none; user-select: none;');
 
-	textDiv = document.createElement('div');
-	textDiv.id = 'chrome-envmarker-text';
+	if (position === '5') {
+		// Moldure style
+		wrapperDiv.setAttribute('style', `
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			border: 8px solid #${item.color.replace('#','')};
+			opacity: 0.9;
+			z-index: 2147483647;
+			pointer-events: none;
+			user-select: none;
+		`);
+	} else {
+		// Regular ribbon style
+		var positionStyle = 'right: -72px; top: 45px; transform: rotate(45deg);';
+		var ribbonWidth = '290px';
+		var ribbonHeight = '55px';
+		
+		switch (position) {
+			case '2':
+				positionStyle = 'left: -72px; top: 45px; transform: rotate(-45deg);';
+				break;
+			case '3':
+				positionStyle = 'right: -72px; bottom: 45px; transform: rotate(-45deg);';
+				break;
+			case '4':
+				positionStyle = 'left: -72px; bottom: 45px; transform: rotate(45deg);';
+				break;
+		}
+		
+		wrapperDiv.setAttribute('style',`
+			text-shadow: -1px -1px 0 #555, 1px -1px 0 #555, -1px 1px 0 #555, 1px 1px 0 #555;
+			position: fixed;
+			${positionStyle}
+			background-color: #${item.color.replace('#','')};
+			opacity: 0.9;
+			z-index: 2147483647;
+			height: ${ribbonHeight};
+			width: ${ribbonWidth};
+			overflow-x: hidden;
+			box-shadow: 7px 0px 9px #000;
+			color: #fff;
+			pointer-events: none;
+			user-select: none;
+		`);
 
-	textDiv.setAttribute('style','margin: 0 45px; line-height: 55px; height: 100%; width: calc(100% - 90px); overflow: hidden;');
-	textDiv.innerText = item.name;
+		var textDiv = document.createElement('div');
+		textDiv.id = 'chrome-envmarker-text';
+		textDiv.setAttribute('style', `
+			margin: 0 45px;
+			line-height: ${ribbonHeight};
+			height: 100%;
+			width: calc(100% - 90px);
+			overflow: hidden;
+			text-align: center;
+			font-family: Arial, sans-serif;
+			${item.fontSize && item.fontSize !== 'auto' ? `font-size: ${item.fontSize};` : ''}
+		`);
+		textDiv.innerText = item.name;
+		wrapperDiv.appendChild(textDiv);
+	}
 
-	wrapperDiv.appendChild(textDiv);
-	// try not duplicating elements
 	document.body.appendChild(wrapperDiv);
-	// Adjust font size
-	textFit(document.getElementById("chrome-envmarker-text"), {minFontSize:14, detectMultiLine: true, alignVertalignVert: true, alignHoriz: true});
+	
+	if (position !== '5' && (!item.fontSize || item.fontSize === 'auto')) {
+		// Only use textFit if fontSize is not set or is set to 'auto'
+		textFit(document.getElementById("chrome-envmarker-text"), {
+			minFontSize: 15,
+			maxFontSize: 45,
+			detectMultiLine: true,
+			alignVert: true,
+			alignHoriz: true,
+			multiLine: false,
+			reProcess: true
+		});
+	}
 }
 
 function _updateMatchers(env_settings, last_update) {

@@ -3,72 +3,132 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Environment Marker</title>
+	<link type="text/css" rel="stylesheet" href="/styles/layout.css" media="all">
 	<link type="text/css" rel="stylesheet" href="/styles/options.css" media="all">
+	<link type="text/css" rel="stylesheet" href="/styles/preview.css" media="all">
+	<link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
 </head>
 
 <body id="options">
-	<div class="fixed-top">
-		<header>
-			<img id="cast-icon" src="/images/icon-48.png" alt="Environment Marker">
-			<h1 class="top-title">
-				<amr>Environment Marker Options</amr>
-			</h1>
-		</header>
-	</div>
-	<div class="options-sections">
-		<section class="setup-section">
-			<h2>
-				<amr>Environment Marker settings</amr>
-			</h2>
-			<div class="config-container">
+	<div class="container-md">
+		<div class="row">
+			<header class="col-12">
+				<img src="/images/logo.svg" height="70" alt="logo" class="auth-logo">
+			</header>
+		</div>
+		<div class="options-sections row justify-content-center">
+			<div class="col-9">
+				<h1 class="top-title">
+					<amr>Options</amr>
+				</h1>
+			</div>		
+		</div>
+		<div class="row justify-content-center">
+			<div id="notifications-container" class="col-9">
+		    </div>	
+		</div>
+		<div class="options-sections row justify-content-center">
+			<div class="col-9">
+				<div class="border row"></div>
+			</div>
+		</div>
+		<div class="options-sections row justify-content-center">
+			<div class="col-9">
+				<section class="setup-section">
+					<h2>
+						<amr>Marker settings</amr>
+					</h2>
+					<div class="config-container">
+						<div class="table-responsive">
+							<table id="table">
+								<thead>
+									<tr>
+										<td>Name</td>
+										<td>URL (use 'regex:' prefix to match a host by RegEx)</td> 
+										<td>Color</td>
+										<td>Font Size</td>
+										<td>Position</td>
+										<td>Preview</td>
+										<td></td>
+									</tr>
+								</thead>
+								<tbody id="tbody">
+								</tbody>
+							</table>
+						</div>
 
-				<table id="table" style="width:100%">
-					<thead>
-						<tr>
-							<td>Name</td>
-							<td>URL(use 'regex:' prefix to match a host by RegEx)</td> 
-							<td>Color</td>
-							<td>Position</td>
-							<td></td>
-						</tr>
-					</thead>
-					<tbody id="tbody">
-					</tbody>
-				</table>
+						<div class="controls">
+							<button class="btn-design" id="more">+</button>
+						</div>
 
-				<div class="controls">
-					<button id="more">+</button>
+						<div id="status" class="status">
+							<div class="alert alert-success-light success" role="alert" style="display: none;">Successfully updated!</div>
+							<div class="alert alert-danger-light" role="alert" style="display: none;">Error updating!</div>
+						</div>
+						<button id="save" class="btn btn-design btn-save mt-10">Save</button>
+					</div>
+				</section>
+			</div>
+		</div>
+		<div class="options-sections row justify-content-center">
+			<div class="col-9">
+				<div class="border row"></div>
+			</div>
+		</div>
+		<div class="options-sections row justify-content-center">
+			<div class="col-9">
+				<div class="row">
+					<h2>
+						<amr>Import/Export settings</amr>
+					</h2>
+					<p>You can import or export your configurations to share with your team.</p>
 				</div>
-
-				<div id="status"></div>
-				<button id="save" class="btn">Save</button>
+				<div class="row import-export-row">
+					<h3>Import</h3>
+					<p>You can either import using a local file or a hosted file.</p>
+					<div class="col-6 mt-10">
+						<div class="p-15 border">
+							<label class="import-label" for="file">Import using a local file: </label>
+							<input class="import-label mt-10" name="file" type="file" accept=".json" id="import"/>
+							<div id="local-import-status" class="status">
+								<div class="alert alert-success-light success" role="alert" style="display: none;">Successfully imported! Refreshing...</div>
+								<div class="alert alert-danger-light" role="alert" style="display: none;">An unexpected error occoured while importing the file.</div>
+								<div class="alert alert-danger-light error-parsing-json" role="alert" style="display: none;">The configuration file is not valid.</div>
+							</div>
+					   </div>
+					</div>
+					<div class="col-6">
+						<div class="p-15 border">
+							<label class="import-label" for="hosted-file">Import a hosted file (http://example.com/my-file.json): </label>
+							<input class="mt-10 import-label hosted-file form-input" name="hosted-file" type="text" id="hosted-file"/>
+							<button class="btn-import btn-design" name="btn-import" id="btn-import">Import</button>
+							<br />
+							<div id="import-status" class="status">
+								<div class="alert alert-success-light loading" role="alert" style="display: none;">Loading...</div>
+								<div class="alert alert-success-light success" role="alert" style="display: none;">Successfully imported! Refreshing...</div>
+								<div class="alert alert-danger-light" role="alert" style="display: none;">An unexpected error occoured while importing the file.</div>
+								<div class="alert alert-danger-light error-url" role="alert" style="display: none;">The URL is not valid.</div>
+							</div>
+							<div class="mt-10">
+								<input type="checkbox" id="auto-import" value="1" /><label class="auto-import-label" for="auto-import">Automatically import in case of changes in the hosted file.</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<h3>Export</h3>
+						<p>Click the button below to export your current settings.</p>
+						<button class="btn-export btn-design" name="export" id="export">Export</button>
+					</div>
+				</div>	
 			</div>
-		</section>
-	</div>
-	<div class="options-sections">
-		<section class="setup-section">
-			<h2>
-				<amr>Import/Export settings</amr>
-			</h2>
-			<p>You can import or export your configurations to share with your team.</p>
-			<div class="config-container">
-				<h3>Import</h3>
-				<label class="import-label" for="file">Import using a local file: </label>
-				<input class="import-label" name="file" type="file" accept=".json" id="import"/>
-				<br />
-				OR
-				<br />
-				<label class="import-label" for="hosted-file">Import a hosted file (http://example.com/my-file.json): </label>
-				<input class="import-label hosted-file" name="hosted-file" type="text" id="hosted-file"/>
-				<button class="btn-import" name="btn-import" id="btn-import">Import</button>
-				<br />
-				<input type="checkbox" id="auto-import" value="1" /><label class="auto-import-label" for="auto-import">Automatically import in case of changes in the hosted file.</label>
-				<br />
-				<h3>Export</h3>
-				<button class="btn-export" name="export" id="export">Export</button>
-				<div id="import-status"></div>
+		</div>
+		<div class="mt-20 options-sections row justify-content-center">
+			<div class="col-9">
+				<div class="border row"></div>
 			</div>
-		</section>
+		</div>
 	</div>
 	<script src="/scripts/libs/jscolor-picker/jscolor.min.js"></script>
 	<script src="/scripts/util.js"></script>
