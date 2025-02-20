@@ -6,13 +6,13 @@ import log from 'fancy-log';
 import terser from 'gulp-terser';
 import sourcemaps from 'gulp-sourcemaps';
 import uglifycss from 'gulp-uglifycss';
-// Removed: import zip from 'gulp-zip';
 import npmDist from 'gulp-npm-dist';
 import { deleteAsync } from 'del';
 import fs from 'fs/promises';  // Promise-based fs module
 import fsSync from 'fs';         // For stream methods
 import archiver from 'archiver'; // New zip library
 import replace from 'gulp-replace';
+import merge from 'merge-stream'; // Combine multiple streams
 
 // Error handling function
 function onError(err) {
@@ -104,11 +104,34 @@ gulp.task('copy-locales', gulp.series(() => {
     .pipe(gulp.dest('dist/_locales'));
 }));
 
-// Copy dependencies to ./public/libs/
+// Copy dependencies to ./dist/scripts/libs/
+// For firebase, exclude all files from npmDist and then add only your two specified files.
 gulp.task('copy-libs', gulp.series(() => {
-  return gulp
-    .src(npmDist(), { base: './node_modules' })
+  // npmDist returns paths relative to node_modules
+  const libs = npmDist();
+  // Remove any firebase files from the npmDist list.
+  const nonFirebaseLibs = libs.filter(file => !file.includes('firebase'));
+  
+  // Stream for non‑Firebase libraries (copied with base so paths are preserved)
+  const nonFirebaseStream = gulp.src(nonFirebaseLibs, { base: './node_modules' })
     .pipe(gulp.dest('dist/scripts/libs'));
+    
+  // Stream for Firebase: adjust these paths if your files are located elsewhere.
+  const firebaseStream = gulp.src([
+    'node_modules/firebase/firebase-app-compat.js',
+    'node_modules/firebase/firebase-remote-config-compat.js'
+  ])
+  .pipe(gulp.dest('dist/scripts/libs/firebase'));
+  
+  // Merge the two streams so that the task completes when both are done.
+  return merge(nonFirebaseStream, firebaseStream);
+}));
+
+// NEW TASK: Copy textfit dependency to its expected location
+gulp.task('copy-textfit', gulp.series(() => {
+  // Adjust the source path if your textFit.min.js file is located elsewhere.
+  return gulp.src('node_modules/textfit/textFit.min.js', { allowEmpty: true })
+    .pipe(gulp.dest('dist/scripts/libs/textfit'));
 }));
 
 // A gulp watcher for executing above tasks
@@ -165,7 +188,7 @@ gulp.task('build', gulp.series(
   'copy-images',
   'copy-manifest',
   'copy-locales',
-  'copy-libs',
+  gulp.parallel('copy-libs', 'copy-textfit'),
   (done) => { 
     done(); // Signal completion
   }
