@@ -13,6 +13,7 @@ import fsSync from 'fs';         // For stream methods
 import archiver from 'archiver'; // New zip library
 import replace from 'gulp-replace';
 import merge from 'merge-stream'; // Combine multiple streams
+import rename from 'gulp-rename'; // For renaming files
 
 // Error handling function
 function onError(err) {
@@ -36,16 +37,18 @@ gulp.task('js', gulp.series(() => {
     .pipe(gulp.dest('dist/scripts'));
 }));
 
-// Service workers
+// Service workers (processing firebase config)
+// NOTE: Replace the placeholder BEFORE initializing sourcemaps so the sourcemap reflects the real values.
 gulp.task('process-firebase-config', gulp.series(async () => {
   log('Processing Firebase configuration');
   const firebaseConfig = JSON.parse(await fs.readFile('./app/config/firebase-config.json', 'utf8'));
   
   return gulp
     .src('app/background.js')
-    .pipe(sourcemaps.init())
     .pipe(plumber({ errorHandler: onError }))
+    // Perform the replacement BEFORE initializing sourcemaps.
     .pipe(replace('%%FIREBASE_CONFIG%%', JSON.stringify(firebaseConfig)))
+    .pipe(sourcemaps.init())
     .pipe(terser())
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist'));
@@ -86,12 +89,23 @@ gulp.task('copy-images', gulp.series(() => {
     .pipe(gulp.dest('dist/images'));
 }));
 
-// Copy new manifest for every update in manifest
+// Copy default manifest for Chrome build
 gulp.task('copy-manifest', gulp.series(() => {
-  log('Gulp copy-manifest task executing');
+  log('Gulp copy-manifest task executing (default manifest)');
   return gulp
     .src('app/manifest.json')
     .pipe(plumber({ errorHandler: onError }))
+    .pipe(gulp.dest('dist'));
+}));
+
+// NEW TASK: Copy firefox-specific manifest (manifest_firefox.json)
+// Renames it to manifest.json for the build.
+gulp.task('copy-firefox-manifest', gulp.series(() => {
+  log('Gulp copy-firefox-manifest task executing');
+  return gulp
+    .src('app/manifest_firefox.json')
+    .pipe(plumber({ errorHandler: onError }))
+    .pipe(rename('manifest.json'))
     .pipe(gulp.dest('dist'));
 }));
 
@@ -105,31 +119,29 @@ gulp.task('copy-locales', gulp.series(() => {
 }));
 
 // Copy dependencies to ./dist/scripts/libs/
-// For firebase, exclude all files from npmDist and then add only your two specified files.
 gulp.task('copy-libs', gulp.series(() => {
   // npmDist returns paths relative to node_modules
   const libs = npmDist();
   // Remove any firebase files from the npmDist list.
   const nonFirebaseLibs = libs.filter(file => !file.includes('firebase'));
   
-  // Stream for non‑Firebase libraries (copied with base so paths are preserved)
+  // Stream for non‑Firebase libraries (preserve base paths)
   const nonFirebaseStream = gulp.src(nonFirebaseLibs, { base: './node_modules' })
     .pipe(gulp.dest('dist/scripts/libs'));
     
-  // Stream for Firebase: adjust these paths if your files are located elsewhere.
+  // Stream for Firebase: adjust paths if necessary.
   const firebaseStream = gulp.src([
     'node_modules/firebase/firebase-app-compat.js',
     'node_modules/firebase/firebase-remote-config-compat.js'
   ])
   .pipe(gulp.dest('dist/scripts/libs/firebase'));
   
-  // Merge the two streams so that the task completes when both are done.
+  // Merge the two streams so the task completes when both are done.
   return merge(nonFirebaseStream, firebaseStream);
 }));
 
 // NEW TASK: Copy textfit dependency to its expected location
 gulp.task('copy-textfit', gulp.series(() => {
-  // Adjust the source path if your textFit.min.js file is located elsewhere.
   return gulp.src('node_modules/textfit/textFit.min.js', { allowEmpty: true })
     .pipe(gulp.dest('dist/scripts/libs/textfit'));
 }));
@@ -141,6 +153,7 @@ gulp.task('watch', gulp.series(() => {
   gulp.watch('app/html/*', gulp.series('copy-html'));
   gulp.watch('app/images/*', gulp.series('copy-images'));
   gulp.watch('app/manifest.json', gulp.series('copy-manifest'));
+  gulp.watch('app/manifest_firefox.json', gulp.series('copy-firefox-manifest'));
   gulp.watch('app/_locales/**', gulp.series('copy-locales'));
   gulp.watch('app/scripts/**/*.js', gulp.series('js'));
 }));
@@ -157,7 +170,6 @@ gulp.task('zip', gulp.series(async () => {
   // Ensure the package directory exists
   await fs.mkdir('package', { recursive: true });
 
-  // Return a promise that resolves when zipping is complete
   return new Promise((resolve, reject) => {
     const output = fsSync.createWriteStream(`package/${zipFileName}`);
     const archive = archiver('zip', { zlib: { level: 9 } }); // Maximum compression
@@ -178,7 +190,7 @@ gulp.task('zip', gulp.series(async () => {
   });
 }));
 
-// Build task
+// Standard build task (for default/Chrome build)
 gulp.task('build', gulp.series(
   'clean-dist',
   'js',
@@ -186,7 +198,7 @@ gulp.task('build', gulp.series(
   'copy-html',
   'copy-css',
   'copy-images',
-  'copy-manifest',
+  'copy-manifest',     // Default manifest for Chrome
   'copy-locales',
   gulp.parallel('copy-libs', 'copy-textfit'),
   (done) => { 
@@ -194,7 +206,23 @@ gulp.task('build', gulp.series(
   }
 ));
 
-// Package task
+// Build task for Firefox (using Firefox-specific manifest)
+gulp.task('build:firefox', gulp.series(
+  'clean-dist',
+  'js',
+  'process-firebase-config',
+  'copy-html',
+  'copy-css',
+  'copy-images',
+  'copy-firefox-manifest',   // Firefox-specific manifest
+  'copy-locales',
+  gulp.parallel('copy-libs', 'copy-textfit'),
+  (done) => { 
+    done(); // Signal completion
+  }
+));
+
+// Package task for default build
 gulp.task('package', gulp.series(
   'build',
   'zip',
@@ -203,7 +231,16 @@ gulp.task('package', gulp.series(
   }
 ));
 
-// Default task
+// Package task for Firefox build
+gulp.task('package:firefox', gulp.series(
+  'build:firefox',
+  'zip',
+  (done) => { 
+    done(); // Signal completion
+  }
+));
+
+// Default task: build and then watch files
 gulp.task('default', gulp.series(
   'build',
   'watch',
