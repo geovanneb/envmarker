@@ -5,7 +5,8 @@
 echo "Starting gulp build..."
 if gulp build; then
   echo "Build succeeded. Converting extension to Safari format..."
-  xcrun safari-web-extension-converter dist
+  cd ..
+  xcrun safari-web-extension-converter dist --macos-only
 else
   echo "Build failed. Aborting conversion." >&2
   exit 1

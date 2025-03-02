@@ -6,5 +6,6 @@ dist
 package
 .DS_Store
 app/config/firebase-config.json
+Environment Marker
 
 
