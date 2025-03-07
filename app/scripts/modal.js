@@ -66,12 +66,14 @@ function _addEnvironmentLabel() {
 			if(CURRENT_LOCATION.indexOf(PLUGIN_STATE.strictList[i].address) > -1) {
 				CURRENT_CONFIG = PLUGIN_STATE.strictList[i];
 				_addMarker(CURRENT_CONFIG);
+				return;
 			}
 		}
 		for(var i = 0; i<PLUGIN_STATE.regexList.length; i++) {
 			if(PLUGIN_STATE.regexList[i].regex.test(CURRENT_DOMAIN)) {
 				CURRENT_CONFIG = PLUGIN_STATE.regexList[i];
 				_addMarker(CURRENT_CONFIG);
+				return;
 			}
 		}
 	});
