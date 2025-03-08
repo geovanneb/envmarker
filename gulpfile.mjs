@@ -15,6 +15,8 @@ import replace from 'gulp-replace';
 import merge from 'merge-stream'; // Combine multiple streams
 import rename from 'gulp-rename'; // For renaming files
 
+let isFirefoxBuild = false;
+
 // Error handling function
 function onError(err) {
   log.error(err);
@@ -165,7 +167,10 @@ gulp.task('zip', gulp.series(async () => {
   // Read and parse manifest.json to get version info
   const manifestContent = await fs.readFile('./dist/manifest.json', 'utf8');
   const manifest = JSON.parse(manifestContent);
-  const zipFileName = `Environment Marker-${manifest.version}.zip`;
+
+  const zipFileName = isFirefoxBuild 
+    ? `Environment Marker-${manifest.version}-firefox.zip` 
+    : `Environment Marker-${manifest.version}.zip`;
 
   // Ensure the package directory exists
   await fs.mkdir('package', { recursive: true });
@@ -231,8 +236,15 @@ gulp.task('package', gulp.series(
   }
 ));
 
+// Task to set the Firefox build flag
+gulp.task('set-firefox', (done) => {
+  isFirefoxBuild = true;
+  done();
+});
+
 // Package task for Firefox build
 gulp.task('package:firefox', gulp.series(
+  'set-firefox',
   'build:firefox',
   'zip',
   (done) => { 

@@ -42,7 +42,7 @@ function set_default_values() {
 				document.getElementById('name').value = response.currentConfig.name;
 				document.getElementById('address').value = response.currentConfig.address;
 				document.getElementById('color').value = response.currentConfig.color.toString();
-				document.getElementById('color').dispatchEvent(new Event('blur'));
+				document.getElementById('color').dispatchEvent(new Event('change'));
 				document.getElementById('fontSize').value = response.currentConfig.fontSize || 'auto';
 				document.getElementById('position').value = response.currentConfig.position;
 				document.getElementById('position').dispatchEvent(new Event('change'));
@@ -55,12 +55,13 @@ function set_default_values() {
 						document.getElementById('name').value = response.domain.replace(/\./g, '').toUpperCase();
 					}
 				});
-				document.getElementById('color').value = (Math.random()*0xFFFFFF<<0).toString(16);
+				document.getElementById('color').value = hexToRgba((Math.random()*0xFFFFFF<<0).toString(16));
 				document.getElementById('position').value = '1';
 				document.getElementById('position').dispatchEvent(new Event('change'));
-				document.getElementById('color').dispatchEvent(new Event('blur'));
+				document.getElementById('color').dispatchEvent(new Event('change'));
 				document.getElementById('fontSize').value = 'auto';
 			}
+			add_colorpicker(document.getElementById('color'));
 		});
 	});
 }
@@ -118,24 +119,18 @@ function open_configuration() {
 	}
 }
 
+// Update the updatePreview function and add event listeners
 function updatePreview() {
-    const position = document.getElementById('position').value;
-    const color = document.getElementById('color').value;
-    const previewBox = document.querySelector('.preview-box');
-    
-    // Update position
-    previewBox.setAttribute('data-position', position);
-    
-    // Update color
-    document.documentElement.style.setProperty('--preview-color', `#${color}`);
-}
-
-function initialize_colorpicker() {
-	var options = {
-		zIndex: 99999,
-		onFineChange: updatePreview
+	const colorInput = document.getElementById('color');
+	const positionSelect = document.getElementById('position');
+	const preview = document.querySelector('.preview-box');
+	
+	if (preview && colorInput) {
+		let color = colorInput.value;
+		// Ensure color has a proper format
+		preview.style.setProperty('--preview-color', color);
+		preview.setAttribute('data-position', positionSelect.value);
 	}
-	new jscolor('color', options);
 }
 
 function updateAlertMessages() {
@@ -150,7 +145,6 @@ function updateAlertMessages() {
 function set_initial_config() {
 	set_button_label();
 	set_default_values();
-	initialize_colorpicker();
 	updatePreview();
 	updateAlertMessages();
 	_i18n();
@@ -164,7 +158,9 @@ function handleInvalidTab() {
 	document.getElementById('quick-configuration').style.display = 'none';
 }
 
+initialize_colorpicker();
 document.addEventListener('DOMContentLoaded', set_initial_config);
 document.getElementById('popup-button').addEventListener('click', toggle_label);
 document.getElementById('quick-configuration').addEventListener('submit', saveData);
 document.getElementById('position').addEventListener('change', updatePreview);
+document.getElementById('color').addEventListener('change', updatePreview);

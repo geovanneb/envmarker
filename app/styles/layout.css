@@ -107,14 +107,9 @@ body {
     padding-right: 10px;
   }
   
-  .col-4 > div,
-  .col-5 > div {
-    height: 100%;
-  }
-  
   .col-5 {
     flex: 0 0 auto;
-    width: calc(45% - 10px);
+    width: calc(45% - 7px);
     padding-right: 10px;
   }
 
@@ -208,7 +203,7 @@ body {
   #table input {
     display: block;
     width: 100%;
-    padding: .4rem 1rem;
+    padding: .4rem 0.5rem;
     font-size: 0.8125rem;
     font-weight: 400;
     line-height: 1.5;
@@ -226,7 +221,7 @@ body {
   .container-md select {
     display: block;
     width: 100%;
-    padding: 0.4rem 2rem 0.4rem 1rem;
+    padding: 0.4rem 2rem 0.4rem 0.5rem;
     -moz-padding-start: calc(1rem - 3px);
     font-size: 0.8125rem;
     font-weight: 400;
@@ -241,6 +236,12 @@ body {
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     appearance: none;
+  }
+
+  .container-md select.position {
+    width: 80%;
+    display: block;
+    float: left;
   }
   
   label {
@@ -326,7 +327,7 @@ button.delete {
   width: 20px;
   height: 20px;
   border: 0px;
-  margin: 0px;
+  margin: auto;
   padding: 0px;
   outline: none;
   cursor: pointer;

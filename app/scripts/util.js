@@ -99,3 +99,55 @@ function _i18n() {
 		}
 	});
 }
+
+function initialize_colorpicker() {
+	
+	jscolor.presets.default = {
+		position: 'right',
+		previewPosition: 'left',
+		backgroundColor: '#f3f3f3',
+		borderColor: '#bbbbbb',
+		controlBorderColor: '#bbbbbb',
+		format:'rgba', 
+		alphaChannel: true,
+	}
+	
+}
+
+function add_colorpicker(rootNode) {
+	jscolor.install(rootNode);
+} 
+
+function hexToRgba(hex) {
+	// Remove any leading #
+	hex = hex.replace(/^#/, '');
+  
+	// Expand shorthand forms (e.g. "03F" or "03FA") to full form
+	if (hex.length === 3 || hex.length === 4) {
+	  hex = hex.split('').map(function(char) {
+		return char + char;
+	  }).join('');
+	}
+  
+	let r, g, b, a = 255;
+  
+	if (hex.length === 6) {
+	  // No alpha provided, assume fully opaque
+	  r = parseInt(hex.substring(0, 2), 16);
+	  g = parseInt(hex.substring(2, 4), 16);
+	  b = parseInt(hex.substring(4, 6), 16);
+	} else if (hex.length === 8) {
+	  // With alpha
+	  r = parseInt(hex.substring(0, 2), 16);
+	  g = parseInt(hex.substring(2, 4), 16);
+	  b = parseInt(hex.substring(4, 6), 16);
+	  a = parseInt(hex.substring(6, 8), 16);
+	} else {
+	  throw new Error("Invalid hex color format.");
+	}
+  
+	// Convert alpha value from 0-255 to 0-1 range with two decimal precision
+	let alpha = (a / 255).toFixed(2);
+  
+	return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }

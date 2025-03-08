@@ -68,7 +68,7 @@ function restore_options() {
 			  uuid: '0ac126c8-9aff-452b-b76c-941104854128',
 			  name: 'EXAMPLE',
 			  address: 'environmentmarker.io',
-			  color: '0000ff',
+			  color: 'rgba(0, 85, 188, 1)',
 			  position: 1,
 			},
 		  ],
@@ -104,7 +104,19 @@ function restore_options() {
 				  ${chrome.i18n.getMessage('__Moldure__')}
 				</option>
 			  </select>
+			  <div class="position-container">
+				<div class="position-preview" style="--preview-color: ${envItem.color}" data-position="${selectedPosition}">
+					<div class="preview-box">
+						<div class="preview-ribbon"></div>
+						<div class="preview-moldure"></div>
+					</div>
+				</div>
+			  </div>
 			</td>`;
+
+		  if (envItem.color.length === 6) {
+			envItem.color = hexToRgba(envItem.color);
+		  }
   
 		  // Build the complete table row HTML
 		  var rowHTML = `
@@ -117,7 +129,7 @@ function restore_options() {
 				<input class="address" value="${envItem.address}" />
 			  </td>
 			  <td>
-				<input class="color jscolor" value="${envItem.color}" />
+				<input class="color" data-jscolor="" value="${envItem.color}" />
 			  </td>
 			  <td>
 				<select class="font-size">
@@ -125,16 +137,6 @@ function restore_options() {
 				</select>
 			  </td>
 			  ${positionSelect}
-			  <td>
-				<div class="position-container">
-				  <div class="position-preview" style="--preview-color: #${envItem.color}" data-position="${selectedPosition}">
-					<div class="preview-box">
-					  <div class="preview-ribbon"></div>
-					  <div class="preview-moldure"></div>
-					</div>
-				  </div>
-				</div>
-			  </td>
 			  <td>
 				<button class="delete" title="Remove"></button>
 			  </td>
@@ -145,12 +147,14 @@ function restore_options() {
 		  template.innerHTML = rowHTML;
 		  document.getElementById('tbody').appendChild(template.firstElementChild);
   
-		  jscolor.installByClassName("jscolor");
 		  _addDeleteAction();
 
 		  // After adding the row, set up the preview listeners
 		  const rows = document.getElementById('tbody').getElementsByTagName('tr');
 		  setupPreviewListeners(rows[rows.length - 1]);
+		  updatePreview(rows[rows.length - 1]);
+		  //Refresh picker
+		  add_colorpicker(document.getElementById('tbody'));
 		}
   
 		document.getElementById('hosted-file').value =
@@ -163,7 +167,7 @@ function restore_options() {
 			: 0;
 	  }
 	);
-}  
+} 
 
 function updateAlertMessages() {
 	chrome.storage.sync.get('alert_messages', function(result) {
@@ -195,10 +199,18 @@ function add_more() {
 		  <option value="4">${chrome.i18n.getMessage('__BottomLeft__')}</option>
 		  <option value="5">${chrome.i18n.getMessage('__Moldure__')}</option>
 		</select>
+		<div class="position-container">
+			<div class="position-preview" style="--preview-color: rgba(1,1,1,1)" data-position="1">
+			  <div class="preview-box">
+				<div class="preview-ribbon"></div>
+				<div class="preview-moldure"></div>
+			  </div>
+			</div>
+		</div>
 	  </td>`;
   
 	// Generate random color for preview
-	const randomColor = (Math.random() * 0xFFFFFF << 0).toString(16);
+	const randomColor = hexToRgba((Math.random()*0xFFFFFF<<0).toString(16));
   
 	var rowHTML = `
 	  <tr>
@@ -210,7 +222,7 @@ function add_more() {
 		  <input class="address" />
 		</td>
 		<td>
-		  <input class="color jscolor" value="${randomColor}" />
+		  <input class="color" data-jscolor="" value="${randomColor}" />
 		</td>
 		<td>
 		  <select class="font-size">
@@ -218,16 +230,6 @@ function add_more() {
 		  </select>
 		</td>
 		${positionSelect}
-		<td>
-		  <div class="position-container">
-			<div class="position-preview" style="--preview-color: #${randomColor}" data-position="1">
-			  <div class="preview-box">
-				<div class="preview-ribbon"></div>
-				<div class="preview-moldure"></div>
-			  </div>
-			</div>
-		  </div>
-		</td>
 		<td>
 		  <button class="delete" title="Remove"></button>
 		</td>
@@ -238,8 +240,10 @@ function add_more() {
 	document.getElementById('tbody').appendChild(template);
   
 	// Reinstall jscolor and add delete action for the new row
-	jscolor.installByClassName("jscolor");
+	add_colorpicker(document.getElementById('tbody'));
 	_addDeleteAction();
+
+	updatePreview(template);
 
 	// After adding the new row, set up the preview listeners
 	setupPreviewListeners(template);
@@ -273,7 +277,7 @@ function importSettings(e) {
 				
 				chrome.storage.sync.get({current_state: {
 					last_update: new Date().getTime(),
-					env_settings: [{uuid: '0ac126c8-9aff-452b-b76c-941104854128', name: 'EXAMPLE', address: 'environmentmarker.io', color: '0000ff', position: 1}],
+					env_settings: [{uuid: '0ac126c8-9aff-452b-b76c-941104854128', name: 'EXAMPLE', address: 'environmentmarker.io', color: 'rgba(0, 85, 188, 1)', position: 1}],
 					hosted_file: "",
 					auto_import: 0
 				}}, function(data) {
@@ -321,7 +325,7 @@ function importHostedFile() {
 		.then((out) => {
 		  	chrome.storage.sync.get({current_state: {
 				last_update: new Date().getTime(),
-				env_settings: [{uuid: '0ac126c8-9aff-452b-b76c-941104854128', name: 'EXAMPLE', address: 'environmentmarker.io', color: '0000ff', position: 1}],
+				env_settings: [{uuid: '0ac126c8-9aff-452b-b76c-941104854128', name: 'EXAMPLE', address: 'environmentmarker.io', color: 'rgba(0, 85, 188, 1)', position: 1}],
 				hosted_file: "",
 				auto_import: 0
 			}}, function(data) {
@@ -373,11 +377,11 @@ function updatePreview(row) {
 	const preview = row.querySelector('.position-preview');
 	
 	if (preview && colorInput) {
-		let color = colorInput.value;
-		// Ensure color has a proper format
-		if (!color.startsWith('#')) {
-			color = '#' + color;
+		var color = colorInput.value;
+		if (color.length === 6) {
+			color = hexToRgba(color);
 		}
+		
 		preview.style.setProperty('--preview-color', color);
 		preview.setAttribute('data-position', positionSelect.value);
 	}
@@ -405,6 +409,7 @@ function generateFontSizeOptions(selectedSize = 'auto') {
 	return options;
 }
 
+initialize_colorpicker();
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click', save_options);
 document.getElementById('auto-import').addEventListener('click', save_options);

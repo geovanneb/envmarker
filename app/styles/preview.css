@@ -9,6 +9,11 @@
     height: 30px;
 }
 
+#table .position-preview {
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
 .preview-box {
     width: 30px;
     height: 30px;

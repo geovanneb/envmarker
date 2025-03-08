@@ -200,30 +200,26 @@ thead td {
 }
 
 /* Adjust column widths */
-table td:nth-child(1) { /* Name column */
-    width: 18%;
+table td:nth-child(1) { 
+    width: 17%;
 }
 
-table td:nth-child(2) { /* URL column */
-    width: 28%;
+table td:nth-child(2) { 
+    width: 25%;
 }
 
 table td:nth-child(3) {
-    width: 12%;
+    width: 23%;
 }
 
-table td:nth-child(4) { /* Preview column */
-  width: 13%;
+table td:nth-child(4) { 
+  width: 12%;
 }
 
 table td:nth-child(5) { 
-  width: 16%;
+  width: 18%;
 }
 
 table td:nth-child(6) {
-  width: 10%;
-}
-
-table td:nth-child(7) { /* Delete button column */
-    width: 3%;
+  width: 5%;
 }

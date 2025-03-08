@@ -51,7 +51,7 @@ var AUTO_IMPORT = 0;
 function _addEnvironmentLabel() {
 	chrome.storage.sync.get({current_state: {
 		last_update: new Date().getTime(),
-		env_settings: [{uuid: '0ac126c8-9aff-452b-b76c-941104854128', name: 'EXAMPLE', address: 'environmentmarker.io', color: '0000ff', position: 1}],
+		env_settings: [{uuid: '0ac126c8-9aff-452b-b76c-941104854128', name: 'EXAMPLE', address: 'environmentmarker.io', color: 'rgba(0, 85, 188, 1)', position: 1}],
 		hosted_file: "",
 		auto_import: 0
 	}}, function(data) {
@@ -89,6 +89,10 @@ function _addMarker(item) {
 	var wrapperDiv = document.createElement('div');
 	wrapperDiv.id = 'chrome-envmarker';
 
+	if (item.color.length === 6) {
+		item.color = '#'+item.color;
+	}
+
 	if (position === '5') {
 		// Moldure style
 		wrapperDiv.setAttribute('style', `
@@ -97,8 +101,7 @@ function _addMarker(item) {
 			left: 0;
 			right: 0;
 			bottom: 0;
-			border: 8px solid #${item.color.replace('#','')};
-			opacity: 0.9;
+			border: 8px solid ${item.color};
 			z-index: 2147483647;
 			pointer-events: none;
 			user-select: none;
@@ -125,8 +128,7 @@ function _addMarker(item) {
 			text-shadow: -1px -1px 0 #555, 1px -1px 0 #555, -1px 1px 0 #555, 1px 1px 0 #555;
 			position: fixed;
 			${positionStyle}
-			background-color: #${item.color.replace('#','')};
-			opacity: 0.9;
+			background-color: ${item.color};
 			z-index: 2147483647;
 			height: ${ribbonHeight};
 			width: ${ribbonWidth};

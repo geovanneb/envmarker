@@ -19,8 +19,8 @@
     "merge-stream": "^2.0.0"
   },
   "dependencies": {
+    "@eastdesire/jscolor": "^2.5.2",
     "firebase": "^11.3.1",
-    "jscolor-picker": "^2.0.4",
     "textfit": "^2.4.0"
   }
 }
