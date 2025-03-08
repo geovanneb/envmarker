@@ -1,0 +1,171 @@
+{
+    "appName": {
+      "message": "Environment Marker",
+      "description": "Environment Marker Chrome Extension"
+    },
+    "appDescription": {
+      "message": "Use a extensão Environment Marker e evite problemas com os ambientes (de programação).",
+      "description": "Environment Marker Chrome Extension description"
+    },
+    "__Options__": {
+      "message": "Opções",
+      "description": "Options h1 title."
+    },
+    "__MarkerSettings__": {
+      "message": "Configurações do Marcador",
+      "description": "Marker settings h2."
+    },
+    "__Name__": {
+      "message": "Nome",
+      "description": "Name column name."
+    },
+    "__URL__": {
+      "message": "URL (use o prefixo 'regex:' para corresponder a um host usando expressão regular)",
+      "description": "URL column name."
+    },
+    "__Color__": {
+      "message": "Cor",
+      "description": "Color column name."
+    },
+    "__FontSize__": {
+      "message": "Fonte",
+      "description": "Font Size column name."
+    },
+    "__Position__": {
+      "message": "Posição",
+      "description": "Position column name."
+    },
+    "__Preview__": {
+      "message": "Prévia",
+      "description": "Preview column name."
+    },
+    "__SuccessfullyUpdated__": {
+      "message": "Atualizado com sucesso!",
+      "description": "Successfully updated message."
+    },
+    "__ErrorUpdating__": {
+      "message": "Erro ao atualizar!",
+      "description": "Error updating message."
+    },
+    "__Save__": {
+      "message": "Salvar",
+      "description": "Save button label."
+    },
+    "__ImportExportSettings__": {
+      "message": "Configurações de Importação/Exportação",
+      "description": "Import/Export settings h2 title."
+    },
+    "__ImportExportInstructions__": {
+      "message": "Você pode importar ou exportar suas configurações para compartilhar com sua equipe.",
+      "description": "Import/Export section instructions text."
+    },
+    "__Import__": {
+      "message": "Importar",
+      "description": "Import h3 title."
+    },
+    "__ImportInstructions__": {
+      "message": "Você pode importar utilizando um arquivo local ou um arquivo hospedado.",
+      "description": "Import section instructions text."
+    },
+    "__ImportUsingLocalFile__": {
+      "message": "Importar utilizando um arquivo local: ",
+      "description": "Import using a local file instructions text."
+    },
+    "__ImportSuccessMessage__": {
+      "message": "Importado com sucesso! Atualizando...",
+      "description": "Import success message."
+    },
+    "__ImportErrorMessage__": {
+      "message": "Ocorreu um erro inesperado ao importar o arquivo.",
+      "description": "Import error message."
+    },
+    "__ImportInvalidJsonMessage__": {
+      "message": "O arquivo de configuração não é válido.",
+      "description": "Import error Json message."
+    },
+    "__ImportHostedFile__": {
+      "message": "Importar um arquivo hospedado (http://example.com/my-file.json): ",
+      "description": "Import a hosted file label message."
+    },
+    "__Loading__": {
+      "message": "Carregando...",
+      "description": "Loading message."
+    },
+    "__URLNotValid__": {
+      "message": "A URL não é válida.",
+      "description": "The URL is not valid message."
+    },
+    "__AutomaticallyImport__": {
+      "message": "Importar automaticamente em caso de alterações no arquivo hospedado.",
+      "description": "Automatically import checkbox label message."
+    },
+    "__Export__": {
+      "message": "Exportar",
+      "description": "Export h3 title."
+    },
+    "__ExportInstructions__": {
+      "message": "Clique no botão abaixo para exportar suas configurações atuais.",
+      "description": "Export instructions text."
+    },
+    "__ToggleVisibility__": {
+      "message": "Alternar visibilidade",
+      "description": "Toggle visibility message."
+    },
+    "__ToggleInstructions__": {
+      "message": "Clique no botão abaixo para ocultar/exibir temporariamente o rótulo:",
+      "description": "Toggle visibility instructions text."
+    },
+    "__ShowLabel__": {
+      "message": "Mostrar Rótulo",
+      "description": "Show Label button text."
+    },
+    "__HideLabel__": {
+      "message": "Ocultar Rótulo",
+      "description": "Hide Label button text."
+    },
+    "__QuickConfiguration__": {
+      "message": "Configuração rápida",
+      "description": "Quick configuration h3 text."
+    },
+    "__Add__": {
+      "message": "Adicionar",
+      "description": "Add button label."
+    },
+    "__GoToConfiguration__": {
+      "message": "ou <a id=\"go-to-options\" href=\"#\">vá para a página de configuração.</a>",
+      "description": "Go to the configuration page text."
+    },
+    "__ToggleNotPossible__": {
+      "message": "Não é possível alternar a visibilidade para esta URL porque você ainda não a configurou.",
+      "description": "Toggle not possible message."
+    },
+    "__TemporarilyToggle__": {
+      "message": "Clique no botão abaixo para ocultar/exibir temporariamente o rótulo:",
+      "description": "Temporarily toggle instructions message."
+    },
+    "__EnvMarkerNotAvailableError__": {
+      "message": "O Environment Marker não está disponível nesta página. A extensão funciona apenas em páginas web. Recarregue a página.",
+      "description": "Environment Marker is not available error message."
+    },
+    "__TopRight__": {
+      "message": "Superior Direito",
+      "description": "Top-Right select option text."
+    },
+    "__TopLeft__": {
+      "message": "Superior Esquerdo",
+      "description": "Top-Left select option text."
+    },
+    "__BottomRight__": {
+      "message": "Inferior Direito",
+      "description": "Bottom-Right select option text."
+    },
+    "__BottomLeft__": {
+      "message": "Inferior Esquerdo",
+      "description": "Bottom-Left select option text."
+    },
+    "__Moldure__": {
+      "message": "Moldura",
+      "description": "Moldure select option text."
+    }
+  }
+  

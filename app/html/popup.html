@@ -3,40 +3,119 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Environment Marker</title>
+	<link href="/styles/layout.css" rel="stylesheet">
 	<link href="/styles/popup.css" rel="stylesheet">
+	<link href="/styles/preview.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
 </head>
-<body>
-	<div class="container">
-		<h2>Environment Marker Extension</h2>
-		<form class="hide-show" autocomplete="off" novalidate="">
-			<h3>Toggle visibility</h3>
-			<fieldset>
-				<span id="popup-text">Click on the following button to temporarily Hide/Show the label:</span>
-				<button class="btn" id="popup-button">Hide Label</button>
-			</fieldset>
-		</form>
-		<form id="quick-configuration" class="quick-configuration" autocomplete="off">
-			<h3>Quick configuration</h3>
-			<fieldset>
-				<input id="uuid" name="uuid" type="hidden" value="" />
-				<label for="name">Name</label><br />
-				<input type="text" name="name" id="name" class="name" value="" required /><br />
-				<label for="address">URL(use 'regex:' prefix to match a host by RegEx)</label><br />
-				<input type="text" name="address" id="address" class="address" required value="" /><br />
-				<label for="color">Color</label><br />
-				<input type="text" name="color" id="color" class="color" value="" required /><br />
-				<label for="position">Position</label><br />
-				<select id="position" name="position" class="position">
-					<option selected="selected" value="1">Top-right</option>
-					<option value="2">Top-left</option>
-					<option value="3">Bottom-right</option>
-					<option value="4">Bottom-left</option>
-				</select><br />
-				<input type="submit" value="Add" class="btn" id="add" /> or <a id="go-to-options" href="#">go to configuration page.</a>
-			</fieldset>
-		</form-->
+<body class="p-10">
+	<div class="container-md">
+		<div class="row">
+			<header class="col-12">
+				<img src="/images/logo.svg" height="60" alt="logo" class="auth-logo">
+			</header>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div id="error-message"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div id="notifications-container" class="col-9 p-0">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<form id="hide-show" class="hide-show" autocomplete="off" novalidate="">
+					<h3 class="mt-0" data-i18n="__ToggleVisibility__">Toggle visibility</h3>
+					<div class="border p-15">
+						<span id="popup-text" data-i18n="__ToggleInstructions__">Click on the following button to temporarily Hide/Show the label:</span>
+						<button class="btn-design mt-10" id="popup-button" data-i18n="__HideLabel__">Hide Label</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<form id="quick-configuration" class="quick-configuration" autocomplete="off">
+					<h3 data-i18n="__QuickConfiguration__">Quick configuration</h3>
+					<div class="border p-15">
+						<div class="row">
+							<div class="col-12">
+								<input id="uuid" name="uuid" type="hidden" value="" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<label for="name" data-i18n="__Name__">Name</label>
+								<input type="text" name="name" id="name" class="name form-input" value="" required />
+							</div>
+						</div>
+						<div class="row mt-5">
+							<div class="col-12">
+								<label for="address" data-i18n="__URL__">URL(use 'regex:' prefix to match a host by RegEx)</label>
+								<input type="text" name="address" id="address" class="address form-input" required value="" />
+							</div>
+						</div>
+						<div class="row mt-5">
+							<div class="col-4">
+								<label for="color" data-i18n="__Color__">Color</label>
+								<input type="text" name="color" id="color" class="color form-input" data-jscolor="" value="" required />
+							</div>
+							<div class="col-3">
+								<label for="fontSize" data-i18n="__FontSize__">Font Size</label>
+								<select name="fontSize" id="fontSize" class="font-size form-select">
+									<option value="auto">Auto</option>
+									<option value="5px">5px</option>
+									<option value="10px">10px</option>
+									<option value="15px">15px</option>
+									<option value="20px">20px</option>
+									<option value="25px">25px</option>
+									<option value="30px">30px</option>
+									<option value="35px">35px</option>
+									<option value="40px">40px</option>
+									<option value="45px">45px</option>
+									<option value="50px">50px</option>
+									<option value="55px">55px</option>
+									<option value="60px">60px</option>
+								</select>
+							</div>
+							<div class="col-5">
+								<label for="position" data-i18n="__Position__">Position</label>
+								<div class="position-container">
+									<select id="position" name="position" class="position">
+										<option selected="selected"  data-i18n="__TopRight__" value="1">Top-right</option>
+										<option value="2" data-i18n="__TopLeft__">Top-left</option>
+										<option value="3" data-i18n="__BottomRight__">Bottom-right</option>
+										<option value="4" data-i18n="__BottomLeft__">Bottom-left</option>
+										<option value="5" data-i18n="__Moldure__">Moldure</option>
+									</select>
+									
+									<div class="position-preview">
+										<div class="preview-box">
+											<div class="preview-ribbon"></div>
+											<div class="preview-moldure"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>	
+						<div class="row mt-5">
+							<div class="col-3">
+								<input class="btn-save btn-design mt-10" type="submit" value="Add" data-i18n="__Add__" id="add"/>
+							</div>
+							<div class="col-8 mt-15" data-i18n="__GoToConfiguration__">
+								or <a id="go-to-options" href="#">go to configuration page.</a>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
 	</div>
-	<script src="/scripts/libs/jscolor-picker/jscolor.min.js"></script>
+	<script src="/scripts/libs/@eastdesire/jscolor/jscolor.min.js"></script>
 	<script src="/scripts/util.js"></script>
 	<script src="/scripts/popup.js"></script>
 </body>

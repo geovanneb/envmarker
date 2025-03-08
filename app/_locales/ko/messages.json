@@ -1,0 +1,171 @@
+{
+    "appName": {
+      "message": "Environment Marker",
+      "description": "Environment Marker Chrome Extension"
+    },
+    "appDescription": {
+      "message": "Environment Marker 확장 프로그램을 사용하여 (프로그래밍) 환경에서의 실수를 방지하세요.",
+      "description": "Environment Marker Chrome Extension description"
+    },
+    "__Options__": {
+      "message": "옵션",
+      "description": "Options h1 title."
+    },
+    "__MarkerSettings__": {
+      "message": "마커 설정",
+      "description": "Marker settings h2."
+    },
+    "__Name__": {
+      "message": "이름",
+      "description": "Name column name."
+    },
+    "__URL__": {
+      "message": "URL ('regex:' 접두사를 사용하여 정규식으로 호스트를 일치)",
+      "description": "URL column name."
+    },
+    "__Color__": {
+      "message": "색상",
+      "description": "Color column name."
+    },
+    "__FontSize__": {
+      "message": "글꼴 크기",
+      "description": "Font Size column name."
+    },
+    "__Position__": {
+      "message": "위치",
+      "description": "Position column name."
+    },
+    "__Preview__": {
+      "message": "미리보기",
+      "description": "Preview column name."
+    },
+    "__SuccessfullyUpdated__": {
+      "message": "성공적으로 업데이트되었습니다!",
+      "description": "Successfully updated message."
+    },
+    "__ErrorUpdating__": {
+      "message": "업데이트 중 오류가 발생했습니다!",
+      "description": "Error updating message."
+    },
+    "__Save__": {
+      "message": "저장",
+      "description": "Save button label."
+    },
+    "__ImportExportSettings__": {
+      "message": "가져오기/내보내기 설정",
+      "description": "Import/Export settings h2 title."
+    },
+    "__ImportExportInstructions__": {
+      "message": "설정을 가져오거나 내보내어 팀과 공유할 수 있습니다.",
+      "description": "Import/Export section instructions text."
+    },
+    "__Import__": {
+      "message": "가져오기",
+      "description": "Import h3 title."
+    },
+    "__ImportInstructions__": {
+      "message": "로컬 파일이나 호스팅된 파일을 사용하여 가져올 수 있습니다.",
+      "description": "Import section instructions text."
+    },
+    "__ImportUsingLocalFile__": {
+      "message": "로컬 파일을 사용하여 가져오기: ",
+      "description": "Import using a local file instructions text."
+    },
+    "__ImportSuccessMessage__": {
+      "message": "성공적으로 가져왔습니다! 새로 고침 중...",
+      "description": "Import success message."
+    },
+    "__ImportErrorMessage__": {
+      "message": "파일을 가져오는 중에 예상치 못한 오류가 발생했습니다.",
+      "description": "Import error message."
+    },
+    "__ImportInvalidJsonMessage__": {
+      "message": "구성 파일이 유효하지 않습니다.",
+      "description": "Import error Json message."
+    },
+    "__ImportHostedFile__": {
+      "message": "호스팅된 파일을 가져오기 (http://example.com/my-file.json): ",
+      "description": "Import a hosted file label message."
+    },
+    "__Loading__": {
+      "message": "로딩 중...",
+      "description": "Loading message."
+    },
+    "__URLNotValid__": {
+      "message": "URL이 유효하지 않습니다.",
+      "description": "The URL is not valid message."
+    },
+    "__AutomaticallyImport__": {
+      "message": "호스팅된 파일에 변경이 있으면 자동으로 가져옵니다.",
+      "description": "Automatically import checkbox label message."
+    },
+    "__Export__": {
+      "message": "내보내기",
+      "description": "Export h3 title."
+    },
+    "__ExportInstructions__": {
+      "message": "아래 버튼을 클릭하여 현재 설정을 내보내세요.",
+      "description": "Export instructions text."
+    },
+    "__ToggleVisibility__": {
+      "message": "표시 전환",
+      "description": "Toggle visibility message."
+    },
+    "__ToggleInstructions__": {
+      "message": "다음 버튼을 클릭하여 레이블을 임시로 숨기거나 표시하세요:",
+      "description": "Toggle visibility instructions text."
+    },
+    "__ShowLabel__": {
+      "message": "레이블 표시",
+      "description": "Show Label button text."
+    },
+    "__HideLabel__": {
+      "message": "레이블 숨기기",
+      "description": "Hide Label button text."
+    },
+    "__QuickConfiguration__": {
+      "message": "빠른 설정",
+      "description": "Quick configuration h3 text."
+    },
+    "__Add__": {
+      "message": "추가",
+      "description": "Add button label."
+    },
+    "__GoToConfiguration__": {
+      "message": "또는 <a id=\"go-to-options\" href=\"#\">설정 페이지로 이동</a>",
+      "description": "Go to the configuration page text."
+    },
+    "__ToggleNotPossible__": {
+      "message": "아직 이 URL을 구성하지 않아 표시 전환이 불가능합니다.",
+      "description": "Toggle not possible message."
+    },
+    "__TemporarilyToggle__": {
+      "message": "다음 버튼을 클릭하여 레이블을 임시로 숨기거나 표시하세요:",
+      "description": "Temporarily toggle instructions message."
+    },
+    "__EnvMarkerNotAvailableError__": {
+      "message": "이 페이지에서 Environment Marker를 사용할 수 없습니다. 이 확장 프로그램은 웹 페이지에서만 작동합니다. 페이지를 새로 고치세요.",
+      "description": "Environment Marker is not available error message."
+    },
+    "__TopRight__": {
+      "message": "오른쪽 상단",
+      "description": "Top-Right select option text."
+    },
+    "__TopLeft__": {
+      "message": "왼쪽 상단",
+      "description": "Top-Left select option text."
+    },
+    "__BottomRight__": {
+      "message": "오른쪽 하단",
+      "description": "Bottom-Right select option text."
+    },
+    "__BottomLeft__": {
+      "message": "왼쪽 하단",
+      "description": "Bottom-Left select option text."
+    },
+    "__Moldure__": {
+      "message": "테두리",
+      "description": "Moldure select option text."
+    }
+}
+  

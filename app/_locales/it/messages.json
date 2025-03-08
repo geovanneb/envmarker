@@ -1,0 +1,170 @@
+{
+    "appName": {
+      "message": "Environment Marker",
+      "description": "Environment Marker Chrome Extension"
+    },
+    "appDescription": {
+      "message": "Utilizza l'estensione Environment Marker e previeni errori negli ambienti (di programmazione).",
+      "description": "Environment Marker Chrome Extension description"
+    },
+    "__Options__": {
+      "message": "Opzioni",
+      "description": "Options h1 title."
+    },
+    "__MarkerSettings__": {
+      "message": "Impostazioni del marcatore",
+      "description": "Marker settings h2."
+    },
+    "__Name__": {
+      "message": "Nome",
+      "description": "Name column name."
+    },
+    "__URL__": {
+      "message": "URL (usa il prefisso 'regex:' per abbinare un host tramite RegEx)",
+      "description": "URL column name."
+    },
+    "__Color__": {
+      "message": "Colore",
+      "description": "Color column name."
+    },
+    "__FontSize__": {
+      "message": "Carattere",
+      "description": "Font Size column name."
+    },
+    "__Position__": {
+      "message": "Posizione",
+      "description": "Position column name."
+    },
+    "__Preview__": {
+      "message": "Anteprima",
+      "description": "Preview column name."
+    },
+    "__SuccessfullyUpdated__": {
+      "message": "Aggiornato con successo!",
+      "description": "Successfully updated message."
+    },
+    "__ErrorUpdating__": {
+      "message": "Errore durante l'aggiornamento!",
+      "description": "Error updating message."
+    },
+    "__Save__": {
+      "message": "Salva",
+      "description": "Save button label."
+    },
+    "__ImportExportSettings__": {
+      "message": "Impostazioni di importazione/esportazione",
+      "description": "Import/Export settings h2 title."
+    },
+    "__ImportExportInstructions__": {
+      "message": "Puoi importare o esportare le tue configurazioni per condividerle con il tuo team.",
+      "description": "Import/Export section instructions text."
+    },
+    "__Import__": {
+      "message": "Importa",
+      "description": "Import h3 title."
+    },
+    "__ImportInstructions__": {
+      "message": "Puoi importare utilizzando un file locale o un file ospitato.",
+      "description": "Import section instructions text."
+    },
+    "__ImportUsingLocalFile__": {
+      "message": "Importa utilizzando un file locale: ",
+      "description": "Import using a local file instructions text."
+    },
+    "__ImportSuccessMessage__": {
+      "message": "Importato con successo! Aggiornamento in corso...",
+      "description": "Import success message."
+    },
+    "__ImportErrorMessage__": {
+      "message": "Si è verificato un errore inaspettato durante l'importazione del file.",
+      "description": "Import error message."
+    },
+    "__ImportInvalidJsonMessage__": {
+      "message": "Il file di configurazione non è valido.",
+      "description": "Import error Json message."
+    },
+    "__ImportHostedFile__": {
+      "message": "Importa un file ospitato (http://example.com/my-file.json): ",
+      "description": "Import a hosted file label message."
+    },
+    "__Loading__": {
+      "message": "Caricamento in corso...",
+      "description": "Loading message."
+    },
+    "__URLNotValid__": {
+      "message": "L'URL non è valido.",
+      "description": "The URL is not valid message."
+    },
+    "__AutomaticallyImport__": {
+      "message": "Importa automaticamente in caso di modifiche nel file ospitato.",
+      "description": "Automatically import checkbox label message."
+    },
+    "__Export__": {
+      "message": "Esporta",
+      "description": "Export h3 title."
+    },
+    "__ExportInstructions__": {
+      "message": "Clicca il pulsante qui sotto per esportare le impostazioni correnti.",
+      "description": "Export instructions text."
+    },
+    "__ToggleVisibility__": {
+      "message": "Alterna visibilità",
+      "description": "Toggle visibility message."
+    },
+    "__ToggleInstructions__": {
+      "message": "Clicca sul pulsante seguente per nascondere/mostrare temporaneamente l'etichetta:",
+      "description": "Toggle visibility instructions text."
+    },
+    "__ShowLabel__": {
+      "message": "Mostra etichetta",
+      "description": "Show Label button text."
+    },
+    "__HideLabel__": {
+      "message": "Nascondi etichetta",
+      "description": "Hide Label button text."
+    },
+    "__QuickConfiguration__": {
+      "message": "Configurazione rapida",
+      "description": "Quick configuration h3 text."
+    },
+    "__Add__": {
+      "message": "Aggiungi",
+      "description": "Add button label."
+    },
+    "__GoToConfiguration__": {
+      "message": "oppure <a id=\"go-to-options\" href=\"#\">vai alla pagina di configurazione.</a>",
+      "description": "Go to the configuration page text."
+    },
+    "__ToggleNotPossible__": {
+      "message": "Non è possibile alternare la visibilità per questo URL perché non è ancora configurato.",
+      "description": "Toggle not possible message."
+    },
+    "__TemporarilyToggle__": {
+      "message": "Clicca sul pulsante seguente per nascondere/mostrare temporaneamente l'etichetta:",
+      "description": "Temporarily toggle instructions message."
+    },
+    "__EnvMarkerNotAvailableError__": {
+      "message": "Environment Marker non è disponibile su questa pagina. L'estensione funziona solo su pagine web. Ricarica la pagina.",
+      "description": "Environment Marker is not available error message."
+    },
+    "__TopRight__": {
+      "message": "In alto a destra",
+      "description": "Top-Right select option text."
+    },
+    "__TopLeft__": {
+      "message": "In alto a sinistra",
+      "description": "Top-Left select option text."
+    },
+    "__BottomRight__": {
+      "message": "In basso a destra",
+      "description": "Bottom-Right select option text."
+    },
+    "__BottomLeft__": {
+      "message": "In basso a sinistra",
+      "description": "Bottom-Left select option text."
+    },
+    "__Moldure__": {
+      "message": "Cornice",
+      "description": "Moldure select option text."
+    }
+}  

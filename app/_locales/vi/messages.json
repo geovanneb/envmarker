@@ -1,0 +1,171 @@
+{
+    "appName": {
+      "message": "Environment Marker",
+      "description": "Environment Marker Chrome Extension"
+    },
+    "appDescription": {
+      "message": "Sử dụng tiện ích Environment Marker và ngăn ngừa các lỗi trong môi trường (lập trình).",
+      "description": "Environment Marker Chrome Extension description"
+    },
+    "__Options__": {
+      "message": "Tùy chọn",
+      "description": "Options h1 title."
+    },
+    "__MarkerSettings__": {
+      "message": "Cài đặt đánh dấu",
+      "description": "Marker settings h2."
+    },
+    "__Name__": {
+      "message": "Tên",
+      "description": "Name column name."
+    },
+    "__URL__": {
+      "message": "URL (sử dụng tiền tố 'regex:' để khớp host theo RegEx)",
+      "description": "URL column name."
+    },
+    "__Color__": {
+      "message": "Màu sắc",
+      "description": "Color column name."
+    },
+    "__FontSize__": {
+      "message": "Cỡ chữ",
+      "description": "Font Size column name."
+    },
+    "__Position__": {
+      "message": "Vị trí",
+      "description": "Position column name."
+    },
+    "__Preview__": {
+      "message": "Xem trước",
+      "description": "Preview column name."
+    },
+    "__SuccessfullyUpdated__": {
+      "message": "Cập nhật thành công!",
+      "description": "Successfully updated message."
+    },
+    "__ErrorUpdating__": {
+      "message": "Lỗi khi cập nhật!",
+      "description": "Error updating message."
+    },
+    "__Save__": {
+      "message": "Lưu",
+      "description": "Save button label."
+    },
+    "__ImportExportSettings__": {
+      "message": "Cài đặt Nhập/Xuất",
+      "description": "Import/Export settings h2 title."
+    },
+    "__ImportExportInstructions__": {
+      "message": "Bạn có thể nhập hoặc xuất cấu hình của mình để chia sẻ với nhóm.",
+      "description": "Import/Export section instructions text."
+    },
+    "__Import__": {
+      "message": "Nhập",
+      "description": "Import h3 title."
+    },
+    "__ImportInstructions__": {
+      "message": "Bạn có thể nhập bằng cách sử dụng tệp cục bộ hoặc tệp được lưu trữ trực tuyến.",
+      "description": "Import section instructions text."
+    },
+    "__ImportUsingLocalFile__": {
+      "message": "Nhập bằng tệp cục bộ: ",
+      "description": "Import using a local file instructions text."
+    },
+    "__ImportSuccessMessage__": {
+      "message": "Nhập thành công! Đang làm mới...",
+      "description": "Import success message."
+    },
+    "__ImportErrorMessage__": {
+      "message": "Đã xảy ra lỗi không mong đợi khi nhập tệp.",
+      "description": "Import error message."
+    },
+    "__ImportInvalidJsonMessage__": {
+      "message": "Tệp cấu hình không hợp lệ.",
+      "description": "Import error Json message."
+    },
+    "__ImportHostedFile__": {
+      "message": "Nhập một tệp được lưu trữ trực tuyến (http://example.com/my-file.json): ",
+      "description": "Import a hosted file label message."
+    },
+    "__Loading__": {
+      "message": "Đang tải...",
+      "description": "Loading message."
+    },
+    "__URLNotValid__": {
+      "message": "URL không hợp lệ.",
+      "description": "The URL is not valid message."
+    },
+    "__AutomaticallyImport__": {
+      "message": "Tự động nhập khi có thay đổi trong tệp được lưu trữ trực tuyến.",
+      "description": "Automatically import checkbox label message."
+    },
+    "__Export__": {
+      "message": "Xuất",
+      "description": "Export h3 title."
+    },
+    "__ExportInstructions__": {
+      "message": "Nhấn nút bên dưới để xuất các cài đặt hiện tại.",
+      "description": "Export instructions text."
+    },
+    "__ToggleVisibility__": {
+      "message": "Chuyển đổi hiển thị",
+      "description": "Toggle visibility message."
+    },
+    "__ToggleInstructions__": {
+      "message": "Nhấn vào nút bên dưới để tạm thời ẩn/hiện nhãn:",
+      "description": "Toggle visibility instructions text."
+    },
+    "__ShowLabel__": {
+      "message": "Hiển thị nhãn",
+      "description": "Show Label button text."
+    },
+    "__HideLabel__": {
+      "message": "Ẩn nhãn",
+      "description": "Hide Label button text."
+    },
+    "__QuickConfiguration__": {
+      "message": "Cấu hình nhanh",
+      "description": "Quick configuration h3 text."
+    },
+    "__Add__": {
+      "message": "Thêm",
+      "description": "Add button label."
+    },
+    "__GoToConfiguration__": {
+      "message": "hoặc <a id=\"go-to-options\" href=\"#\">đi tới trang cấu hình</a>",
+      "description": "Go to the configuration page text."
+    },
+    "__ToggleNotPossible__": {
+      "message": "Không thể chuyển đổi hiển thị cho URL này vì bạn chưa cấu hình nó.",
+      "description": "Toggle not possible message."
+    },
+    "__TemporarilyToggle__": {
+      "message": "Nhấn vào nút bên dưới để tạm thời ẩn/hiện nhãn:",
+      "description": "Temporarily toggle instructions message."
+    },
+    "__EnvMarkerNotAvailableError__": {
+      "message": "Environment Marker không khả dụng trên trang này. Tiện ích mở rộng chỉ hoạt động trên các trang web. Vui lòng làm mới trang.",
+      "description": "Environment Marker is not available error message."
+    },
+    "__TopRight__": {
+      "message": "Góc trên bên phải",
+      "description": "Top-Right select option text."
+    },
+    "__TopLeft__": {
+      "message": "Góc trên bên trái",
+      "description": "Top-Left select option text."
+    },
+    "__BottomRight__": {
+      "message": "Góc dưới bên phải",
+      "description": "Bottom-Right select option text."
+    },
+    "__BottomLeft__": {
+      "message": "Góc dưới bên trái",
+      "description": "Bottom-Left select option text."
+    },
+    "__Moldure__": {
+      "message": "Viền",
+      "description": "Moldure select option text."
+    }
+}
+  

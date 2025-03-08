@@ -1,0 +1,171 @@
+{
+    "appName": {
+      "message": "Environment Marker",
+      "description": "Environment Marker Chrome Extension"
+    },
+    "appDescription": {
+      "message": "Используйте расширение Environment Marker, чтобы избежать ошибок в (программных) окружениях.",
+      "description": "Environment Marker Chrome Extension description"
+    },
+    "__Options__": {
+      "message": "Опции",
+      "description": "Options h1 title."
+    },
+    "__MarkerSettings__": {
+      "message": "Настройки маркера",
+      "description": "Marker settings h2."
+    },
+    "__Name__": {
+      "message": "Имя",
+      "description": "Name column name."
+    },
+    "__URL__": {
+      "message": "URL (используйте префикс 'regex:' для сопоставления хоста с помощью регулярного выражения)",
+      "description": "URL column name."
+    },
+    "__Color__": {
+      "message": "Цвет",
+      "description": "Color column name."
+    },
+    "__FontSize__": {
+      "message": "Шрифта",
+      "description": "Font Size column name."
+    },
+    "__Position__": {
+      "message": "Позиция",
+      "description": "Position column name."
+    },
+    "__Preview__": {
+      "message": "Предпросмотр",
+      "description": "Preview column name."
+    },
+    "__SuccessfullyUpdated__": {
+      "message": "Успешно обновлено!",
+      "description": "Successfully updated message."
+    },
+    "__ErrorUpdating__": {
+      "message": "Ошибка обновления!",
+      "description": "Error updating message."
+    },
+    "__Save__": {
+      "message": "Сохранить",
+      "description": "Save button label."
+    },
+    "__ImportExportSettings__": {
+      "message": "Настройки импорта/экспорта",
+      "description": "Import/Export settings h2 title."
+    },
+    "__ImportExportInstructions__": {
+      "message": "Вы можете импортировать или экспортировать ваши настройки для обмена ими с командой.",
+      "description": "Import/Export section instructions text."
+    },
+    "__Import__": {
+      "message": "Импортировать",
+      "description": "Import h3 title."
+    },
+    "__ImportInstructions__": {
+      "message": "Вы можете импортировать, используя локальный файл или размещённый файл.",
+      "description": "Import section instructions text."
+    },
+    "__ImportUsingLocalFile__": {
+      "message": "Импортировать с использованием локального файла: ",
+      "description": "Import using a local file instructions text."
+    },
+    "__ImportSuccessMessage__": {
+      "message": "Импорт выполнен успешно! Обновление...",
+      "description": "Import success message."
+    },
+    "__ImportErrorMessage__": {
+      "message": "При импорте файла произошла неожиданная ошибка.",
+      "description": "Import error message."
+    },
+    "__ImportInvalidJsonMessage__": {
+      "message": "Конфигурационный файл недействителен.",
+      "description": "Import error Json message."
+    },
+    "__ImportHostedFile__": {
+      "message": "Импортировать размещённый файл (http://example.com/my-file.json): ",
+      "description": "Import a hosted file label message."
+    },
+    "__Loading__": {
+      "message": "Загрузка...",
+      "description": "Loading message."
+    },
+    "__URLNotValid__": {
+      "message": "URL недействителен.",
+      "description": "The URL is not valid message."
+    },
+    "__AutomaticallyImport__": {
+      "message": "Автоматически импортировать при изменении размещённого файла.",
+      "description": "Automatically import checkbox label message."
+    },
+    "__Export__": {
+      "message": "Экспорт",
+      "description": "Export h3 title."
+    },
+    "__ExportInstructions__": {
+      "message": "Нажмите кнопку ниже, чтобы экспортировать текущие настройки.",
+      "description": "Export instructions text."
+    },
+    "__ToggleVisibility__": {
+      "message": "Переключить видимость",
+      "description": "Toggle visibility message."
+    },
+    "__ToggleInstructions__": {
+      "message": "Нажмите на следующую кнопку, чтобы временно скрыть/показать метку:",
+      "description": "Toggle visibility instructions text."
+    },
+    "__ShowLabel__": {
+      "message": "Показать метку",
+      "description": "Show Label button text."
+    },
+    "__HideLabel__": {
+      "message": "Скрыть метку",
+      "description": "Hide Label button text."
+    },
+    "__QuickConfiguration__": {
+      "message": "Быстрая настройка",
+      "description": "Quick configuration h3 text."
+    },
+    "__Add__": {
+      "message": "Добавить",
+      "description": "Add button label."
+    },
+    "__GoToConfiguration__": {
+      "message": "или <a id=\"go-to-options\" href=\"#\">перейти на страницу настроек.</a>",
+      "description": "Go to the configuration page text."
+    },
+    "__ToggleNotPossible__": {
+      "message": "Невозможно переключить видимость для этого URL, так как он ещё не настроен.",
+      "description": "Toggle not possible message."
+    },
+    "__TemporarilyToggle__": {
+      "message": "Нажмите на следующую кнопку, чтобы временно скрыть/показать метку:",
+      "description": "Temporarily toggle instructions message."
+    },
+    "__EnvMarkerNotAvailableError__": {
+      "message": "Environment Marker недоступен на этой странице. Расширение работает только на веб-страницах. Обновите страницу.",
+      "description": "Environment Marker is not available error message."
+    },
+    "__TopRight__": {
+      "message": "Верхний правый",
+      "description": "Top-Right select option text."
+    },
+    "__TopLeft__": {
+      "message": "Верхний левый",
+      "description": "Top-Left select option text."
+    },
+    "__BottomRight__": {
+      "message": "Нижний правый",
+      "description": "Bottom-Right select option text."
+    },
+    "__BottomLeft__": {
+      "message": "Нижний левый",
+      "description": "Bottom-Left select option text."
+    },
+    "__Moldure__": {
+      "message": "Рамка",
+      "description": "Moldure select option text."
+    }
+}
+  

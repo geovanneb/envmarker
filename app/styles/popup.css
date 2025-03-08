@@ -1,49 +1,23 @@
-* { box-sizing:border-box; }
-
-/* basic stylings ------------------------------------------ */
-.container    { 
-  width:500px;
-  margin: 0px; 
-  display:block; 
-  background:#FFF;
-  padding:15px;
+body {
+  padding: 0px;
+  margin: 0px;
+  min-width: 470px;
+  font-size: 13px;
 }
 
-fieldset {
-  display: block;
-  padding: 20px;
-  border: 1px solid #ccc;
+#popup-text {
+    display: block;
 }
 
-h2 { 
-  font-size: 16px; 
+button.btn-save.btn-design, button.btn-design {
+  font-size: 13px;
 }
 
-h3     { 
-  font-size: 14px; 
-}
-
-input         {
-  font-size:12px;
-  width:100%;
-  margin-bottom: 10px;
-}
-
-/* LABEL ======================================= */
-label          {
-  color:#000; 
-  font-size:12px;
-  font-weight:normal;
-  margin-bottom: 10px;
-}
-
-select {
-  margin-bottom: 10px;
-}
-
-.btn {
+#add {
   width: 100px;
-  height: 22px;
-  line-height: 16px;
-  margin-top: 15px;
+}
+
+#notifications-container {
+  margin: 0px 0px 10px 0px;
+  width: 100%;
 }

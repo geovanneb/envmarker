@@ -1,24 +1,20 @@
-body, button, td {
-  font-family: 'Noto Sans', 'Segoe UI', 'Lucida Grande', 'Open Sans', arial,
-  sans-serif;
-  font-size: 12px;
-  color: rgb(48, 57, 66);
+@media (max-width: 990px) {
+  .col-4, 
+  .col-5,
+  .col-6 {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .import-export-row .col-4,
+  .import-export-row .col-5,
+  .import-export-row .col-6 {
+    margin: 10px 0px;
+  }
 }
 
-body {
-  background-color: white;
-  font-size: 12px;
-  margin-left: 155px;
-  margin-right: 0px;
-  overflow-x: hidden;
-}
-
-h1 {
-  font-weight: 400;
-  font-size: 18px;
-  display: inline;
-  line-height: 18px;
-  vertical-align: middle;
+.import-export-row .col-6 > div {
+  height: 100%;
 }
 
 .top-title {
@@ -44,25 +40,6 @@ section {
   margin-bottom: 24px;
   margin-top: 8px;
   max-width: 600px;
-}
-
-section h2 {
-  -webkit-margin-start: -18px;
-  color: black;
-  line-height: 14px;
-  font-size: 14px;
-  font-weight: normal;
-  margin-bottom: 11px;
-  font-weight: bold;
-}
-
-section h3 {
-  -webkit-margin-start: -18px;
-  color: black;
-  line-height: 13px;
-  font-size: 13px;
-  font-weight: normal;
-  margin-bottom: 11px;
 }
 
 .device-icon {
@@ -93,40 +70,10 @@ section h3 {
   padding-top: 7px;
 }
 
-p {
-  line-height: 1.4em;
-  font-weight: 400;
-}
-
-label {
-  display: block;
-}
-
-label:hover {
-  color: black;
-}
-
-label[for] {
-  display: inline;
-}
-
-button {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.options-sections {
-  margin-top: 66px;
-}
-
 .options-sections section {
   margin-top: 8px;
   margin-bottom: 24px;
-  max-width: 600px;
-}
-
-.setup-section div {
-  margin-top: 8px;
+  max-width: none;
 }
 
 .setup-section p {
@@ -143,18 +90,6 @@ button {
 
 .savedMessage {
   display: inline;
-}
-
-#unsupported-chromekey {
-  z-index: 2;
-  background-color: white;
-  position: absolute;
-  top: 125px;
-  left: 250px;
-  height: 300px;
-  width: 400px;
-  padding: 18px;
-  -webkit-box-shadow: 0px 0px 12px 3px #ccc;
 }
 
 a {
@@ -195,56 +130,96 @@ input[type="radio"]:disabled+label{
   color:#ccc;
 }
 
-.config-container {
-	width: 700px;
-}
-
-input {
-	width: 90%;
-}
-
-input[type="text"].import-label {
-  width: 250px;
-}
-
-input[type="checkbox"] {
-  width: 15px;
-}
-
-.controls {
-	margin: 20px 0;
-}
-
-.btn {
-  width: 100px;
-  height: 22px;
-  line-height: 17px;
-}
-
-.btn-export, .btn-import {
-  width: 100px;
-  height: 18px;
-  line-height: 15px;
-  font-size: 10px;
-}
-
-button.delete {
-  display: block;
-  width: 15px;
-  height: 15px;
-  border: 0px;
-  margin: 0px;
-  padding: 0px;
-  outline: none;
+input.import-label {
   cursor: pointer;
-  background: url("/images/delete.png") no-repeat;
-  background-size: 15px 15px;
-}
-
-.import-label {     
-  width: 350px;
 }
 
 label.import-label {
   margin-right: 5px;
+}
+
+/* Additional styles specific to options page */
+.position-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.position-preview {
+    margin: 0 auto;
+    width: 22px;
+    height: 22px;
+    position: relative;
+}
+
+.preview-box {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.table-responsive {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 670px;
+    table-layout: fixed;
+}
+
+table td {
+    padding: 5px;
+    vertical-align: middle;
+    word-break: break-word;
+}
+
+.position select {
+    width: 100%;
+}
+
+input.jscolor {
+    width: 100%;
+}
+
+.config-container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+thead td {
+    font-weight: bold;
+    background-color: #f8f9fa;
+}
+
+/* Adjust column widths */
+table td:nth-child(1) { 
+    width: 17%;
+}
+
+table td:nth-child(2) { 
+    width: 25%;
+}
+
+table td:nth-child(3) {
+    width: 23%;
+}
+
+table td:nth-child(4) { 
+  width: 12%;
+}
+
+table td:nth-child(5) { 
+  width: 18%;
+}
+
+table td:nth-child(6) {
+  width: 5%;
 }

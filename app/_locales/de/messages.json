@@ -1,0 +1,171 @@
+{
+    "appName": {
+      "message": "Environment Marker",
+      "description": "Environment Marker Chrome Extension"
+    },
+    "appDescription": {
+      "message": "Verwenden Sie die Environment Marker-Erweiterung und vermeiden Sie Fehler in den (Programm-)Umgebungen.",
+      "description": "Environment Marker Chrome Extension description"
+    },
+    "__Options__": {
+      "message": "Optionen",
+      "description": "Options h1 title."
+    },
+    "__MarkerSettings__": {
+      "message": "Marker-Einstellungen",
+      "description": "Marker settings h2."
+    },
+    "__Name__": {
+      "message": "Name",
+      "description": "Name column name."
+    },
+    "__URL__": {
+      "message": "URL (verwenden Sie das Präfix 'regex:' um einen Host mittels RegEx abzugleichen)",
+      "description": "URL column name."
+    },
+    "__Color__": {
+      "message": "Farbe",
+      "description": "Color column name."
+    },
+    "__FontSize__": {
+      "message": "Schriftgröße",
+      "description": "Font Size column name."
+    },
+    "__Position__": {
+      "message": "Position",
+      "description": "Position column name."
+    },
+    "__Preview__": {
+      "message": "Vorschau",
+      "description": "Preview column name."
+    },
+    "__SuccessfullyUpdated__": {
+      "message": "Erfolgreich aktualisiert!",
+      "description": "Successfully updated message."
+    },
+    "__ErrorUpdating__": {
+      "message": "Fehler beim Aktualisieren!",
+      "description": "Error updating message."
+    },
+    "__Save__": {
+      "message": "Speichern",
+      "description": "Save button label."
+    },
+    "__ImportExportSettings__": {
+      "message": "Import-/Export-Einstellungen",
+      "description": "Import/Export settings h2 title."
+    },
+    "__ImportExportInstructions__": {
+      "message": "Sie können Ihre Konfigurationen importieren oder exportieren, um sie mit Ihrem Team zu teilen.",
+      "description": "Import/Export section instructions text."
+    },
+    "__Import__": {
+      "message": "Importieren",
+      "description": "Import h3 title."
+    },
+    "__ImportInstructions__": {
+      "message": "Sie können entweder eine lokale Datei oder eine gehostete Datei importieren.",
+      "description": "Import section instructions text."
+    },
+    "__ImportUsingLocalFile__": {
+      "message": "Mit einer lokalen Datei importieren: ",
+      "description": "Import using a local file instructions text."
+    },
+    "__ImportSuccessMessage__": {
+      "message": "Erfolgreich importiert! Aktualisiere...",
+      "description": "Import success message."
+    },
+    "__ImportErrorMessage__": {
+      "message": "Beim Import der Datei ist ein unerwarteter Fehler aufgetreten.",
+      "description": "Import error message."
+    },
+    "__ImportInvalidJsonMessage__": {
+      "message": "Die Konfigurationsdatei ist ungültig.",
+      "description": "Import error Json message."
+    },
+    "__ImportHostedFile__": {
+      "message": "Eine gehostete Datei importieren (http://example.com/my-file.json): ",
+      "description": "Import a hosted file label message."
+    },
+    "__Loading__": {
+      "message": "Laden...",
+      "description": "Loading message."
+    },
+    "__URLNotValid__": {
+      "message": "Die URL ist ungültig.",
+      "description": "The URL is not valid message."
+    },
+    "__AutomaticallyImport__": {
+      "message": "Automatisch importieren bei Änderungen an der gehosteten Datei.",
+      "description": "Automatically import checkbox label message."
+    },
+    "__Export__": {
+      "message": "Exportieren",
+      "description": "Export h3 title."
+    },
+    "__ExportInstructions__": {
+      "message": "Klicken Sie auf die Schaltfläche unten, um Ihre aktuellen Einstellungen zu exportieren.",
+      "description": "Export instructions text."
+    },
+    "__ToggleVisibility__": {
+      "message": "Sichtbarkeit umschalten",
+      "description": "Toggle visibility message."
+    },
+    "__ToggleInstructions__": {
+      "message": "Klicken Sie auf die folgende Schaltfläche, um die Beschriftung vorübergehend auszublenden/einzublenden:",
+      "description": "Toggle visibility instructions text."
+    },
+    "__ShowLabel__": {
+      "message": "Beschriftung anzeigen",
+      "description": "Show Label button text."
+    },
+    "__HideLabel__": {
+      "message": "Beschriftung ausblenden",
+      "description": "Hide Label button text."
+    },
+    "__QuickConfiguration__": {
+      "message": "Schnelle Konfiguration",
+      "description": "Quick configuration h3 text."
+    },
+    "__Add__": {
+      "message": "Hinzufügen",
+      "description": "Add button label."
+    },
+    "__GoToConfiguration__": {
+      "message": "oder <a id=\"go-to-options\" href=\"#\">zur Konfigurationsseite gehen.</a>",
+      "description": "Go to the configuration page text."
+    },
+    "__ToggleNotPossible__": {
+      "message": "Die Sichtbarkeit für diese URL kann nicht umgeschaltet werden, da sie noch nicht konfiguriert wurde.",
+      "description": "Toggle not possible message."
+    },
+    "__TemporarilyToggle__": {
+      "message": "Klicken Sie auf die folgende Schaltfläche, um die Beschriftung vorübergehend auszublenden/einzublenden:",
+      "description": "Temporarily toggle instructions message."
+    },
+    "__EnvMarkerNotAvailableError__": {
+      "message": "Environment Marker ist auf dieser Seite nicht verfügbar. Die Erweiterung funktioniert nur auf Webseiten. Bitte aktualisieren Sie die Seite.",
+      "description": "Environment Marker is not available error message."
+    },
+    "__TopRight__": {
+      "message": "Oben rechts",
+      "description": "Top-Right select option text."
+    },
+    "__TopLeft__": {
+      "message": "Oben links",
+      "description": "Top-Left select option text."
+    },
+    "__BottomRight__": {
+      "message": "Unten rechts",
+      "description": "Bottom-Right select option text."
+    },
+    "__BottomLeft__": {
+      "message": "Unten links",
+      "description": "Bottom-Left select option text."
+    },
+    "__Moldure__": {
+      "message": "Rahmen",
+      "description": "Moldure select option text."
+    }
+}
+  
