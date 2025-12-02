@@ -30,6 +30,11 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 			_setConfig(request.parameter);
 			sendResponse({success: true});
 			break;
+		case 'urlChanged':
+			_syncCurrentContext(request.url);
+			_addEnvironmentLabel();
+			sendResponse({handled: true});
+			break;
 		return true;
 	}
 	return true;
@@ -46,6 +51,16 @@ var CURRENT_DOMAIN = window.location.hostname;
 var ENV_SETTINGS = [];
 var HOSTED_FILE = "";
 var AUTO_IMPORT = 0;
+
+function _syncCurrentContext(nextUrl) {
+	var targetUrl = nextUrl || window.location.href;
+	CURRENT_LOCATION = targetUrl;
+	try {
+		CURRENT_DOMAIN = new URL(targetUrl).hostname;
+	} catch (e) {
+		CURRENT_DOMAIN = window.location.hostname;
+	}
+}
 
 // verify settings and add label if necessary
 function _addEnvironmentLabel() {
@@ -212,9 +227,11 @@ function _setConfig(config) {
 	});
 }
 
+_syncCurrentContext();
 _addEnvironmentLabel();
 
 // detect dinamic URL update
 window.onhashchange = function() { 
+	_syncCurrentContext();
 	_addEnvironmentLabel();
 }
