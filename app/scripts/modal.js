@@ -30,6 +30,11 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 			_setConfig(request.parameter);
 			sendResponse({success: true});
 			break;
+		case 'urlChanged':
+			_syncCurrentContext(request.url);
+			_addEnvironmentLabel();
+			sendResponse({handled: true});
+			break;
 		return true;
 	}
 	return true;
@@ -47,6 +52,16 @@ var ENV_SETTINGS = [];
 var HOSTED_FILE = "";
 var AUTO_IMPORT = 0;
 
+function _syncCurrentContext(nextUrl) {
+	var targetUrl = nextUrl || window.location.href;
+	CURRENT_LOCATION = targetUrl;
+	try {
+		CURRENT_DOMAIN = new URL(targetUrl).hostname;
+	} catch (e) {
+		CURRENT_DOMAIN = window.location.hostname;
+	}
+}
+
 // verify settings and add label if necessary
 function _addEnvironmentLabel() {
 	chrome.storage.sync.get({current_state: {
@@ -62,28 +77,34 @@ function _addEnvironmentLabel() {
 			_updateMatchers(data.current_state.env_settings, data.current_state.last_update);
 		}
 
+		var matched = false;
 		for(var i = 0; i<PLUGIN_STATE.strictList.length; i++) {
 			if(CURRENT_LOCATION.indexOf(PLUGIN_STATE.strictList[i].address) > -1) {
 				CURRENT_CONFIG = PLUGIN_STATE.strictList[i];
 				_addMarker(CURRENT_CONFIG);
-				return;
+				matched = true;
+				break;
 			}
 		}
-		for(var i = 0; i<PLUGIN_STATE.regexList.length; i++) {
-			if(PLUGIN_STATE.regexList[i].regex.test(CURRENT_DOMAIN)) {
-				CURRENT_CONFIG = PLUGIN_STATE.regexList[i];
-				_addMarker(CURRENT_CONFIG);
-				return;
+		if(!matched) {
+			for(var j = 0; j<PLUGIN_STATE.regexList.length; j++) {
+				if(PLUGIN_STATE.regexList[j].regex.test(CURRENT_DOMAIN)) {
+					CURRENT_CONFIG = PLUGIN_STATE.regexList[j];
+					_addMarker(CURRENT_CONFIG);
+					matched = true;
+					break;
+				}
 			}
+		}
+		if(!matched) {
+			CURRENT_CONFIG = undefined;
+			_clearMarker();
 		}
 	});
 }
 
 function _addMarker(item) {
-	var envmarker = document.getElementById('chrome-envmarker');
-	if(envmarker && envmarker.length != 0) {
-		envmarker.parentNode.removeChild(envmarker);
-	}
+	_clearMarker();
 
 	var position = item.position || '1';
 	var wrapperDiv = document.createElement('div');
@@ -171,6 +192,13 @@ function _addMarker(item) {
 	}
 }
 
+function _clearMarker() {
+	var envmarker = document.getElementById('chrome-envmarker');
+	if(envmarker) {
+		envmarker.parentNode.removeChild(envmarker);
+	}
+}
+
 function _updateMatchers(env_settings, last_update) {
 	PLUGIN_STATE.regexList = [];
 	PLUGIN_STATE.strictList = [];
@@ -212,9 +240,11 @@ function _setConfig(config) {
 	});
 }
 
+_syncCurrentContext();
 _addEnvironmentLabel();
 
 // detect dinamic URL update
 window.onhashchange = function() { 
+	_syncCurrentContext();
 	_addEnvironmentLabel();
 }

@@ -123,4 +123,18 @@ function loadScript(src) {
 	}
   } catch (e) {
 	console.error('Firebase initialization error:', e);
-  }  
+  }
+
+  // Notify content scripts when SPA-style history events change the URL.
+  const emitUrlChange = (details) => {
+	if (details.frameId !== 0) {
+	  return;
+	}
+	chrome.tabs.sendMessage(details.tabId, {
+	  action: 'urlChanged',
+	  url: details.url
+	});
+  };
+  chrome.webNavigation.onHistoryStateUpdated.addListener(emitUrlChange, {
+	url: [{ schemes: ['http', 'https'] }]
+  });
